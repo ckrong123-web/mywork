@@ -1,0 +1,60 @@
+// =============================================================================
+// 반응형 브레이크포인트 mixin (원본 Tailwind md/lg 기준)
+//   md = 768px, lg = 1024px
+// 사용: @use "../../styles/mixins" as *;  →  @include respond-md { ... }
+// =============================================================================
+
+@mixin respond-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin respond-lg {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+// 컨테이너(max-width 1280 + 가운데 정렬 + 좌우 패딩 24/80)를
+// 섹션 자체에 직접 부여할 때 사용.
+@mixin container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+
+  @include respond-lg {
+    padding-inline: var(--space-xl);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 원형 아이콘 버튼 공통 형태 (Button ghost variant / VIEW ALL 화살표 원 등)
+//   hover 등 개별 표현은 사용처에서 지정한다(형태만 공유).
+// -----------------------------------------------------------------------------
+@mixin icon-circle($size: 40px) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-hairline-strong);
+}
+
+// -----------------------------------------------------------------------------
+// 카드 공통 스타일 (RankCard / TicketCard / GenreCard 반복 제거)
+//   media-frame: 이미지/프레임 래퍼(포지션·오버플로·라운드)
+//   zoom-image : 카드 이미지(cover + hover scale 전환) — scale 은 사용처에서 부여
+// -----------------------------------------------------------------------------
+@mixin media-frame($radius: var(--radius-default)) {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius;
+}
+
+@mixin zoom-image($duration: 0.7s) {
+  object-fit: cover;
+  transition: transform $duration ease;
+}

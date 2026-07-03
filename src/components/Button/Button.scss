@@ -1,0 +1,125 @@
+@use "../../styles/mixins" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  letter-spacing: var(--letter-spacing-wide);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+// ---- sizes (채움 계열 padding) ----
+.btn--sm {
+  padding: 8px 24px;
+}
+
+.btn--md {
+  padding: 16px 40px;
+}
+
+.btn--lg {
+  padding: 16px 48px;
+}
+
+// ---- primary (기본 채움: MY TICKET 기준) ----
+.btn--primary {
+  color: var(--color-on-primary-container);
+  background: var(--color-primary-container);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-primary);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// ---- glass (Learn More) ----
+.btn--glass {
+  color: var(--color-white);
+  background: var(--btn-glass-bg);
+  border: 1px solid var(--btn-glass-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--btn-glass-shadow);
+  backdrop-filter: blur(var(--btn-glass-blur));
+
+  &:hover {
+    background: var(--btn-glass-bg-hover);
+    border-color: var(--btn-glass-border-hover);
+    box-shadow: var(--btn-glass-shadow-hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// ---- white (JOIN NOW) ----
+.btn--white {
+  color: var(--color-primary-container);
+  background: var(--color-white);
+  border-radius: var(--radius-full);
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-card);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// ---- link (SET REMINDER) ----
+.btn--link {
+  width: fit-content;
+  padding: 0 0 2px;
+  font-size: var(--font-size-label-xs);
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(200, 191, 255, 0.2);
+
+  &:hover {
+    border-bottom-color: var(--color-primary);
+  }
+}
+
+// ---- text (LOGIN 등) ----
+.btn--text {
+  padding: 0;
+  color: var(--color-on-surface-variant);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+// ---- icon (형태 없는 아이콘 버튼: search / hamburger / 제출) ----
+.btn--icon {
+  padding: 4px;
+  color: var(--color-on-surface);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+// ---- ghost (원형 보더 아이콘 버튼: NOTICE add / footer social) ----
+.btn--ghost {
+  @include icon-circle(40px);
+
+  color: var(--color-on-surface-variant);
+}
+
+.btn--ghost.btn--sm {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.btn--ghost.btn--md {
+  padding: 0;
+}

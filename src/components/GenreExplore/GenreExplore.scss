@@ -1,0 +1,38 @@
+@use "../../styles/mixins" as *;
+
+.genre-explore {
+  @include container;
+
+  padding-block: 128px;
+  overflow: hidden;
+
+  &__title {
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    // 원본 확정 사양: 40px 고정
+    font-size: 40px;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-white);
+  }
+
+  &__subtitle {
+    margin-bottom: 80px;
+    font-size: var(--font-size-label-xs);
+    text-align: center;
+    letter-spacing: var(--letter-spacing-genre-sub);
+    color: var(--color-on-surface-variant);
+    opacity: 0.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @include respond-md {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

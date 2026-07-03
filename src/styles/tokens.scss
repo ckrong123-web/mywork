@@ -1,0 +1,196 @@
+// =============================================================================
+// STAGEHUB 디자인 토큰 — 컬러/타이포/간격/radius/효과를 CSS 변수로 정의
+// -----------------------------------------------------------------------------
+// - 이 사이트는 "항상 다크" 단일 테마입니다. 라이트모드 분기(prefers-color-scheme)를
+//   두지 않습니다. (기획: STAGEHUB = 프리미엄 공연 예매, 다크 전용)
+// - 원본(Google Stitch export, Tailwind config)의 Material 3 시맨틱 컬러 이름을
+//   그대로 승계해 --color-* 로 매핑했습니다. 퍼블리셔는 하드코딩 대신 이 변수를 참조하세요.
+// - 값 출처: docs/design/stagehub-source.html 의 tailwind.config
+// - designer 에이전트가 이 파일을 소유합니다.
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // 컬러 — 배경 / Surface 계열 (어두울수록 lowest, 밝을수록 highest)
+  // ---------------------------------------------------------------------------
+  --color-background: #0b0b15;              // 페이지 기본 배경(= surface)
+  --color-surface: #0b0b15;                 // background 동일값(시맨틱 별칭)
+  --color-surface-container-lowest: #0d0d17; // Ticket Open 섹션 배경
+  --color-surface-container-low: #1b1b25;    // 랭크 카드 프레임 배경
+  --color-surface-container: #1f1f29;        // 일반 컨테이너
+  --color-surface-container-high: #292934;   // 강조 컨테이너
+  --color-surface-container-highest: #34343f;
+  --color-surface-variant: #34343f;
+  --color-surface-bright: #393844;
+  --color-surface-dim: #12121d;
+  --color-surface-tint: #c8bfff;
+
+  // ---------------------------------------------------------------------------
+  // 컬러 — Primary (브랜드 보라 계열)
+  // ---------------------------------------------------------------------------
+  --color-primary: #c8bfff;                 // 강조 텍스트/라인/아이콘
+  --color-on-primary: #2d128f;              // primary 위 텍스트
+  --color-primary-container: #6a5acd;       // 주요 버튼(Book Now, MY TICKET) 배경
+  --color-on-primary-container: #f0ebff;    // primary-container 위 텍스트
+  --color-inverse-primary: #5d4cbf;         // 버튼 hover 대체색
+  --color-primary-fixed: #e5deff;
+  --color-primary-fixed-dim: #c8bfff;
+  --color-on-primary-fixed: #190064;
+  --color-on-primary-fixed-variant: #4532a6;
+
+  // ---------------------------------------------------------------------------
+  // 컬러 — Secondary
+  // ---------------------------------------------------------------------------
+  --color-secondary: #c8bfff;
+  --color-on-secondary: #2e1d7f;
+  --color-secondary-container: #453796;     // 스크롤바 thumb 등
+  --color-on-secondary-container: #b6abff;
+  --color-secondary-fixed: #e5deff;
+  --color-secondary-fixed-dim: #c8bfff;
+  --color-on-secondary-fixed: #190064;
+  --color-on-secondary-fixed-variant: #453796;
+
+  // ---------------------------------------------------------------------------
+  // 컬러 — Tertiary (Ticket Open의 D-7 뱃지 톤 등)
+  // ---------------------------------------------------------------------------
+  --color-tertiary: #c7c4d9;
+  --color-on-tertiary: #2f2f3f;
+  --color-tertiary-container: #6b6a7c;
+  --color-on-tertiary-container: #efecff;
+  --color-tertiary-fixed: #e3e0f6;
+  --color-tertiary-fixed-dim: #c7c4d9;
+  --color-on-tertiary-fixed: #1a1a29;
+  --color-on-tertiary-fixed-variant: #464556;
+
+  // ---------------------------------------------------------------------------
+  // 컬러 — On-surface / 텍스트 / 아웃라인
+  // ---------------------------------------------------------------------------
+  --color-on-surface: #e4e1f0;              // 기본 본문/제목 텍스트(밝음)
+  --color-on-surface-variant: #c9c4d5;      // 보조 텍스트(살짝 흐림)
+  --color-on-background: #e4e1f0;
+  --color-outline: #928f9e;                 // 보더/구분선
+  --color-outline-variant: #474553;         // 약한 보더
+  --color-inverse-surface: #e4e1f0;
+  --color-inverse-on-surface: #302f3b;
+
+  // ---------------------------------------------------------------------------
+  // 컬러 — Error
+  // ---------------------------------------------------------------------------
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  // ---------------------------------------------------------------------------
+  // 컬러 — 유틸/장식용 리터럴 (원본에서 rgba(255,255,255,*) / 특정 hex 반복)
+  // ---------------------------------------------------------------------------
+  --color-footer-bg: #08080e;               // Footer 배경(원본 bg-[#08080E])
+  --color-white: #ffffff;                   // Hero 제목, JOIN NOW 버튼 배경 등
+  --color-hairline: rgba(255, 255, 255, 0.05);  // border-white/5 (헤더/섹션 구분)
+  --color-hairline-strong: rgba(255, 255, 255, 0.1); // 세로 구분선(bg-white/10)
+  --color-hairline-20: rgba(255, 255, 255, 0.2);     // WEEKLY TOP 10 옆 짧은 라인
+
+  // ---------------------------------------------------------------------------
+  // 타이포그래피 — 폰트 패밀리
+  //   제목: Libre Caslon Text (400/700) — Hero·섹션 헤드라인·랭크숫자
+  //   본문: Hanken Grotesk (300~900) — 라벨/본문
+  //   아이콘: Material Symbols Outlined
+  //   ※ 실제 로드는 퍼블리셔가 next/font 또는 <link> 로 처리(핸드오프 문서 참고)
+  // ---------------------------------------------------------------------------
+  --font-display: "Libre Caslon Text", serif;   // display / headline (제목)
+  --font-body: "Hanken Grotesk", sans-serif;    // body / label (본문)
+  --font-icon: "Material Symbols Outlined";
+
+  // 폰트 사이즈 (원본에서 실제 사용된 값)
+  --font-size-scroll: 10px;    // SCROLL 인디케이터, genre 번호
+  --font-size-label-xs: 11px;  // label-sm (장르|장소, 퍼센트, 날짜)
+  --font-size-label: 12px;     // label-md (Now Playing, 메뉴, MEMBERSHIP ONLY)
+  --font-size-body: 14px;      // 기본 본문(설명문)
+  --font-size-notice: 16px;    // NOTICE 헤더
+  --font-size-body-lg: 18px;   // 멤버십 설명문
+  --font-size-card-title: 22px; // 랭크 카드 제목
+  --font-size-ticket-title: 24px; // 티켓 제목
+  --font-size-section-sm: 36px; // Ticket Open 헤드라인
+  --font-size-membership: 42px; // 멤버십 제목
+  --font-size-section: 48px;   // WEEKLY TOP 10 / genre 제목
+  --font-size-hero: 72px;      // Hero 대형 제목
+  --font-size-rank-number: 180px; // 배경 랭킹 숫자
+
+  // 폰트 웨이트
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  // 자간 (원본 tracking-* 매핑)
+  --letter-spacing-tight: -0.02em;   // tracking-tighter/tight (제목)
+  --letter-spacing-wide: 0.1em;      // tracking-widest (메뉴/라벨)
+  --letter-spacing-label: 0.2em;     // MEMBERSHIP ONLY
+  --letter-spacing-hero: 0.3em;      // Now Playing 라벨
+  --letter-spacing-genre-sub: 0.4em; // CHOOSE YOUR GENRE
+
+  // ---------------------------------------------------------------------------
+  // 간격 — 원본 spacing 토큰 + 컨테이너
+  // ---------------------------------------------------------------------------
+  --space-xs: 4px;
+  --space-base: 8px;
+  --space-sm: 12px;
+  --space-md: 24px;    // 컨테이너 좌우 gutter(모바일)
+  --space-lg: 48px;
+  --space-xl: 80px;    // 컨테이너 좌우 패딩(데스크톱 lg)
+  --container-max: 1280px;
+
+  // ---------------------------------------------------------------------------
+  // Radius — 원본 borderRadius (DEFAULT 2px 계열)
+  // ---------------------------------------------------------------------------
+  --radius-default: 2px;   // 랭크 포스터, genre 카드 등 기본
+  --radius-lg: 4px;        // rounded-lg
+  --radius-xl: 8px;        // rounded-xl (멤버십/노티스 패널)
+  --radius-full: 9999px;   // pill 버튼/뱃지
+
+  // ---------------------------------------------------------------------------
+  // 효과(Effect) — 반복되는 유리질감/글로우/그라디언트를 변수화
+  //   ※ 개별 좌표/길이/그림자 offset 은 컴포넌트에서 직접 작성해도 됩니다.
+  // ---------------------------------------------------------------------------
+  // Glass panel (헤더, 멤버십/노티스 패널, Learn More 버튼 계열)
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 12px;
+
+  // btn-glass (Hero "Learn More")
+  --btn-glass-bg: rgba(106, 90, 205, 0.2);
+  --btn-glass-bg-hover: rgba(106, 90, 205, 0.35);
+  --btn-glass-border: rgba(200, 191, 255, 0.3);
+  --btn-glass-border-hover: rgba(200, 191, 255, 0.5);
+  --btn-glass-blur: 8px;
+  --btn-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  --btn-glass-shadow-hover: 0 0 20px rgba(106, 90, 205, 0.3);
+
+  // 텍스트 글로우 (Hero 제목)
+  --text-glow: 0 0 20px rgba(200, 191, 255, 0.3);
+
+  // Hero scrim (배경 이미지 위 어둡게 깔리는 세로 그라디언트)
+  --hero-scrim: linear-gradient(
+    0deg,
+    #0b0b15 0%,
+    rgba(11, 11, 21, 0.4) 50%,
+    rgba(11, 11, 21, 0.8) 100%
+  );
+
+  // Glow accent (섹션 배경 방사형 보라 발광)
+  --glow-accent: radial-gradient(circle, rgba(106, 90, 205, 0.15) 0%, transparent 70%);
+
+  // 섹션 전환 블러(Hero → Ranking, 위에서 아래로 배경색으로 페이드)
+  --section-transition: linear-gradient(to bottom, transparent, #0b0b15);
+
+  // 그림자
+  --shadow-primary: 0 10px 30px rgba(106, 90, 205, 0.3); // primary 버튼 shadow-xl
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.5);         // 카드 shadow-2xl 근사
+
+  // 스크롤바
+  --scrollbar-thumb: #453796;
+  --scrollbar-track: #0b0b15;
+
+  // 노이즈 텍스처 오버레이(장식) — body::before
+  --noise-opacity: 0.03;
+}

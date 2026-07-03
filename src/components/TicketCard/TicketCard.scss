@@ -1,0 +1,92 @@
+@use "../../styles/mixins" as *;
+
+.ticket-card {
+  display: flex;
+  gap: 32px;
+  padding: 4px;
+
+  &__poster {
+    @include media-frame(var(--radius-default));
+
+    flex-shrink: 0;
+    width: 128px;
+    height: 176px;
+    box-shadow: var(--shadow-card);
+  }
+
+  &__image {
+    @include zoom-image(0.5s);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 8px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__badge {
+    padding: 2px 12px;
+    font-size: var(--font-size-label-xs);
+    letter-spacing: var(--letter-spacing-wide);
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+  }
+
+  &__badge--primary {
+    color: var(--color-primary);
+    background: rgba(200, 191, 255, 0.2);
+    border-color: var(--btn-glass-border);
+  }
+
+  &__badge--tertiary {
+    color: var(--color-tertiary);
+    background: rgba(199, 196, 217, 0.2);
+    border-color: rgba(199, 196, 217, 0.3);
+  }
+
+  &__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size-label-xs);
+    color: var(--color-on-surface-variant);
+    opacity: 0.6;
+  }
+
+  &__date-icon {
+    font-size: 14px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: var(--font-size-ticket-title);
+    color: var(--color-white);
+    transition: color 0.3s ease;
+  }
+
+  &__desc {
+    margin-bottom: 16px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    color: var(--color-on-surface-variant);
+  }
+
+  // group-hover
+  &:hover &__image {
+    transform: scale(1.05);
+  }
+
+  &:hover &__title {
+    color: var(--color-primary);
+  }
+}

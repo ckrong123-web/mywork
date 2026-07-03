@@ -1,0 +1,118 @@
+@use "../../styles/mixins" as *;
+
+.genre-card {
+  @include media-frame(var(--radius-default));
+
+  display: block;
+  height: 600px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+
+  // 안쪽 얇은 보더(장식)
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 16px;
+    z-index: 2;
+    border: 1px solid var(--color-hairline);
+    pointer-events: none;
+  }
+
+  &--offset {
+    @include respond-md {
+      margin-top: 48px;
+    }
+  }
+
+  &__image {
+    @include zoom-image(1s);
+  }
+
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to top,
+      var(--color-background),
+      transparent
+    );
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+  }
+
+  &__body {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    padding: 40px;
+  }
+
+  &__number {
+    display: block;
+    margin-bottom: 8px;
+    font-size: var(--font-size-scroll);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-primary);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-size: var(--font-size-section);
+    line-height: 1;
+    color: var(--color-white);
+  }
+
+  &__underline {
+    display: block;
+    width: 0;
+    height: 1px;
+    margin-bottom: 16px;
+    background: var(--color-primary);
+    transition: width 0.7s ease;
+  }
+
+  &__desc {
+    max-height: 0;
+    overflow: hidden;
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    color: var(--color-on-surface-variant);
+    opacity: 0;
+    transition: max-height 0.7s ease, opacity 0.7s ease;
+  }
+
+  // group-hover / focus
+  &:hover &__image,
+  &:focus-visible &__image {
+    transform: scale(1.05);
+  }
+
+  &:hover &__gradient,
+  &:focus-visible &__gradient {
+    opacity: 1;
+  }
+
+  &:hover &__number,
+  &:focus-visible &__number {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover &__underline,
+  &:focus-visible &__underline {
+    width: 100%;
+  }
+
+  &:hover &__desc,
+  &:focus-visible &__desc {
+    max-height: 5rem;
+    opacity: 1;
+  }
+}

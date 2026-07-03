@@ -1,0 +1,194 @@
+@use "../../styles/mixins" as *;
+
+.footer {
+  position: relative;
+  padding-block: 80px;
+  background: var(--color-footer-bg);
+  border-top: 1px solid var(--color-hairline);
+  overflow: hidden;
+
+  &__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  // ---- 상단 그리드 (12컬럼: 4 / 2 / 2 / 4) ----
+  &__grid {
+    @include container;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+
+    @include respond-md {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include respond-md {
+      grid-column: span 4;
+    }
+  }
+
+  &__logo img {
+    height: 48px;
+    width: auto;
+  }
+
+  &__intro {
+    max-width: 20rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    color: var(--color-on-surface-variant);
+    opacity: 0.7;
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+  }
+
+  // 소셜 버튼(공통 Button variant="ghost") — 고유 hover만 보정
+  &__social-btn.btn {
+    &:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__col {
+    @include respond-md {
+      grid-column: span 2;
+    }
+  }
+
+  &__col-title {
+    margin-bottom: 24px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+  }
+
+  &__link {
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface-variant);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__newsletter {
+    @include respond-md {
+      grid-column: span 4;
+    }
+  }
+
+  &__newsletter-desc {
+    margin-bottom: 24px;
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    color: var(--color-on-surface-variant);
+    opacity: 0.7;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    max-width: 20rem;
+    border-bottom: 1px solid var(--color-hairline-strong);
+  }
+
+  &__input {
+    flex-grow: 1;
+    padding: 8px 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface);
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: var(--color-on-surface-variant);
+      opacity: 0.5;
+    }
+  }
+
+  // 뉴스레터 제출(공통 Button variant="icon") — primary 색 + 이동 hover 보정
+  &__submit.btn {
+    padding: 8px;
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-primary);
+      transform: translateX(4px);
+    }
+  }
+
+  // ---- 하단바 ----
+  &__bottom {
+    @include container;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-hairline);
+
+    @include respond-md {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__copyright {
+    font-size: var(--font-size-label-xs);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__legal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__legal-link {
+    font-size: var(--font-size-label-xs);
+    color: var(--color-on-surface-variant);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__legal-sep {
+    color: var(--color-on-surface-variant);
+  }
+}

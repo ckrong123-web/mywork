@@ -20,7 +20,7 @@ Figma MCP가 연결되어 있고 사용자가 노드 ID를 지정하면, 스크�
 이 표가 퍼블리셔 에이전트에게 넘기는 핸드오프 자료의 핵심입니다.
 
 ## 산출물
-1. `src/styles/tokens.css` — 컬러/타이포/간격/radius 등을 CSS 변수로 정의
+1. `src/styles/tokens.scss` — 컬러/타이포/간격/radius 등을 CSS 변수로 정의 (SASS 컨벤션에 맞춰 `.scss`로 작성)
 2. `docs/design/*.md` — 위 Figma 레이어 분석 표(있는 경우), 디자인 의도, 컴포넌트별 스펙을 정리한 퍼블리셔 핸드오프 문서
 
 ## 제약

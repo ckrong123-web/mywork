@@ -1,0 +1,65 @@
+@use "../../styles/mixins" as *;
+
+.ticket-open {
+  position: relative;
+  padding-block: 96px;
+  background: var(--color-surface-container-lowest);
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+  overflow: hidden;
+
+  // glow accent(장식) — 우하단
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: var(--glow-accent);
+    filter: blur(60px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-section-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-white);
+  }
+
+  &__line {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--btn-glass-border),
+      transparent
+    );
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    @include respond-md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

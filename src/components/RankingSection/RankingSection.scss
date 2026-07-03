@@ -1,0 +1,105 @@
+@use "../../styles/mixins" as *;
+
+// Hero → Ranking 섹션 전환 블러 (전역 유틸, page 에서 사용)
+.hero-transition {
+  position: relative;
+  z-index: 10;
+  height: 150px;
+  margin-top: -150px;
+  background: var(--section-transition);
+  pointer-events: none;
+}
+
+.ranking {
+  position: relative;
+  padding-block: 96px;
+  background: var(--color-background);
+  overflow: hidden;
+
+  // glow accent(장식) — 좌상단 방사형 발광
+  &::before {
+    content: "";
+    position: absolute;
+    top: -160px;
+    left: -160px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: var(--glow-accent);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-size: var(--font-size-section);
+    color: var(--color-white);
+  }
+
+  &__title-line {
+    width: 48px;
+    height: 1px;
+    background: var(--color-hairline-20);
+  }
+
+  &__subtitle {
+    font-weight: var(--font-weight-light);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-on-surface-variant);
+  }
+
+  // VIEW ALL(공통 Button variant="text") — primary 텍스트 + 아이콘 간격 보정
+  &__view-all.btn {
+    gap: 12px;
+    flex-shrink: 0;
+    color: var(--color-primary);
+  }
+
+  &__view-all-icon {
+    @include icon-circle(32px);
+
+    border-color: var(--btn-glass-border);
+    font-size: 16px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  &__view-all:hover &__view-all-icon {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  &__scroller-wrap {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 20px;
+  }
+
+  &__scroller {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding-block: 48px;
+    padding-inline: var(--space-md);
+    overflow-x: auto;
+    list-style: none;
+
+    @include respond-lg {
+      padding-inline: var(--space-xl);
+    }
+  }
+
+  &__item {
+    flex-shrink: 0;
+  }
+}

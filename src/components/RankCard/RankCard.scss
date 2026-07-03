@@ -1,0 +1,99 @@
+@use "../../styles/mixins" as *;
+
+.rank-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 280px;
+  transition: transform 0.5s ease;
+
+  // 배경 랭킹 숫자(장식) — content: attr(data-rank)
+  &::before {
+    content: attr(data-rank);
+    position: absolute;
+    top: -64px;
+    left: -32px;
+    z-index: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--font-size-rank-number);
+    line-height: 0.8;
+    color: var(--color-primary);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  // 지그재그 오프셋
+  &--down {
+    margin-top: 64px;
+
+    &:hover {
+      transform: translateY(-16px);
+    }
+  }
+
+  &--up {
+    margin-top: -64px;
+
+    &:hover {
+      transform: translateY(16px);
+    }
+  }
+
+  &__frame {
+    @include media-frame(var(--radius-lg));
+
+    z-index: 1;
+    padding: 12px;
+    background: var(--color-surface-container-low);
+    border: 1px solid var(--color-hairline);
+    box-shadow: var(--shadow-card);
+  }
+
+  &__poster {
+    @include media-frame(var(--radius-default));
+
+    aspect-ratio: 2 / 3;
+  }
+
+  &__image {
+    @include zoom-image(0.7s);
+  }
+
+  &__body {
+    margin-top: 16px;
+    padding: 0 8px 8px;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+    font-family: var(--font-display);
+    font-size: var(--font-size-card-title);
+    color: var(--color-white);
+    transition: color 0.3s ease;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__genre {
+    font-size: var(--font-size-label-xs);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__percent {
+    font-size: var(--font-size-label-xs);
+    color: var(--color-primary);
+  }
+
+  // group-hover 효과 (카드 hover 시 내부 요소 변화)
+  &:hover &__image {
+    transform: scale(1.1);
+  }
+
+  &:hover &__title {
+    color: var(--color-primary);
+  }
+}
