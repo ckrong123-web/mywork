@@ -39,7 +39,7 @@ const DEFAULT_COLUMNS: FooterColumn[] = [
 ];
 
 const DEFAULT_INTRO =
-  "프리미엄 공연 예매 플랫폼 스테이지허브. 공연의 감동을 가장 특별하게 전달합니다.";
+  "프리미엄 공연 예매 플랫폼 LOOOGOO. 공연의 감동을 가장 특별하게 전달합니다.";
 const DEFAULT_NEWSLETTER_DESC = "공연 오픈 소식을 가장 빠르게 받아보세요.";
 
 export default function Footer({
@@ -52,9 +52,8 @@ export default function Footer({
       <div className="footer__grid">
         {/* 브랜드 */}
         <div className="footer__brand">
-          <Link href="/" aria-label="STAGEHUB 홈" className="footer__logo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.png" alt="STAGEHUB" width={192} height={48} />
+          <Link href="/" aria-label="LOOOGOO 홈" className="footer__logo">
+            LOOOGOO
           </Link>
           <p className="footer__intro">{intro}</p>
           <div className="footer__social">
@@ -121,9 +120,7 @@ export default function Footer({
       </div>
 
       <div className="footer__bottom">
-        <p className="footer__copyright">
-          © 2024 STAGEHUB ALL RIGHTS RESERVED.
-        </p>
+        <p className="footer__copyright">© 2026 LOOOGOO ALL RIGHTS RESERVED.</p>
         <div className="footer__legal">
           <Link href="#" className="footer__legal-link">
             Privacy Policy

@@ -19,9 +19,9 @@ const hankenGrotesk = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "STAGEHUB | Premium Performance Booking",
+  title: "LOOOGOO | Premium Performance Booking",
   description:
-    "프리미엄 공연 예매 플랫폼 STAGEHUB. 뮤지컬·연극·콘서트의 감동을 가장 특별하게 전달합니다.",
+    "프리미엄 공연 예매 플랫폼 LOOOGOO. 뮤지컬·연극·콘서트의 감동을 가장 특별하게 전달합니다.",
 };
 
 export default function RootLayout({

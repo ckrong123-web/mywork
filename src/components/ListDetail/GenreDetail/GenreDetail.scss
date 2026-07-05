@@ -1,0 +1,96 @@
+@use "../../../styles/mixins" as *;
+
+.genre-detail {
+  &__hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    height: clamp(48rem, 80vh, 72rem);
+    overflow: hidden;
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--color-background) 0%,
+      transparent 100%
+    );
+  }
+
+  &__media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    @include respond-md {
+      background: linear-gradient(
+        to right,
+        var(--color-background) 0%,
+        transparent 60%
+      );
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-xl);
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  &__number {
+    font-family: var(--font-display);
+    font-size: var(--font-size-card-title);
+    color: var(--color-primary);
+  }
+
+  &__badge {
+    padding: 0.2rem 1rem;
+    font-size: var(--font-size-label-xs);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--badge-ended-fg);
+    background: var(--badge-ended-bg);
+    border: 0.1rem solid var(--badge-ended-border);
+    border-radius: var(--radius-full);
+  }
+
+  &__title {
+    margin-bottom: var(--space-md);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(4.8rem, 9vw, 7.2rem);
+    line-height: 1;
+    color: var(--color-white);
+    text-shadow: var(--text-glow);
+  }
+
+  &__desc {
+    max-width: 57.6rem;
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-md);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-lg);
+    color: var(--color-on-surface-variant);
+    border-left: 0.2rem solid var(--btn-glass-border);
+  }
+}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./GenreCard.scss";
 
 export interface GenreItem {
+  slug: string;
   number: string;
   title: string;
   description: string;

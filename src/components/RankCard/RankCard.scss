@@ -3,15 +3,15 @@
 .rank-card {
   position: relative;
   flex-shrink: 0;
-  width: 280px;
+  width: 28rem;
   transition: transform 0.5s ease;
 
   // 배경 랭킹 숫자(장식) — content: attr(data-rank)
   &::before {
     content: attr(data-rank);
     position: absolute;
-    top: -64px;
-    left: -32px;
+    top: -6.4rem;
+    left: -3.2rem;
     z-index: 0;
     font-family: var(--font-display);
     font-style: italic;
@@ -24,18 +24,18 @@
 
   // 지그재그 오프셋
   &--down {
-    margin-top: 64px;
+    margin-top: 6.4rem;
 
     &:hover {
-      transform: translateY(-16px);
+      transform: translateY(-1.6rem);
     }
   }
 
   &--up {
-    margin-top: -64px;
+    margin-top: -6.4rem;
 
     &:hover {
-      transform: translateY(16px);
+      transform: translateY(1.6rem);
     }
   }
 
@@ -43,9 +43,9 @@
     @include media-frame(var(--radius-lg));
 
     z-index: 1;
-    padding: 12px;
+    padding: 1.2rem;
     background: var(--color-surface-container-low);
-    border: 1px solid var(--color-hairline);
+    border: 0.1rem solid var(--color-hairline);
     box-shadow: var(--shadow-card);
   }
 
@@ -60,12 +60,12 @@
   }
 
   &__body {
-    margin-top: 16px;
-    padding: 0 8px 8px;
+    margin-top: 1.6rem;
+    padding: 0 0.8rem 0.8rem;
   }
 
   &__title {
-    margin-bottom: 4px;
+    margin-bottom: 0.4rem;
     font-family: var(--font-display);
     font-size: var(--font-size-card-title);
     color: var(--color-white);

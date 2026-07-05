@@ -1,0 +1,136 @@
+@use "../../styles/mixins" as *;
+
+.list-explorer {
+  &__bar {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 40;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: color-mix(in srgb, var(--color-background) 80%, transparent);
+      border-bottom: 0.1rem solid
+        color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
+      backdrop-filter: blur(1.2rem);
+    }
+  }
+
+  &__bar-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding-block: var(--space-md);
+
+    @include respond-md {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    width: 100%;
+    padding: var(--space-xs);
+    background: var(--color-surface-container);
+    border-radius: var(--radius-full);
+
+    @include respond-md {
+      width: auto;
+    }
+  }
+
+  &__tab {
+    flex: 1;
+    padding: var(--space-xs) var(--space-lg);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-on-surface-variant);
+    white-space: nowrap;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+
+    @include respond-md {
+      flex: none;
+    }
+  }
+
+  &__tab:hover {
+    color: var(--color-white);
+  }
+
+  &__tab--active {
+    color: var(--color-on-primary-container);
+    background: var(--color-primary-container);
+  }
+
+  &__tab--active:hover {
+    color: var(--color-on-primary-container);
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-base);
+    width: 100%;
+    color: var(--color-on-surface-variant);
+
+    @include respond-md {
+      width: auto;
+    }
+  }
+
+  &__sort-icon {
+    font-size: 2rem;
+  }
+
+  &__select {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface-variant);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__results {
+    padding-block: var(--space-xl);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include respond-md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__empty {
+    padding-block: var(--space-xl);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-lg);
+    color: var(--color-on-surface-variant);
+    text-align: center;
+  }
+}

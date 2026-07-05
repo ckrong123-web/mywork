@@ -1,6 +1,6 @@
-# STAGEHUB 메인 페이지 — 퍼블리셔 핸드오프 스펙
+# LOOOGOO 메인 페이지 — 퍼블리셔 핸드오프 스펙
 
-> 출처: `docs/design/stagehub-source.html` (Google Stitch export, Tailwind 기반)
+> 출처: `docs/design/LOOOGOO-source.html` (Google Stitch export, Tailwind 기반)
 > 대상: publisher 에이전트 (React 19 + Next.js 15 App Router + SASS)
 > 토큰: `src/styles/tokens.scss` (CSS 변수). **Tailwind 절대 금지, 하드코딩 금지 — 토큰 참조.**
 > 테마: **항상 다크 단일 테마** (라이트 분기 없음).
@@ -10,6 +10,7 @@
 ## 0. 전역 규칙 (Global)
 
 ### 0-1. 폰트 로드 (구현 방법 명시만, 코드는 퍼블리셔가)
+
 - 제목: **Libre Caslon Text** (400/700, italic 사용) → 토큰 `--font-display`
 - 본문: **Hanken Grotesk** (300/400/500/600/700/900) → 토큰 `--font-body`
 - 아이콘: **Material Symbols Outlined** → 토큰 `--font-icon`
@@ -18,25 +19,29 @@
 - 아이콘 사용 시 `.material-symbols-outlined` 유틸 클래스(또는 컴포넌트)로 감싸고, 아이콘은 장식이면 `aria-hidden="true"`.
 
 ### 0-2. body / 전역 스타일 (`globals.scss` 또는 `app/layout.tsx`)
+
 - `background: var(--color-background)`, `color: var(--color-on-surface)`, `overflow-x: hidden`.
 - **노이즈 텍스처 오버레이(장식)**: `body::before` 로 재현. `position: fixed; inset:0; pointer-events:none; z-index:9999; opacity: var(--noise-opacity)`. 원본은 외부 transparenttextures p6.png 사용 → 외부 의존 피하려면 로컬 노이즈 PNG(`/images/`) 또는 SVG data-uri 사용 권장. **없으면 생략 가능**(장식).
 - **커스텀 스크롤바**: `::-webkit-scrollbar { width:6px; height:6px }`, track `var(--scrollbar-track)`, thumb `var(--scrollbar-thumb)` radius 10px.
 - `.no-scrollbar` 유틸: 가로 스크롤 영역에서 스크롤바 숨김(`scrollbar-width:none`, `::-webkit-scrollbar{display:none}`).
 
 ### 0-3. 레이아웃 컨테이너
+
 - 최대 폭 `var(--container-max)` = 1280px, 가운데 정렬(`margin-inline:auto`).
 - 좌우 패딩: 모바일 `var(--space-md)`(24px), 데스크톱(`lg` 이상) `var(--space-xl)`(80px).
 - **공용 `Container` 컴포넌트 권장** — 위 규칙을 한 곳에서 관리(반복 패딩 방지).
 
 ### 0-4. 반응형 브레이크포인트 (원본 Tailwind 기준)
-| 이름 | 최소폭 | 용도 |
-|------|--------|------|
-| `md` | 768px | 데스크톱 메뉴 노출, 그리드 다열화 시작 |
+
+| 이름 | 최소폭 | 용도                                          |
+| ---- | ------ | --------------------------------------------- |
+| `md` | 768px  | 데스크톱 메뉴 노출, 그리드 다열화 시작        |
 | `lg` | 1024px | 컨테이너 패딩 80px, LOGIN 노출, 12컬럼 그리드 |
 
 - SCSS 에서 `@media (min-width: 768px)` / `(min-width: 1024px)` 로 구현. mixin(`respond-md`, `respond-lg`)으로 중복 최소화 권장.
 
 ### 0-5. 공통 접근성
+
 - 랜드마크: `<header>`, `<main>`, `<footer>`, 섹션은 `<section>` + 각 섹션에 시각적 제목(`<h2>`)을 aria로 연결(`aria-labelledby`).
 - 모든 `<img>`: 의미 있는 `alt` 필수(아래 각 컴포넌트에 값 명시). 순수 장식 배경 이미지는 CSS background 또는 `alt=""`.
 - 아이콘 전용 버튼(search, add, arrow)은 `aria-label` 제공.
@@ -51,7 +56,7 @@
 - 태그: `<header>` fixed, `top:0`, `width:100%`, `z-index:50`, 하단 보더 `1px var(--color-hairline)`.
 - 배경: glass. 실제로는 `::before` 또는 내부 절대배치 레이어에 `background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); border` + `opacity:0.8`. (꾸밈은 가상선택자 규칙 준수 → `header::before` 로 glass 레이어 구현 권장)
 - 내부: `Container` 로 flex, `justify-content:space-between; align-items:center`, 세로 패딩 20px.
-- **로고**: `<img src="/images/logo.png" alt="STAGEHUB" />` height 40px, width auto. 홈 링크(`<a href="/">` 또는 `next/link`)로 감싸기.
+- **로고**: `<img src="/images/logo.png" alt="LOOOGOO" />` height 40px, width auto. 홈 링크(`<a href="/">` 또는 `next/link`)로 감싸기.
 - **데스크톱 메뉴**(`<nav>`, `md` 미만 `display:none`): 항목 gap 40px, `letter-spacing: var(--letter-spacing-wide)`, 폰트 `--font-body` size `--font-size-label`.
   - `MUSICAL` = 활성: `color: var(--color-primary)`, 밑줄 `::after`(`bottom:-8px; height:1px; width:100%; background: var(--color-primary)`).
   - `PLAY` / `CONCERT` / `EXHIBIT` = 기본 `var(--color-on-surface-variant)`, hover `var(--color-primary)`.
@@ -62,6 +67,7 @@
   - `MY TICKET` 버튼: 배경 `--color-primary-container`, 텍스트 `--color-on-primary-container`, `border-radius: var(--radius-full)`, 패딩 8px 24px, `:active { transform: scale(.95) }`.
 
 ### Props
+
 ```ts
 interface NavItem {
   label: string;
@@ -72,13 +78,16 @@ interface HeaderProps {
   navItems?: NavItem[]; // 기본값: MUSICAL(active)/PLAY/CONCERT/EXHIBIT
 }
 ```
+
 - 데이터가 고정이면 컴포넌트 내부 상수로 두고 props 생략 가능. 재사용/확장 대비 위 타입 권장.
 
 ### 반응형
+
 - `< md`: `<nav>` 숨김(모바일 메뉴 토글은 기획서에 없음 → 미구현, 아래 "확인 필요" 참고).
 - `< lg`: LOGIN 숨김.
 
 ### 접근성
+
 - `<header>` + `<nav aria-label="주 메뉴">`. 활성 항목 `aria-current="page"`.
 
 ---
@@ -103,23 +112,27 @@ interface HeaderProps {
 - Hero 하단에는 **섹션 전환 블러**(`.section-transition-blur` 대체): height 150px, `background: var(--section-transition)`, `margin-top:-150px`, `z-index:10`. Hero 와 Ranking 사이 배치. (별도 요소 또는 Ranking `::before`)
 
 ### Props
+
 ```ts
 interface HeroProps {
-  label: string;        // "Now Playing — Charlotte Theater"
+  label: string; // "Now Playing — Charlotte Theater"
   titleLines: [string, string]; // ["THE PHANTOM", "OF THE OPERA"]
   description: string;
-  primaryCta: { label: string; href: string };   // Book Now
-  secondaryCta: { label: string; href: string };  // Learn More
+  primaryCta: { label: string; href: string }; // Book Now
+  secondaryCta: { label: string; href: string }; // Learn More
   image: { src: string; alt: string };
 }
 ```
+
 - 고정 콘텐츠면 내부 상수화 가능. 향후 "Now Playing" 교체 대비 props 권장.
 
 ### 반응형
+
 - 제목 72px 는 모바일에서 과대 → 원본은 동일 72px 유지. 모바일 가독성 위해 `clamp(40px, 12vw, 72px)` 적용 제안(원본과 차이, 아래 "확인 필요" 참고).
 - 설명문 `max-width` 는 모바일에서 컨테이너 폭 따름.
 
 ### 접근성
+
 - 하나의 `<h1>` 만 존재(페이지 대표 제목). scrim/글로우는 장식.
 
 ---
@@ -136,6 +149,7 @@ interface HeroProps {
   - 원본의 `horizontal-scroll-mask`(좌우 페이드 마스크)를 리스트 컨테이너에 적용 가능: `mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent)`. (선택, 장식)
 
 ### `RankCard` (재사용)
+
 - 폭 280px 고정(`flex-shrink:0`). group hover.
 - **배경 랭킹 숫자**: 절대배치(`top:-64px; left:-32px`), `--font-display` italic, `--font-size-rank-number`(180px), `color: var(--color-primary)`, `opacity:0.08`, `line-height:0.8`, `pointer-events:none`. (`ranking-number` 재현) → `::before` 로 구현하고 `content: attr(data-rank)` 활용 가능.
 - **프레임**: `border-radius: var(--radius-lg)`, `overflow:hidden`, `border:1px solid var(--color-hairline)`, 배경 `var(--color-surface-container-low)`, 패딩 12px, `box-shadow: var(--shadow-card)`.
@@ -146,13 +160,13 @@ interface HeroProps {
 
 ```ts
 interface RankItem {
-  rank: string;       // "01"
+  rank: string; // "01"
   title: string;
-  genre: string;      // "MUSICAL"
-  venue: string;      // "BLUE SQUARE"
-  percent: string;    // "8.5%"
+  genre: string; // "MUSICAL"
+  venue: string; // "BLUE SQUARE"
+  percent: string; // "8.5%"
   image: { src: string; alt: string };
-  offset: 'up' | 'down'; // 지그재그
+  offset: "up" | "down"; // 지그재그
 }
 interface RankingSectionProps {
   items: RankItem[];
@@ -169,6 +183,7 @@ interface RankingSectionProps {
 | 04 | The Play | PLAY \| SEOUL ARTS CENTER | 5.5% | /images/rank-04-theplay.jpg | up |
 
 ### 접근성
+
 - 가로 스크롤 영역은 키보드 접근 가능하게(`tabindex` 또는 포커스 가능한 카드 링크). 카드 전체를 `<a>`/`next/link` 로 감싸는 것을 권장.
 - 배경 랭킹 숫자는 `aria-hidden`(장식) — 순위 정보는 제목/구조로 전달.
 
@@ -184,6 +199,7 @@ interface RankingSectionProps {
 - **그리드**: `grid`, 모바일 1열 / `md` 2열, gap 40px.
 
 ### `TicketCard` (재사용)
+
 - group, flex gap 32px, 패딩 4px.
 - **포스터**: `width:128px; height:176px`(w128 h176), `border-radius: var(--radius-default)`, `overflow:hidden`, `box-shadow`(md), group-hover `scale(1.05)`. `<img>` cover. `alt`="<제목> 포스터".
 - **본문**(flex column, 세로 가운데):
@@ -197,11 +213,11 @@ interface RankingSectionProps {
   - `SET REMINDER` 링크 버튼: `width:fit-content`, 11px, `letter-spacing: var(--letter-spacing-wide)`, `color: var(--color-primary)`, 하단 보더 `1px rgba(200,191,255,0.2)` hover 시 solid primary.
 
 ```ts
-type BadgeTone = 'primary' | 'tertiary';
+type BadgeTone = "primary" | "tertiary";
 interface TicketItem {
-  badge: string;      // "D-3"
+  badge: string; // "D-3"
   badgeTone: BadgeTone;
-  datetime: string;   // "2024.11.20 14:00"
+  datetime: string; // "2026.11.20 14:00"
   title: string;
   description: string;
   image: { src: string; alt: string };
@@ -215,10 +231,11 @@ interface TicketOpenProps {
 **데이터 (2개)**
 | badge(tone) | datetime | title | description | image |
 |-------------|----------|-------|-------------|-------|
-| D-3 (primary) | 2024.11.20 14:00 | CHICAGO: The Musical | 열정적인 재즈와 매혹적인 퍼포먼스의 귀환. 브로드웨이 최장기 공연의 매력을 경험하세요. | /images/ticket-chicago.jpg |
-| D-7 (tertiary) | 2024.11.24 10:00 | Beethoven Symphony No. 9 | 연말을 장식하는 장엄한 선율의 대서사시. 환희의 송가가 울려 퍼지는 감동의 순간. | /images/ticket-beethoven.jpg |
+| D-3 (primary) | 2026.11.20 14:00 | CHICAGO: The Musical | 열정적인 재즈와 매혹적인 퍼포먼스의 귀환. 브로드웨이 최장기 공연의 매력을 경험하세요. | /images/ticket-chicago.jpg |
+| D-7 (tertiary) | 2026.11.24 10:00 | Beethoven Symphony No. 9 | 연말을 장식하는 장엄한 선율의 대서사시. 환희의 송가가 울려 퍼지는 감동의 순간. | /images/ticket-beethoven.jpg |
 
 ### 접근성
+
 - 날짜 아이콘 `aria-hidden`. 날짜 텍스트는 그대로 읽히게. `SET REMINDER` 는 실제 동작 없으면 `<button>` 로 두고 후속 기능 연결.
 
 ---
@@ -232,6 +249,7 @@ interface TicketOpenProps {
 - **그리드**: 모바일 1열 / `md` 3열, gap 48px. **가운데 카드(Play)만 `md` 이상에서 `margin-top:48px`**(mt-12) 오프셋 → `offset` prop 제어.
 
 ### `GenreCard` (재사용)
+
 - relative, `height:600px`, `border-radius: var(--radius-default)`, group, cursor pointer, `overflow:hidden`, `box-shadow`(2xl).
 - **배경 이미지**: 절대 `inset:0`, cover, group-hover `scale(1.05)` transition 1000ms. `alt`="<장르> 장르 이미지".
 - **하단 그라디언트**: 절대 `inset:0`, `background: linear-gradient(to top, var(--color-background), transparent)`, `opacity:0.9` → hover 1.
@@ -244,11 +262,11 @@ interface TicketOpenProps {
 
 ```ts
 interface GenreItem {
-  number: string;     // "01"
-  title: string;      // "Musical"
+  number: string; // "01"
+  title: string; // "Musical"
   description: string;
   image: { src: string; alt: string };
-  offset?: boolean;   // 가운데 카드 md 오프셋
+  offset?: boolean; // 가운데 카드 md 오프셋
   href: string;
 }
 interface GenreExploreProps {
@@ -264,6 +282,7 @@ interface GenreExploreProps {
 | 03 | Concert | 전율이 느껴지는 사운드와 아티스트의 환상적인 라이브. | /images/genre-concert.jpg | false |
 
 ### 접근성
+
 - 카드 전체를 `<a>`/`next/link` 로 감싸고 `aria-label="<장르> 공연 보기"`. hover 로만 보이는 설명도 DOM 존재.
 
 ---
@@ -274,15 +293,17 @@ interface GenreExploreProps {
 - **그리드**: 모바일 1열 / `lg` 12컬럼(`grid-template-columns: repeat(12, 1fr)`), gap 40px.
 
 ### 6-1. 멤버십 배너 (`lg` col-span-8)
+
 - relative, `height:400px`, `border-radius: var(--radius-xl)`, `overflow:hidden`, glass(`--glass-bg`/`--glass-border`/blur), 보더는 primary 20% 톤 강조 가능. flex column center, 좌우 패딩 64px, group cursor pointer.
 - 장식 발광: 우하단 큰 원 `background: rgba(106,90,205,0.1)` blur(100px), group-hover 강해짐 → `::after` 로 구현.
 - 내용(`z-index:10`):
   - 라벨 줄: 짧은 라인 `width:40px;height:1px;background:primary` + "MEMBERSHIP ONLY" primary, 12px, `letter-spacing: var(--letter-spacing-label)`(0.2em).
-  - `<h3>` "StageHub / Gold Pass Membership": `--font-display`, `--font-size-membership`(42px), white, `line-height:1.15`. **"Gold Pass" 부분만 italic** `<span>` 처리. 줄바꿈은 반응형 고려해 `<span>` 블록 권장.
+  - `<h3>` "LOOOGOO / Gold Pass Membership": `--font-display`, `--font-size-membership`(42px), white, `line-height:1.15`. **"Gold Pass" 부분만 italic** `<span>` 처리. 줄바꿈은 반응형 고려해 `<span>` 블록 권장.
   - `<p>` "선예매 권한과 멤버십 전용 20% 할인을 가장 먼저 만나보세요." `--font-body`, `--font-size-body-lg`(18px), `--color-on-surface-variant`, max-width 28rem.
   - `JOIN NOW` 버튼: 배경 `var(--color-white)`, 텍스트 `var(--color-primary-container)`, pill, 패딩 16px 40px, hover `scale(1.05)` + shadow, `:active scale(.95)`.
 
 ### 6-2. NOTICE 패널 (`lg` col-span-4)
+
 - glass, `border-radius: var(--radius-xl)`, 패딩 40px, flex column.
 - 헤더: flex space-between, 하단 margin 40px.
   - `<h3>` "NOTICE" white, 16px(`--font-size-notice`), `letter-spacing: var(--letter-spacing-wide)`.
@@ -293,16 +314,16 @@ interface GenreExploreProps {
 
 ```ts
 interface NoticeItem {
-  date: string;   // "2024.11.15"
+  date: string; // "2026.11.15"
   title: string;
   href: string;
 }
 interface NoticePromotionProps {
   membership: {
-    label: string;        // "MEMBERSHIP ONLY"
-    titleLead: string;    // "StageHub"
-    titleItalic: string;  // "Gold Pass"
-    titleTail: string;    // "Membership"
+    label: string; // "MEMBERSHIP ONLY"
+    titleLead: string; // "LOOOGOO"
+    titleItalic: string; // "Gold Pass"
+    titleTail: string; // "Membership"
     description: string;
     cta: { label: string; href: string }; // JOIN NOW
   };
@@ -313,11 +334,12 @@ interface NoticePromotionProps {
 **공지 데이터 (3건)**
 | date | title |
 |------|-------|
-| 2024.11.15 | 시스템 정기 점검 안내 (11/25) |
-| 2024.11.12 | 겨울 시즌 뮤지컬 조기예매 이벤트 |
-| 2024.11.10 | 티켓 취소 및 환불 규정 변경 안내 |
+| 2026.11.15 | 시스템 정기 점검 안내 (11/25) |
+| 2026.11.12 | 겨울 시즌 뮤지컬 조기예매 이벤트 |
+| 2026.11.10 | 티켓 취소 및 환불 규정 변경 안내 |
 
 ### 접근성
+
 - 공지 각 항목은 `<a>`/`next/link`. 멤버십 배너 전체가 클릭 가능하면 내부 링크 하나만 접근 가능하게(중첩 링크 금지) — CTA 버튼을 실제 링크로.
 
 ---
@@ -326,31 +348,40 @@ interface NoticePromotionProps {
 
 - 태그: `<footer>` 배경 `var(--color-footer-bg)`(#08080E), 상단 보더 `1px var(--color-hairline)`, 세로 패딩 80px, `overflow:hidden`.
 - **상단 그리드**(`Container`): 모바일 1열 / `md` 12컬럼, gap 64px.
-  - **브랜드 (col-span-4)**: 로고 `<img src="/images/logo.png" alt="STAGEHUB" height=48>`. 소개문 `<p>` "프리미엄 공연 예매 플랫폼 스테이지허브. 공연의 감동을 가장 특별하게 전달합니다." `--font-body`, 14px, `--color-on-surface-variant`, `opacity:0.7`, max-width 20rem. 소셜 아이콘 2개: `public`, `share`(Material Symbols), 버튼 `aria-label` 각각 "웹사이트"/"공유".
+  - **브랜드 (col-span-4)**: 로고 `<img src="/images/logo.png" alt="LOOOGOO" height=48>`. 소개문 `<p>` "프리미엄 공연 예매 플랫폼 LOOOGOO. 공연의 감동을 가장 특별하게 전달합니다." `--font-body`, 14px, `--color-on-surface-variant`, `opacity:0.7`, max-width 20rem. 소셜 아이콘 2개: `public`, `share`(Material Symbols), 버튼 `aria-label` 각각 "웹사이트"/"공유".
   - **SERVICES (col-span-?)**: 제목 + 링크 Musical / Theater / Concert.
   - **SUPPORT**: 제목 + 링크 FAQ / Notice / Q&A.
   - **NEWSLETTER**: 제목 + 설명 "공연 오픈 소식을 가장 빠르게 받아보세요." + 이메일 input + 화살표 제출 버튼.
     - input: `type="email"`, `aria-label="이메일 주소"`, placeholder 권장. 하단 보더 스타일. 화살표 버튼 `arrow_forward`, `aria-label="구독"`.
   - 각 컬럼 제목: `--color-on-surface-variant` 또는 흐린 톤, `letter-spacing: var(--letter-spacing-wide)`, 소제목 크기 소형. 링크 hover primary.
 - **하단바**(그리드 아래, 상단 보더 `--color-hairline`, 세로 패딩): flex space-between(모바일 column):
-  - 좌: "© 2024 STAGEHUB ALL RIGHTS RESERVED." `--color-on-surface-variant`, 소형, `letter-spacing`.
+  - 좌: "© 2026 LOOOGOO ALL RIGHTS RESERVED." `--color-on-surface-variant`, 소형, `letter-spacing`.
   - 우: "Privacy Policy" · "Terms of Service" 링크(가운데 점 구분).
 
 ```ts
-interface FooterLink { label: string; href: string }
-interface FooterColumn { title: string; links: FooterLink[] }
+interface FooterLink {
+  label: string;
+  href: string;
+}
+interface FooterColumn {
+  title: string;
+  links: FooterLink[];
+}
 interface FooterProps {
   columns?: FooterColumn[]; // SERVICES / SUPPORT
   intro?: string;
   newsletterDesc?: string;
 }
 ```
+
 - 콘텐츠 고정이면 내부 상수화 가능.
 
 ### 반응형
+
 - `< md`: 1열 스택. 하단바 세로 정렬.
 
 ### 접근성
+
 - `<footer>` 랜드마크. 컬럼 제목은 `<h2>`/`<h3>`, 링크 목록은 `<ul>`. 뉴스레터는 `<form>` + label 연결.
 
 ---
@@ -366,25 +397,25 @@ interface FooterProps {
 
 ## 9. 토큰 사용 요약 (빠른 참조)
 
-| 용도 | 토큰 |
-|------|------|
-| 페이지 배경 | `--color-background` |
-| Ticket Open 배경 | `--color-surface-container-lowest` |
-| 랭크 카드 프레임 | `--color-surface-container-low` |
-| 주요 버튼 배경 | `--color-primary-container` / 텍스트 `--color-on-primary-container` |
-| 버튼 hover | `--color-inverse-primary` |
-| 강조 텍스트/라인 | `--color-primary` |
-| 기본 텍스트 | `--color-on-surface` / 보조 `--color-on-surface-variant` |
-| 구분선/보더 | `--color-hairline`, `--color-hairline-strong`, `--color-outline-variant` |
-| Footer 배경 | `--color-footer-bg` |
-| glass 패널 | `--glass-bg` / `--glass-border` / `--glass-blur` |
-| glass 버튼 | `--btn-glass-*` |
-| Hero 제목 글로우 | `--text-glow` |
-| Hero scrim | `--hero-scrim` |
-| 섹션 발광 | `--glow-accent` |
-| 제목 폰트 | `--font-display` / 본문 `--font-body` / 아이콘 `--font-icon` |
-| pill/뱃지 | `--radius-full` |
-| 패널 radius | `--radius-xl` |
+| 용도             | 토큰                                                                     |
+| ---------------- | ------------------------------------------------------------------------ |
+| 페이지 배경      | `--color-background`                                                     |
+| Ticket Open 배경 | `--color-surface-container-lowest`                                       |
+| 랭크 카드 프레임 | `--color-surface-container-low`                                          |
+| 주요 버튼 배경   | `--color-primary-container` / 텍스트 `--color-on-primary-container`      |
+| 버튼 hover       | `--color-inverse-primary`                                                |
+| 강조 텍스트/라인 | `--color-primary`                                                        |
+| 기본 텍스트      | `--color-on-surface` / 보조 `--color-on-surface-variant`                 |
+| 구분선/보더      | `--color-hairline`, `--color-hairline-strong`, `--color-outline-variant` |
+| Footer 배경      | `--color-footer-bg`                                                      |
+| glass 패널       | `--glass-bg` / `--glass-border` / `--glass-blur`                         |
+| glass 버튼       | `--btn-glass-*`                                                          |
+| Hero 제목 글로우 | `--text-glow`                                                            |
+| Hero scrim       | `--hero-scrim`                                                           |
+| 섹션 발광        | `--glow-accent`                                                          |
+| 제목 폰트        | `--font-display` / 본문 `--font-body` / 아이콘 `--font-icon`             |
+| pill/뱃지        | `--radius-full`                                                          |
+| 패널 radius      | `--radius-xl`                                                            |
 
 ---
 

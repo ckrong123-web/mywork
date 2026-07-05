@@ -15,15 +15,15 @@
 
 // ---- sizes (채움 계열 padding) ----
 .btn--sm {
-  padding: 8px 24px;
+  padding: 0.8rem 2.4rem;
 }
 
 .btn--md {
-  padding: 16px 40px;
+  padding: 1.6rem 4rem;
 }
 
 .btn--lg {
-  padding: 16px 48px;
+  padding: 1.6rem 4.8rem;
 }
 
 // ---- primary (기본 채움: MY TICKET 기준) ----
@@ -42,7 +42,7 @@
 .btn--glass {
   color: var(--color-white);
   background: var(--btn-glass-bg);
-  border: 1px solid var(--btn-glass-border);
+  border: 0.1rem solid var(--btn-glass-border);
   border-radius: var(--radius-full);
   box-shadow: var(--btn-glass-shadow);
   backdrop-filter: blur(var(--btn-glass-blur));
@@ -77,10 +77,10 @@
 // ---- link (SET REMINDER) ----
 .btn--link {
   width: fit-content;
-  padding: 0 0 2px;
+  padding: 0 0 0.2rem;
   font-size: var(--font-size-label-xs);
   color: var(--color-primary);
-  border-bottom: 1px solid rgba(200, 191, 255, 0.2);
+  border-bottom: 0.1rem solid rgba(200, 191, 255, 0.2);
 
   &:hover {
     border-bottom-color: var(--color-primary);
@@ -99,7 +99,7 @@
 
 // ---- icon (형태 없는 아이콘 버튼: search / hamburger / 제출) ----
 .btn--icon {
-  padding: 4px;
+  padding: 0.4rem;
   color: var(--color-on-surface);
 
   &:hover {
@@ -109,14 +109,14 @@
 
 // ---- ghost (원형 보더 아이콘 버튼: NOTICE add / footer social) ----
 .btn--ghost {
-  @include icon-circle(40px);
+  @include icon-circle(4rem);
 
   color: var(--color-on-surface-variant);
 }
 
 .btn--ghost.btn--sm {
-  width: 32px;
-  height: 32px;
+  width: 3.2rem;
+  height: 3.2rem;
   padding: 0;
 }
 

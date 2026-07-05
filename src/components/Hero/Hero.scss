@@ -5,14 +5,40 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 800px;
-  max-height: 90vh;
+  height: 100lvh;
   overflow: hidden;
+
+  &__swiper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+
+    .swiper-pagination {
+      z-index: 15;
+      bottom: 14rem;
+    }
+
+    .swiper-pagination-bullet {
+      width: 0.8rem;
+      height: 0.8rem;
+      background: var(--color-white);
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 2.4rem;
+      background: var(--color-primary);
+      opacity: 1;
+      border-radius: var(--radius-full);
+    }
+  }
 
   &__media {
     position: absolute;
     inset: 0;
-    z-index: 0;
   }
 
   &__image {
@@ -29,19 +55,22 @@
   &__content {
     position: relative;
     z-index: 20;
+    max-width: var(--container-max);
+    padding-block: 3.2rem 8rem;
+  }
+
+  &__content-inner {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
-    max-width: var(--container-max);
-    padding-block: 32px 80px;
+    gap: 2.4rem;
   }
 
   // ---- 라벨 줄 ----
   &__label {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1.2rem;
     font-size: var(--font-size-label);
     letter-spacing: var(--letter-spacing-hero);
     text-transform: uppercase;
@@ -49,8 +78,8 @@
   }
 
   &__label-line {
-    width: 32px;
-    height: 1px;
+    width: 3.2rem;
+    height: 0.1rem;
     background: var(--color-primary);
   }
 
@@ -58,45 +87,45 @@
   &__title {
     display: flex;
     flex-direction: column;
-    max-width: 48rem;
-    margin-bottom: 8px;
+    max-width: 76.8rem;
+    margin-bottom: 0.8rem;
     font-family: var(--font-display);
     font-weight: var(--font-weight-bold);
     font-style: italic;
-    font-size: clamp(40px, 12vw, 72px);
+    font-size: clamp(4rem, 12vw, 7.2rem);
     line-height: 0.95;
     color: var(--color-white);
     text-shadow: var(--text-glow);
   }
 
   &__title-line--indent {
-    padding-left: 64px;
+    padding-left: 6.4rem;
   }
 
   // ---- 설명문 ----
   &__description {
-    max-width: 32rem;
-    margin-block: 16px;
-    padding-left: 24px;
+    max-width: 51.2rem;
+    margin-block: 1.6rem;
+    padding-left: 2.4rem;
     font-family: var(--font-body);
     font-size: var(--font-size-body-lg);
     line-height: 1.7;
     color: var(--color-on-surface-variant);
-    border-left: 2px solid var(--btn-glass-border);
+    border-left: 0.2rem solid var(--btn-glass-border);
   }
 
   // ---- 버튼 ----
   &__actions {
     display: flex;
-    gap: 20px;
-    margin-top: 16px;
+    gap: 2rem;
+    margin-top: 1.6rem;
   }
 
   // Book Now(공통 Button variant="primary") — CTA 전용 보정
   // (흰 텍스트 + 얇은 보더 + hover 시 inverse-primary 배경)
   &__cta.btn--primary {
     color: var(--color-white);
-    border: 1px solid var(--color-hairline-strong);
+    border: 0.1rem solid var(--color-hairline-strong);
 
     &:hover {
       background: var(--color-inverse-primary);
@@ -107,12 +136,12 @@
   &__scroll {
     position: absolute;
     left: 50%;
-    bottom: 40px;
+    bottom: 4rem;
     z-index: 20;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 1.6rem;
     opacity: 0.5;
     transform: translateX(-50%);
   }
@@ -120,11 +149,23 @@
   &__scroll-text {
     font-size: var(--font-size-scroll);
     letter-spacing: var(--letter-spacing-wide);
+    animation: hero-scroll-text-float 1.6s ease-in-out infinite;
+  }
+
+  @keyframes hero-scroll-text-float {
+    0%,
+    100% {
+      transform: translateY(-0.25rem);
+    }
+
+    50% {
+      transform: translateY(0.25rem);
+    }
   }
 
   &__scroll-line {
-    width: 1px;
-    height: 48px;
+    width: 0.1rem;
+    height: 4.8rem;
     background: linear-gradient(to bottom, var(--color-primary), transparent);
   }
 

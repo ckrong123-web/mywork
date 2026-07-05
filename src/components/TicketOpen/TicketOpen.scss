@@ -2,10 +2,10 @@
 
 .ticket-open {
   position: relative;
-  padding-block: 96px;
+  padding-block: 9.6rem;
   background: var(--color-surface-container-lowest);
-  border-top: 1px solid var(--color-hairline);
-  border-bottom: 1px solid var(--color-hairline);
+  border-top: 0.1rem solid var(--color-hairline);
+  border-bottom: 0.1rem solid var(--color-hairline);
   overflow: hidden;
 
   // glow accent(장식) — 우하단
@@ -14,12 +14,12 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 400px;
-    height: 400px;
+    width: 40rem;
+    height: 40rem;
     border-radius: 50%;
     background: var(--glow-accent);
-    filter: blur(60px);
-    opacity: 0.5;
+    filter: blur(6rem);
+    opacity: 1;
     pointer-events: none;
   }
 
@@ -31,32 +31,42 @@
   &__header {
     display: flex;
     align-items: center;
-    gap: 24px;
-    margin-bottom: 64px;
+    gap: 2.4rem;
+    margin-bottom: 6.4rem;
   }
 
   &__title {
+    @include scroll-reveal;
+    flex-grow: 1;
+    display: flex;
+    gap: 2.4rem;
+    align-items: center;
     font-family: var(--font-display);
     font-size: var(--font-size-section-sm);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-tight);
     color: var(--color-white);
+
+    &::after {
+      content: "";
+      display: block;
+      flex-grow: 1;
+      height: 0.1rem;
+      background: linear-gradient(
+        to right,
+        var(--btn-glass-border),
+        transparent
+      );
+    }
   }
 
   &__line {
-    flex-grow: 1;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      var(--btn-glass-border),
-      transparent
-    );
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 4rem;
 
     @include respond-md {
       grid-template-columns: repeat(2, 1fr);

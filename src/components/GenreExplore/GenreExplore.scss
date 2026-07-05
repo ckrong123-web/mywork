@@ -3,14 +3,18 @@
 .genre-explore {
   @include container;
 
-  padding-block: 128px;
+  padding-block: 12.8rem;
   overflow: hidden;
 
+  &__header {
+    @include scroll-reveal;
+  }
+
   &__title {
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
     font-family: var(--font-display);
     // 원본 확정 사양: 40px 고정
-    font-size: 40px;
+    font-size: 4rem;
     font-style: italic;
     text-align: center;
     letter-spacing: var(--letter-spacing-tight);
@@ -18,7 +22,7 @@
   }
 
   &__subtitle {
-    margin-bottom: 80px;
+    margin-bottom: 8rem;
     font-size: var(--font-size-label-xs);
     text-align: center;
     letter-spacing: var(--letter-spacing-genre-sub);
@@ -29,7 +33,7 @@
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 4.8rem;
 
     @include respond-md {
       grid-template-columns: repeat(3, 1fr);

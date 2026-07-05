@@ -1,0 +1,115 @@
+@use "../../../styles/mixins" as *;
+
+.cast {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+
+  &__heading {
+    padding-left: var(--space-md);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--font-size-section-sm);
+    line-height: 1.1;
+    color: var(--color-on-surface);
+    border-left: 0.4rem solid var(--color-primary-container);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include respond-md {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__card {
+    width: 100%;
+  }
+
+  &__card--creative {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    background: var(--glass-panel-bg);
+    border: 0.1rem solid var(--color-hairline-strong);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(var(--glass-panel-blur));
+  }
+
+  &__photo {
+    position: relative;
+    margin-bottom: var(--space-sm);
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+  }
+
+  &__photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    background: color-mix(
+      in srgb,
+      var(--color-primary-container) 20%,
+      transparent
+    );
+    transition: opacity 0.5s ease;
+  }
+
+  &__photo-image {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &__card--photo:hover &__photo-image {
+    transform: scale(1.1);
+  }
+
+  &__card--photo:hover &__photo::after {
+    opacity: 1;
+  }
+
+  &__name {
+    font-family: var(--font-body);
+    font-size: var(--font-size-ticket-title);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-on-surface);
+  }
+
+  &__role {
+    font-size: var(--font-size-label-xs);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  &__bio {
+    margin-top: var(--space-xs);
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+    color: var(--color-on-surface-variant);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cast__photo-image {
+    transition: none;
+  }
+
+  .cast__card--photo:hover .cast__photo-image {
+    transform: none;
+  }
+}

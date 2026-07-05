@@ -1,113 +1,416 @@
 import type { RankItem } from "../components/RankCard";
 import type { TicketItem } from "../components/TicketCard";
 import type { GenreItem } from "../components/GenreCard";
-import type {
-  MembershipData,
-  NoticeItem,
-} from "../components/NoticePromotion";
+import type { MembershipData, NoticeItem } from "../components/NoticePromotion";
+import type { HeroSlide } from "../components/Hero";
+import { withBasePath } from "../lib/basePath";
 
 export const RANK_ITEMS: RankItem[] = [
   {
+    slug: "wicked",
     rank: "01",
     title: "Wicked",
     genre: "MUSICAL",
     venue: "BLUE SQUARE",
     percent: "8.5%",
-    image: { src: "/images/rank-01-wicked.jpg", alt: "Wicked 공연 포스터" },
+    image: {
+      src: withBasePath("/images/rank-01-wicked.jpg"),
+      alt: "Wicked 공연 포스터",
+    },
     offset: "down",
-    href: "#",
+    href: "/list/wicked",
+    detail: {
+      tagline: "Blockbuster Musical",
+      heroDescription:
+        "초록 피부의 소녀 엘파바와 인기 많은 글린다, 두 마녀의 우정과 엇갈린 운명. 『오즈의 마법사』 뒤에 숨겨진 놀라운 이야기.",
+      schedule: "2026.12.05 — 2025.03.30",
+      runtime: "165분 (인터미션 20분 포함)",
+      ageRating: "7세 이상 관람 가능",
+      priceRange: "VIP 170,000 ~ B석 60,000",
+      synopsis: [
+        "마법 학교 시즈 대학에 입학한 엘파바는 초록빛 피부 탓에 외면받지만 남다른 마법 재능을 지녔습니다. 화려한 인기를 누리는 글린다와 룸메이트가 되며 둘은 예상치 못한 우정을 쌓아갑니다.",
+        "오즈의 마법사의 진실을 알게 된 엘파바는 신념을 지키기 위해 '서쪽의 사악한 마녀'라는 오명을 감수합니다. 우정과 정의, 선택에 관한 감동의 대서사가 무대 위에 펼쳐집니다.",
+      ],
+      cast: [
+        { name: "김철수", role: "Elphaba" },
+        { name: "한유리", role: "Glinda" },
+        { name: "박씨", role: "Fiyero" },
+        {
+          name: "이야호",
+          role: "Music Director",
+          bio: "국내외 대형 뮤지컬을 다수 지휘한 음악감독. 이번 프로덕션의 편곡과 오케스트라를 총괄합니다.",
+        },
+      ],
+      sessions: ["14:00", "19:30"],
+      bookingStatus: "Booking Open",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "ABC 홀",
+        address: "서울 용산구 도로도로 294 (예시 주소)",
+        subway: "6호선 한강진역 2번 출구 도보 5분",
+        phone: "1588-0000 (예시)",
+      },
+    },
   },
   {
+    slug: "hamilton",
     rank: "02",
     title: "Hamilton",
     genre: "MUSICAL",
     venue: "SEJONG CENTER",
     percent: "7.2%",
-    image: { src: "/images/rank-02-hamilton.jpg", alt: "Hamilton 공연 포스터" },
+    image: {
+      src: withBasePath("/images/rank-02-hamilton.jpg"),
+      alt: "Hamilton 공연 포스터",
+    },
     offset: "up",
-    href: "#",
+    href: "/list/hamilton",
+    detail: {
+      tagline: "Award-Winning Musical",
+      heroDescription:
+        "미국 건국의 아버지 알렉산더 해밀턴의 삶을 힙합과 R&B로 재해석한 혁신적 뮤지컬.",
+      schedule: "2025.01.10 — 2025.04.20",
+      runtime: "170분 (인터미션 15분 포함)",
+      ageRating: "13세 이상 관람 가능",
+      priceRange: "VIP 180,000 ~ B석 70,000",
+      synopsis: [
+        "카리브해의 가난한 이민자에서 미국 초대 재무장관에 오른 알렉산더 해밀턴. 그는 펜과 신념으로 새로운 국가의 기틀을 세워갑니다.",
+        "혁명과 정치, 사랑과 배신이 교차하는 격동의 시대. 힙합 특유의 속도감 있는 랩과 강렬한 군무가 역사에 생명을 불어넣습니다.",
+      ],
+      cast: [
+        { name: "정우리", role: "Alexander Hamilton" },
+        { name: "최민수", role: "Aaron Burr" },
+        { name: "한소절", role: "Eliza Schuyler" },
+        {
+          name: "강모씨",
+          role: "Director",
+          bio: "역사극과 현대 뮤지컬을 넘나드는 연출가. 무대와 안무의 유기적 결합을 이끕니다.",
+        },
+      ],
+      sessions: ["14:00", "19:30"],
+      bookingStatus: "Booking Open",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "세종 ABB 공연장",
+        address: "서울 종로구 세종대로 175 (예시 주소)",
+        subway: "5호선 광화문역 8번 출구 도보 50분",
+        phone: "1588-0000 (예시)",
+      },
+    },
   },
   {
+    slug: "les-miserables",
     rank: "03",
     title: "Les Misérables",
     genre: "MUSICAL",
     venue: "HANNAM HALL",
     percent: "6.9%",
     image: {
-      src: "/images/rank-03-lesmiserables.jpg",
+      src: withBasePath("/images/rank-03-lesmiserables.jpg"),
       alt: "Les Misérables 공연 포스터",
     },
     offset: "down",
-    href: "#",
+    href: "/list/les-miserables",
+    detail: {
+      tagline: "Epic Musical",
+      heroDescription:
+        "19세기 프랑스, 빵 한 조각에서 시작된 장 발장의 구원과 사랑의 여정. 세계 4대 뮤지컬의 정수.",
+      schedule: "2025.02.01 — 2025.05.11",
+      runtime: "175분 (인터미션 20분 포함)",
+      ageRating: "8세 이상 관람 가능",
+      priceRange: "VIP 190,000 ~ B석 70,000",
+      synopsis: [
+        "빵을 훔친 죄로 19년을 복역한 장 발장은 미리엘 주교의 자비로 새 삶을 결심합니다. 신분을 감추고 선행을 베풀지만 집요한 자베르 경감의 추격이 그를 놓아주지 않습니다.",
+        "혁명의 열기가 파리를 뒤덮는 가운데, 장 발장은 딸 코제트와 그녀가 사랑하는 청년 마리우스를 지키기 위해 마지막 헌신을 다합니다. 인간의 존엄과 용서를 노래하는 대서사.",
+      ],
+      cast: [
+        { name: "오사삼", role: "Jean Valjean" },
+        { name: "임시로", role: "Javert" },
+        { name: "짱구", role: "Fantine" },
+        {
+          name: "맹구",
+          role: "Music Director",
+          bio: "클래식과 뮤지컬을 아우르는 음악감독. 웅장한 합창과 오케스트레이션을 총괄합니다.",
+        },
+      ],
+      sessions: ["14:00", "19:00"],
+      bookingStatus: "Booking Open",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "가나다홀",
+        address: "서울 용산구 가다라로 111 (예시 주소)",
+        subway: "경의중앙선 가나다역 1번 출구 도보 8분",
+        phone: "1588-0000 (예시)",
+      },
+    },
   },
   {
+    slug: "phantom-of-the-opera",
+    rank: "05",
+    title: "The Phantom of the Opera",
+    genre: "MUSICAL",
+    venue: "CHARLOTTE THEATER",
+    percent: "9.1%",
+    image: {
+      src: withBasePath("/images/hero-phantom.jpg"),
+      alt: "The Phantom of the Opera 공연 포스터",
+    },
+    offset: "down",
+    href: "/list/phantom-of-the-opera",
+    detail: {
+      tagline: "Gothic Romance Musical",
+      heroDescription:
+        "가면 속에 숨겨진 전설적인 사랑 이야기. 샤롯데씨어터에서 펼쳐지는 황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는 압도적인 무대 메커니즘을 만나보실 수 있습니다.",
+      schedule: "2026.11.01 — 2025.02.28",
+      runtime: "150분 (인터미션 20분 포함)",
+      ageRating: "12세 이상 관람 가능",
+      priceRange: "VIP 180,000 ~ B석 70,000",
+      synopsis: [
+        "파리 오페라 극장 지하에 숨어 사는 얼굴 없는 천재 '팬텀'은 신인 소프라노 크리스틴에게 음악의 영감을 불어넣으며 은밀히 사랑에 빠집니다. 가면 뒤에 감춘 상처와 고독은 그를 점점 더 깊은 어둠으로 이끕니다.",
+        "크리스틴을 향한 집착과 사랑 사이에서 흔들리는 팬텀, 그리고 그녀를 지키려는 연인 라울. 웅장한 오르간 선율과 화려한 샹들리에 연출이 만들어내는 고딕 로맨스의 정수가 무대 위에 펼쳐집니다.",
+      ],
+      cast: [
+        { name: "안소희", role: "The Phantom" },
+        { name: "송하나", role: "Christine Daaé" },
+        { name: "이라울", role: "Raoul" },
+        {
+          name: "브아무개",
+          role: "Music Director",
+          bio: "오르간과 오케스트라의 웅장한 사운드를 총괄하는 음악감독. 오리지널 스코어의 감동을 그대로 재현합니다.",
+        },
+      ],
+      sessions: ["14:00", "19:30"],
+      bookingStatus: "Booking Open",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "샤롯데씨어터",
+        address: "서울 송파구 올림픽로 240 (예시 주소)",
+        subway: "2·8호선 잠실역 2번 출구 도보 5분 (예시)",
+        phone: "1588-0000 (예시)",
+      },
+    },
+  },
+  {
+    slug: "the-play",
     rank: "04",
     title: "The Play",
     genre: "PLAY",
     venue: "SEOUL ARTS CENTER",
     percent: "5.5%",
-    image: { src: "/images/rank-04-theplay.jpg", alt: "The Play 공연 포스터" },
+    image: {
+      src: withBasePath("/images/rank-04-theplay.jpg"),
+      alt: "The Play 공연 포스터",
+    },
     offset: "up",
-    href: "#",
+    href: "/list/the-play",
+    detail: {
+      tagline: "Critically Acclaimed Play",
+      heroDescription:
+        "무대와 객석의 경계를 허무는 화제의 연극. 배우들의 호흡만으로 완성되는 밀도 높은 드라마.",
+      schedule: "2025.03.15 — 2025.05.25",
+      runtime: "130분 (인터미션 없음)",
+      ageRating: "15세 이상 관람 가능",
+      priceRange: "R석 90,000 ~ A석 50,000",
+      synopsis: [
+        "한 가족의 오래된 비밀이 하룻밤 사이 드러나며 벌어지는 이야기. 절제된 무대 위에서 인물들의 대사와 침묵이 팽팽한 긴장을 만들어냅니다.",
+        "관객은 방관자이자 목격자가 되어 사건의 진실에 다가갑니다. 화려한 장치 없이 오직 연기로 채워지는 연극 본연의 힘을 경험하게 됩니다.",
+      ],
+      cast: [
+        { name: "배고파", role: "아버지" },
+        { name: "배불러", role: "딸" },
+        { name: "배지터블", role: "아들" },
+        {
+          name: "유브이",
+          role: "Playwright & Director",
+          bio: "일상의 균열을 예리하게 포착하는 극작가 겸 연출가. 대본과 무대를 직접 설계했습니다.",
+        },
+      ],
+      sessions: ["15:00", "20:00"],
+      bookingStatus: "Booking Open",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "다라마 극장",
+        address: "서울 서초구 다라마로 2406 (예시 주소)",
+        subway: "3호선 다라마역 5번 출구 도보 10분",
+        phone: "1588-0000 (예시)",
+      },
+    },
   },
 ];
 
+function getRankDetail(slug: string) {
+  const item = RANK_ITEMS.find((rank) => rank.slug === slug);
+  if (!item?.detail) {
+    throw new Error(`RANK_ITEMS 항목(slug="${slug}")에 detail이 없습니다.`);
+  }
+  return { item, detail: item.detail };
+}
+
+const HERO_SLIDE_SOURCES: {
+  slug: string;
+  titleLines: [string, string] | null;
+}[] = [
+  { slug: "phantom-of-the-opera", titleLines: ["THE PHANTOM", "OF THE OPERA"] },
+  { slug: "wicked", titleLines: null },
+  { slug: "hamilton", titleLines: null },
+];
+
+export const HERO_SLIDES: HeroSlide[] = HERO_SLIDE_SOURCES.map(
+  ({ slug, titleLines }) => {
+    const { item, detail } = getRankDetail(slug);
+    return {
+      label: "Now Playing",
+      titleLines: titleLines ?? [
+        item.title.toUpperCase(),
+        detail.tagline.toUpperCase(),
+      ],
+      description: detail.heroDescription,
+      primaryCta: { label: "Book Now", href: item.href },
+      secondaryCta: { label: "Learn More", href: item.href },
+      image: item.image,
+    };
+  },
+);
+
 export const TICKET_ITEMS: TicketItem[] = [
   {
+    slug: "chicago-the-musical",
     badge: "D-3",
     badgeTone: "primary",
-    datetime: "2024.11.20 14:00",
+    datetime: "2026.11.20 14:00",
     title: "CHICAGO: The Musical",
+    genre: "MUSICAL",
     description:
       "열정적인 재즈와 매혹적인 퍼포먼스의 귀환. 브로드웨이 최장기 공연의 매력을 경험하세요.",
-    image: { src: "/images/ticket-chicago.jpg", alt: "CHICAGO: The Musical 포스터" },
+    image: {
+      src: withBasePath("/images/ticket-chicago.jpg"),
+      alt: "CHICAGO: The Musical 포스터",
+    },
     reminderHref: "#",
+    detail: {
+      tagline: "Broadway Sensation",
+      heroDescription:
+        "재즈와 스캔들, 그리고 쇼비즈니스. 브로드웨이 최장기 공연 뮤지컬의 매혹적인 귀환.",
+      schedule: "2026.12.20 — 2025.02.16",
+      runtime: "150분 (인터미션 15분 포함)",
+      ageRating: "만 14세 이상 관람 가능",
+      priceRange: "VIP 160,000 ~ B석 60,000",
+      synopsis: [
+        "1920년대 시카고, 스타를 꿈꾸던 록시 하트는 우발적 살인으로 감옥에 갇힙니다. 그곳에서 화려한 스타 벨마 켈리를 만나 세간의 이목을 다투게 됩니다.",
+        "언론과 재판마저 하나의 '쇼'가 되는 세상. 매혹적인 재즈 넘버와 관능적인 안무가 인간의 욕망과 위선을 날카롭게 풍자합니다.",
+      ],
+      cast: [
+        { name: "유가나", role: "Roxie Hart" },
+        { name: "남다라", role: "Velma Kelly" },
+        { name: "표마바", role: "Billy Flynn" },
+        {
+          name: "사아자",
+          role: "Choreographer",
+          bio: "재즈 안무에 정통한 안무감독. 상징적인 군무 장면들을 재구성했습니다.",
+        },
+      ],
+      sessions: ["14:00", "19:30"],
+      bookingStatus: "Opening Soon",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "차카하홀",
+        address: "서울 구로구 차카하로 662 (예시 주소)",
+        subway: "1호선 차카하역 1번 출구 도보 3분",
+        phone: "1588-0000 (예시)",
+      },
+    },
   },
   {
+    slug: "beethoven-symphony-no-9",
     badge: "D-7",
     badgeTone: "tertiary",
-    datetime: "2024.11.24 10:00",
+    datetime: "2026.11.24 10:00",
     title: "Beethoven Symphony No. 9",
+    genre: "CONCERT",
     description:
       "연말을 장식하는 장엄한 선율의 대서사시. 환희의 송가가 울려 퍼지는 감동의 순간.",
     image: {
-      src: "/images/ticket-beethoven.jpg",
+      src: withBasePath("/images/ticket-beethoven.jpg"),
       alt: "Beethoven Symphony No. 9 포스터",
     },
     reminderHref: "#",
+    detail: {
+      tagline: "Year-End Gala Concert",
+      heroDescription:
+        "환희의 송가가 울려 퍼지는 연말 대공연. 베토벤 교향곡 9번 '합창'의 장엄한 감동.",
+      schedule: "2026.12.28 — 2026.12.31",
+      runtime: "110분 (인터미션 20분 포함)",
+      ageRating: "8세 이상 관람 가능",
+      priceRange: "R석 130,000 ~ B석 40,000",
+      synopsis: [
+        "베토벤이 청력을 완전히 잃은 뒤 완성한 마지막 교향곡. 인류애와 자유를 향한 신념이 4악장 '환희의 송가'로 폭발합니다.",
+        "대규모 오케스트라와 합창단, 솔리스트가 함께하는 연말 특별 무대. 한 해를 마무리하는 벅찬 울림을 선사합니다.",
+      ],
+      cast: [
+        { name: "가나다", role: "Conductor" },
+        { name: "라마바", role: "Soprano" },
+        { name: "사아자", role: "Tenor" },
+        {
+          name: "그랜드차카타 오케스트라",
+          role: "Orchestra",
+          bio: "이번 공연을 함께하는 교향악단. 100인조 편성으로 웅장한 사운드를 완성합니다.",
+        },
+      ],
+      sessions: ["17:00", "20:00"],
+      bookingStatus: "Opening Soon",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "차카타홀",
+        address: "서울 서초구 차카타로 2406 (예시 주소)",
+        subway: "3호선 남부터미널역 5번 출구 도보 190분",
+        phone: "1588-0000 (예시)",
+      },
+    },
   },
 ];
 
 export const GENRE_ITEMS: GenreItem[] = [
   {
+    slug: "musical",
     number: "01",
     title: "Musical",
     description: "음악과 춤이 어우러진 화려한 감동의 무대를 확인하세요.",
-    image: { src: "/images/genre-musical.jpg", alt: "Musical 장르 이미지" },
+    image: {
+      src: withBasePath("/images/genre-musical.jpg"),
+      alt: "Musical 장르 이미지",
+    },
     offset: false,
-    href: "#",
+    href: "/list/musical",
   },
   {
+    slug: "play",
     number: "02",
     title: "Play",
     description: "배우들의 숨소리까지 느껴지는 깊이 있는 스토리텔링.",
-    image: { src: "/images/genre-play.jpg", alt: "Play 장르 이미지" },
+    image: {
+      src: withBasePath("/images/genre-play.jpg"),
+      alt: "Play 장르 이미지",
+    },
     offset: true,
-    href: "#",
+    href: "/list/play",
   },
   {
+    slug: "concert",
     number: "03",
     title: "Concert",
     description: "전율이 느껴지는 사운드와 아티스트의 환상적인 라이브.",
-    image: { src: "/images/genre-concert.jpg", alt: "Concert 장르 이미지" },
+    image: {
+      src: withBasePath("/images/genre-concert.jpg"),
+      alt: "Concert 장르 이미지",
+    },
     offset: false,
-    href: "#",
+    href: "/list/concert",
   },
 ];
 
 export const MEMBERSHIP: MembershipData = {
   label: "MEMBERSHIP ONLY",
-  titleLead: "StageHub",
+  titleLead: "LOOOGOO",
   titleItalic: "Gold Pass",
   titleTail: "Membership",
   description: "선예매 권한과 멤버십 전용 20% 할인을 가장 먼저 만나보세요.",
@@ -115,7 +418,22 @@ export const MEMBERSHIP: MembershipData = {
 };
 
 export const NOTICES: NoticeItem[] = [
-  { date: "2024.11.15", title: "시스템 정기 점검 안내 (11/25)", href: "#" },
-  { date: "2024.11.12", title: "겨울 시즌 뮤지컬 조기예매 이벤트", href: "#" },
-  { date: "2024.11.10", title: "티켓 취소 및 환불 규정 변경 안내", href: "#" },
+  { date: "2026.11.15", title: "시스템 정기 점검 안내 (11/25)", href: "#" },
+  { date: "2026.11.12", title: "겨울 시즌 뮤지컬 조기예매 이벤트", href: "#" },
+  { date: "2026.11.10", title: "티켓 취소 및 환불 규정 변경 안내", href: "#" },
 ];
+
+export type ListItem =
+  | ({ kind: "rank" } & RankItem)
+  | ({ kind: "ticket" } & TicketItem)
+  | ({ kind: "genre" } & GenreItem);
+
+export const LIST_ITEMS: ListItem[] = [
+  ...RANK_ITEMS.map((item): ListItem => ({ kind: "rank", ...item })),
+  ...TICKET_ITEMS.map((item): ListItem => ({ kind: "ticket", ...item })),
+  ...GENRE_ITEMS.map((item): ListItem => ({ kind: "genre", ...item })),
+];
+
+export function getListItemBySlug(slug: string): ListItem | undefined {
+  return LIST_ITEMS.find((item) => item.slug === slug);
+}

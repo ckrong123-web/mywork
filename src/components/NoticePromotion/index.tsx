@@ -31,7 +31,11 @@ export default function NoticePromotion({
       <h2 id="notice-promo-title" className="notice-promo__sr-title">
         멤버십 및 공지사항
       </h2>
-      <div className="notice-promo__grid">
+      <div
+        className="notice-promo__grid"
+        data-scroll
+        data-scroll-offset="15%, 0%"
+      >
         {/* 멤버십 배너 */}
         <div className="membership">
           <div className="membership__content">

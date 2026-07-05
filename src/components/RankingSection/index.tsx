@@ -15,7 +15,11 @@ export default function RankingSection({
 }: RankingSectionProps) {
   return (
     <section className="ranking" aria-labelledby="ranking-title">
-      <Container className="ranking__header">
+      <Container
+        className="ranking__header"
+        data-scroll
+        data-scroll-offset="15%, 0%"
+      >
         <div className="ranking__heading">
           <h2 id="ranking-title" className="ranking__title">
             WEEKLY TOP 10

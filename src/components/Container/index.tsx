@@ -1,7 +1,7 @@
-import type { ElementType, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import "./Container.scss";
 
-interface ContainerProps {
+interface ContainerProps extends ComponentPropsWithoutRef<"div"> {
   /** 렌더링할 태그 (기본 div) */
   as?: ElementType;
   className?: string;
@@ -16,9 +16,13 @@ export default function Container({
   as: Tag = "div",
   className,
   children,
+  ...rest
 }: ContainerProps) {
   return (
-    <Tag className={className ? `container ${className}` : "container"}>
+    <Tag
+      className={className ? `container ${className}` : "container"}
+      {...rest}
+    >
       {children}
     </Tag>
   );

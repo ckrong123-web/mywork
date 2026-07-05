@@ -33,14 +33,14 @@
 // 원형 아이콘 버튼 공통 형태 (Button ghost variant / VIEW ALL 화살표 원 등)
 //   hover 등 개별 표현은 사용처에서 지정한다(형태만 공유).
 // -----------------------------------------------------------------------------
-@mixin icon-circle($size: 40px) {
+@mixin icon-circle($size: 4rem) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: $size;
   height: $size;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-hairline-strong);
+  border: 0.1rem solid var(--color-hairline-strong);
 }
 
 // -----------------------------------------------------------------------------
@@ -57,4 +57,20 @@
 @mixin zoom-image($duration: 0.7s) {
   object-fit: cover;
   transition: transform $duration ease;
+}
+
+// -----------------------------------------------------------------------------
+// 스크롤 리빌(페이드인 + 슬라이드업)
+//   locomotive-scroll 이 data-scroll 요소가 뷰포트에 들어올 때 부여하는
+//   기본 클래스 .is-inview 를 트리거로 사용한다(SmoothScroll 컴포넌트 참고).
+// -----------------------------------------------------------------------------
+@mixin scroll-reveal($distance: 3.2rem, $duration: 1.04s) {
+  opacity: 0;
+  transform: translateY($distance);
+  transition: opacity $duration ease, transform $duration ease;
+
+  &.is-inview {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -3,14 +3,14 @@
 .notice-promo {
   @include container;
 
-  padding-bottom: 128px;
+  padding-bottom: 12.8rem;
 
   &__sr-title {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    width: 0.1rem;
+    height: 0.1rem;
     padding: 0;
-    margin: -1px;
+    margin: -0.1rem;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -18,9 +18,12 @@
   }
 
   &__grid {
+    @include scroll-reveal;
+
     display: grid;
+    align-items: stretch;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 4rem;
 
     @include respond-lg {
       grid-template-columns: repeat(12, 1fr);
@@ -34,12 +37,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 400px;
-  padding-inline: 64px;
+  padding-inline: 6.4rem;
   overflow: hidden;
   border-radius: var(--radius-xl);
   background: var(--glass-bg);
-  border: 1px solid var(--btn-glass-border);
+  border: 0.1rem solid var(--btn-glass-border);
   backdrop-filter: blur(var(--glass-blur));
   cursor: pointer;
 
@@ -51,13 +53,13 @@
   &::after {
     content: "";
     position: absolute;
-    right: -100px;
-    bottom: -100px;
-    width: 500px;
-    height: 500px;
+    right: -10rem;
+    bottom: -10rem;
+    width: 50rem;
+    height: 50rem;
     border-radius: 50%;
     background: rgba(106, 90, 205, 0.1);
-    filter: blur(100px);
+    filter: blur(10rem);
     transition: background 1s ease;
     pointer-events: none;
   }
@@ -74,21 +76,21 @@
   &__label {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 1.2rem;
+    margin-bottom: 2.4rem;
     font-size: var(--font-size-label);
     letter-spacing: var(--letter-spacing-label);
     color: var(--color-primary);
   }
 
   &__label-line {
-    width: 40px;
-    height: 1px;
+    width: 4rem;
+    height: 0.1rem;
     background: var(--color-primary);
   }
 
   &__title {
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
     font-family: var(--font-display);
     font-size: var(--font-size-membership);
     line-height: 1.15;
@@ -100,8 +102,7 @@
   }
 
   &__desc {
-    max-width: 28rem;
-    margin-bottom: 32px;
+    margin-bottom: 3.2rem;
     font-family: var(--font-body);
     font-size: var(--font-size-body-lg);
     line-height: 1.7;
@@ -113,10 +114,10 @@
 .notice {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 4rem;
   border-radius: var(--radius-xl);
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  border: 0.1rem solid var(--glass-border);
   backdrop-filter: blur(var(--glass-blur));
 
   @include respond-lg {
@@ -127,7 +128,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
   }
 
   &__heading {
@@ -150,14 +151,14 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 4rem;
     flex-grow: 1;
     list-style: none;
   }
 
   &__date {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
     font-size: var(--font-size-scroll);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-primary);
@@ -166,10 +167,11 @@
 
   &__title {
     display: block;
-    padding-bottom: 16px;
+    padding-bottom: 1.6rem;
     font-weight: var(--font-weight-medium);
+    font-size: 1.4rem;
     color: var(--color-on-surface);
-    border-bottom: 1px solid var(--color-hairline);
+    border-bottom: 0.1rem solid var(--color-hairline);
     transition: color 0.3s ease;
   }
 

@@ -1,0 +1,444 @@
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LOOOGOO | Musical Performances</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#34343f",
+              "inverse-on-surface": "#302f3b",
+              "surface-container": "#1f1f29",
+              "on-tertiary": "#2f2f3f",
+              "on-error": "#690005",
+              "error-container": "#93000a",
+              "on-primary-fixed-variant": "#4532a6",
+              "on-tertiary-container": "#efecff",
+              "inverse-surface": "#e4e1f0",
+              "primary-fixed-dim": "#c8bfff",
+              "on-secondary-fixed": "#190064",
+              "on-tertiary-fixed-variant": "#464556",
+              "secondary-container": "#453796",
+              error: "#ffb4ab",
+              "surface-container-lowest": "#0d0d17",
+              "on-primary": "#2d128f",
+              "tertiary-container": "#6b6a7c",
+              "on-secondary-fixed-variant": "#453796",
+              outline: "#928f9e",
+              "on-secondary-container": "#b6abff",
+              tertiary: "#c7c4d9",
+              "on-surface-variant": "#c9c4d5",
+              "surface-dim": "#12121d",
+              "secondary-fixed": "#e5deff",
+              "surface-container-low": "#1b1b25",
+              "on-surface": "#e4e1f0",
+              "surface-container-highest": "#34343f",
+              "on-secondary": "#2e1d7f",
+              background: "#12121d",
+              "tertiary-fixed": "#e3e0f6",
+              "primary-container": "#6a5acd",
+              surface: "#12121d",
+              "inverse-primary": "#5d4cbf",
+              "tertiary-fixed-dim": "#c7c4d9",
+              "primary-fixed": "#e5deff",
+              "surface-tint": "#c8bfff",
+              "surface-bright": "#393844",
+              "on-primary-container": "#f0ebff",
+              "on-background": "#e4e1f0",
+              secondary: "#c8bfff",
+              "secondary-fixed-dim": "#c8bfff",
+              "outline-variant": "#474553",
+              "on-primary-fixed": "#190064",
+              primary: "#c8bfff",
+              "on-error-container": "#ffdad6",
+              "surface-container-high": "#292934",
+              "on-tertiary-fixed": "#1a1a29",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              xs: "4px",
+              xl: "80px",
+              lg: "48px",
+              md: "24px",
+              sm: "12px",
+              gutter: "24px",
+              "container-max": "1280px",
+              base: "8px",
+            },
+            fontFamily: {
+              "display-lg-mobile": ["Libre Caslon Text"],
+              "body-lg": ["Hanken Grotesk"],
+              "headline-md": ["Libre Caslon Text"],
+              "headline-lg": ["Libre Caslon Text"],
+              "display-lg": ["Libre Caslon Text"],
+              "label-sm": ["Hanken Grotesk"],
+              "label-md": ["Hanken Grotesk"],
+              "body-md": ["Hanken Grotesk"],
+            },
+            fontSize: {
+              "display-lg-mobile": [
+                "40px",
+                {
+                  lineHeight: "48px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "400",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "400" },
+              ],
+              "headline-lg": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "400" },
+              ],
+              "display-lg": [
+                "64px",
+                {
+                  lineHeight: "72px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "400",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.03em",
+                  fontWeight: "500",
+                },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .glass-card {
+        background: rgba(31, 31, 41, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .glass-card:hover {
+        border-color: #c8bfff;
+        box-shadow: 0 0 20px rgba(200, 191, 255, 0.15);
+        transform: translateY(-4px);
+      }
+      .text-glow {
+        text-shadow: 0 0 15px rgba(200, 191, 255, 0.5);
+      }
+      .scrim-gradient {
+        background: linear-gradient(
+          to top,
+          rgba(13, 13, 23, 1) 0%,
+          rgba(13, 13, 23, 0) 100%
+        );
+      }
+      body {
+        background-color: #12121d;
+        color: #e4e1f0;
+        scroll-behavior: smooth;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="font-body-md text-body-md overflow-x-hidden">
+    <!-- Top Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/10"
+    >
+      <div
+        class="flex justify-between items-center px-gutter py-sm max-w-container-max mx-auto"
+      >
+        <div
+          class="font-headline-md text-headline-md text-primary tracking-tighter"
+        >
+          LOOOGOO
+        </div>
+        <div class="hidden md:flex items-center space-x-lg">
+          <a
+            class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#"
+            >Musical</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#"
+            >Play</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#"
+            >Concert</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#"
+            >Classic</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#"
+            >Family</a
+          >
+        </div>
+        <div class="flex items-center space-x-md">
+          <button
+            class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+          >
+            search
+          </button>
+          <div class="flex items-center space-x-sm">
+            <button
+              class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-all duration-200 active:scale-95"
+            >
+              My Ticket
+            </button>
+            <button
+              class="bg-primary-container text-on-primary-container px-md py-xs rounded-full font-label-md text-label-md hover:brightness-110 transition-all active:scale-95"
+            >
+              Join
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <header
+      class="relative h-[614px] flex items-end justify-center overflow-hidden"
+    >
+      <div class="absolute inset-0 z-0">
+        <div
+          class="w-full h-full bg-cover bg-center transition-transform duration-[10s] hover:scale-105"
+          data-alt="A grand, cinematic interior of an opulent Broadway theater before a performance."
+        ></div>
+        <div
+          class="absolute inset-0 bg-background/40 backdrop-blur-[2px]"
+        ></div>
+        <div class="absolute inset-0 scrim-gradient"></div>
+      </div>
+      <div
+        class="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-xl text-center"
+      >
+        <h1
+          class="font-display-lg text-display-lg md:text-display-lg text-white mb-xs animate-in fade-in slide-in-from-bottom-4 duration-700"
+        >
+          MUSICAL
+        </h1>
+        <p
+          class="font-body-lg text-body-lg text-primary-fixed-dim max-w-2xl mx-auto opacity-80"
+        >
+          Experience the magic of storytelling through song and dance on the
+          world's most prestigious stages.
+        </p>
+      </div>
+    </header>
+    <!-- Filter & Sort Section -->
+    <section
+      class="sticky top-[64px] z-40 bg-background/80 backdrop-blur-md border-b border-outline-variant/30"
+    >
+      <div
+        class="max-w-container-max mx-auto px-gutter py-md flex flex-col md:flex-row justify-between items-center gap-md"
+      >
+        <!-- Tabs -->
+        <div
+          class="flex items-center bg-surface-container rounded-full p-1 w-full md:w-auto"
+        >
+          <button
+            class="flex-1 md:flex-none px-lg py-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md transition-all"
+          >
+            All
+          </button>
+          <button
+            class="flex-1 md:flex-none px-lg py-xs rounded-full text-on-surface-variant font-label-md text-label-md hover:text-white transition-all"
+          >
+            Ongoing
+          </button>
+          <button
+            class="flex-1 md:flex-none px-lg py-xs rounded-full text-on-surface-variant font-label-md text-label-md hover:text-white transition-all"
+          >
+            Upcoming
+          </button>
+          <button
+            class="flex-1 md:flex-none px-lg py-xs rounded-full text-on-surface-variant font-label-md text-label-md hover:text-white transition-all"
+          >
+            Ended
+          </button>
+        </div>
+        <!-- Sort -->
+        <div class="flex items-center space-x-md w-full md:w-auto justify-end">
+          <div class="flex items-center space-x-base text-on-surface-variant">
+            <span class="material-symbols-outlined text-[20px]">sort</span>
+            <select
+              class="bg-transparent border-none focus:ring-0 font-label-md text-label-md text-on-surface-variant cursor-pointer pr-lg"
+            >
+              <option>Latest Release</option>
+              <option>Most Popular</option>
+              <option>Closing Soon</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Performance List Grid -->
+    <main class="max-w-container-max mx-auto px-gutter py-xl">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg"
+      >
+        <!-- Card: example -->
+        <article class="glass-card rounded-xl overflow-hidden flex flex-col">
+          <div class="relative aspect-[3/4] overflow-hidden group">
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+            ></div>
+            <div
+              class="absolute top-sm right-sm bg-primary-container text-on-primary-container px-sm py-xs rounded-lg font-label-md text-label-md shadow-lg"
+            >
+              D-5
+            </div>
+          </div>
+          <div class="p-md flex flex-col flex-grow">
+            <h3
+              class="font-headline-md text-headline-md text-white mb-xs truncate"
+            >
+              Wicked
+            </h3>
+            <div class="mt-auto space-y-xs">
+              <div class="flex items-center space-x-xs text-on-surface-variant">
+                <span class="material-symbols-outlined text-[18px]"
+                  >location_on</span
+                >
+                <span class="font-label-sm text-label-sm"
+                  >Gershwin Theatre, NY</span
+                >
+              </div>
+              <div class="flex items-center space-x-xs text-on-surface-variant">
+                <span class="material-symbols-outlined text-[18px]"
+                  >calendar_today</span
+                >
+                <span class="font-label-sm text-label-sm"
+                  >2026.10.15 ~ Open Run</span
+                >
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <!-- Pagination -->
+      <div class="flex justify-center items-center space-x-md mt-xl">
+        <button
+          class="w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-all"
+        >
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <div class="flex items-center space-x-sm">
+          <button
+            class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-on-primary font-label-md"
+          >
+            1
+          </button>
+          <button
+            class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-all font-label-md"
+          >
+            2
+          </button>
+          <button
+            class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-all font-label-md"
+          >
+            3
+          </button>
+          <span class="text-on-surface-variant">...</span>
+          <button
+            class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-all font-label-md"
+          >
+            12
+          </button>
+        </div>
+        <button
+          class="w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-all"
+        >
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full py-xl bg-surface-container-lowest border-t border-outline-variant mt-xl"
+    >
+      <div
+        class="flex flex-col items-center justify-center space-y-md max-w-container-max mx-auto px-gutter text-center"
+      >
+        <div class="font-headline-lg text-headline-lg text-primary">
+          LOOOGOO
+        </div>
+        <div class="flex flex-wrap justify-center gap-lg">
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100"
+            href="#"
+            >What's On</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100"
+            href="#"
+            >Venues</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100"
+            href="#"
+            >Rental</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100"
+            href="#"
+            >Customer Service</a
+          >
+        </div>
+        <p
+          class="text-on-surface-variant font-label-md text-label-md opacity-60"
+        >
+          © 2026 LOOOGOO. The final curtain never falls on excellence. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

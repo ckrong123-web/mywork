@@ -1,0 +1,56 @@
+// 브라우저 기본 스타일 초기화(reset)
+// 토큰/테마에 의존하지 않는 순수 정규화 규칙만 다룹니다.
+// 프로젝트 전용 베이스 스타일(색상, 폰트 등)은 globals.scss 에 둡니다.
+
+html {
+  font-size: 62.5%; // 10px 기준 — 컴포넌트에서 1rem = 10px 로 환산
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

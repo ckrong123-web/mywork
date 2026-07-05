@@ -4,7 +4,7 @@
   @include media-frame(var(--radius-default));
 
   display: block;
-  height: 600px;
+  height: 60rem;
   box-shadow: var(--shadow-card);
   cursor: pointer;
 
@@ -12,15 +12,15 @@
   &::before {
     content: "";
     position: absolute;
-    inset: 16px;
+    inset: 1.6rem;
     z-index: 2;
-    border: 1px solid var(--color-hairline);
+    border: 0.1rem solid var(--color-hairline);
     pointer-events: none;
   }
 
   &--offset {
     @include respond-md {
-      margin-top: 48px;
+      margin-top: 4.8rem;
     }
   }
 
@@ -47,22 +47,22 @@
     bottom: 0;
     z-index: 3;
     width: 100%;
-    padding: 40px;
+    padding: 4rem;
   }
 
   &__number {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
     font-size: var(--font-size-scroll);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-primary);
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(1.6rem);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
   &__title {
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
     font-family: var(--font-display);
     font-size: var(--font-size-section);
     line-height: 1;
@@ -72,8 +72,8 @@
   &__underline {
     display: block;
     width: 0;
-    height: 1px;
-    margin-bottom: 16px;
+    height: 0.1rem;
+    margin-bottom: 1.6rem;
     background: var(--color-primary);
     transition: width 0.7s ease;
   }

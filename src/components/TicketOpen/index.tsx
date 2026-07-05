@@ -11,10 +11,14 @@ export default function TicketOpen({ items }: TicketOpenProps) {
     <section className="ticket-open" aria-labelledby="ticket-open-title">
       <Container className="ticket-open__inner">
         <div className="ticket-open__header">
-          <h2 id="ticket-open-title" className="ticket-open__title">
+          <h2
+            id="ticket-open-title"
+            className="ticket-open__title"
+            data-scroll
+            data-scroll-offset="15%, 0%"
+          >
             Ticket Open
           </h2>
-          <span className="ticket-open__line" aria-hidden="true" />
         </div>
         <div className="ticket-open__grid">
           {items.map((item) => (

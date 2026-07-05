@@ -1,0 +1,65 @@
+@use "../../styles/mixins" as *;
+
+.list-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: clamp(42rem, 60vh, 61.4rem);
+  overflow: hidden;
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: color-mix(in srgb, var(--color-background) 40%, transparent);
+      backdrop-filter: blur(0.2rem);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--color-surface-container-lowest) 0%,
+        transparent 100%
+      );
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    padding-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 7vw, 6.4rem);
+    line-height: 1.1;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-white);
+    text-shadow: var(--text-glow);
+  }
+
+  &__subtitle {
+    max-width: 67.2rem;
+    margin-inline: auto;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-lg);
+    color: var(--color-primary-fixed-dim);
+    opacity: 0.8;
+  }
+}

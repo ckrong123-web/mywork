@@ -1,0 +1,207 @@
+@use "../../../styles/mixins" as *;
+
+.booking-widget {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--glass-panel-bg);
+  border: 0.1rem solid var(--color-hairline-strong);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(var(--glass-panel-blur));
+
+  @include respond-lg {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-md));
+  }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: var(--space-md);
+    border-bottom: 0.1rem solid
+      color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
+  }
+
+  &__title {
+    font-family: var(--font-body);
+    font-size: var(--font-size-ticket-title);
+    color: var(--color-on-surface);
+  }
+
+  &__status {
+    padding: 0.2rem 0.8rem;
+    font-size: var(--font-size-label-xs);
+    color: var(--color-primary);
+    background: color-mix(
+      in srgb,
+      var(--color-primary-container) 10%,
+      transparent
+    );
+    border-radius: var(--radius-lg);
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  &__label {
+    font-size: var(--font-size-label-xs);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+  }
+
+  &__weekdays,
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-xs);
+  }
+
+  &__weekday {
+    padding-block: var(--space-xs);
+    font-size: var(--font-size-label-xs);
+    text-align: center;
+    color: var(--color-on-surface-variant);
+  }
+
+  &__day-pad {
+    aspect-ratio: 1;
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  &__day:disabled {
+    color: var(--color-on-surface-variant);
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  &__day--open:not(:disabled):hover {
+    background: color-mix(
+      in srgb,
+      var(--color-primary-container) 30%,
+      transparent
+    );
+  }
+
+  &__day--today {
+    box-shadow: inset 0 0 0 0.1rem var(--color-primary);
+  }
+
+  &__day--selected {
+    color: var(--color-white);
+    background: var(--color-primary-container);
+  }
+
+  &__sessions {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  &__session {
+    flex: 1;
+    padding: var(--space-base);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface-variant);
+    background: transparent;
+    border: 0.1rem solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  &__session:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+
+  &__session--selected {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--color-surface-container-low);
+    border-radius: var(--radius-xl);
+  }
+
+  &__summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__summary-label {
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__summary-value {
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface);
+  }
+
+  &__summary-price {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  &__book-icon {
+    font-size: 1.8rem;
+  }
+
+  &__notice {
+    padding: var(--space-sm);
+    font-size: var(--font-size-body);
+    text-align: center;
+    color: var(--color-primary);
+    background: color-mix(
+      in srgb,
+      var(--color-primary-container) 12%,
+      transparent
+    );
+    border-radius: var(--radius-lg);
+  }
+
+  &__fee {
+    font-size: var(--font-size-label-xs);
+    text-align: center;
+    color: var(--color-on-surface-variant);
+  }
+}
+
+.btn.booking-widget__book {
+  gap: var(--space-base);
+  width: 100%;
+  padding: var(--space-md);
+  font-size: var(--font-size-ticket-title);
+  border-radius: var(--radius-xl);
+
+  &:hover {
+    box-shadow: var(--btn-glass-shadow-hover);
+  }
+}

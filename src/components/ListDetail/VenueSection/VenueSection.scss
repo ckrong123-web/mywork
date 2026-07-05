@@ -1,0 +1,138 @@
+@use "../../../styles/mixins" as *;
+
+.venue {
+  margin-top: var(--space-xl);
+  padding-block: var(--space-xl);
+  background: var(--color-surface-container-lowest);
+
+  &__heading {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-md);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--font-size-section-sm);
+    line-height: 1.1;
+    color: var(--color-on-surface);
+    border-left: 0.4rem solid var(--color-primary-container);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+
+    @include respond-md {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  &__map {
+    position: relative;
+    height: 40rem;
+    overflow: hidden;
+    background: var(--glass-panel-bg);
+    border: 0.1rem solid var(--color-hairline-strong);
+    border-radius: var(--radius-xl);
+  }
+
+  &__map-image {
+    object-fit: cover;
+    filter: grayscale(1);
+    opacity: 0.6;
+  }
+
+  &__pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.8rem;
+    height: 4.8rem;
+    color: var(--color-white);
+    background: var(--color-primary-container);
+    border-radius: var(--radius-full);
+    transform: translate(-50%, -50%);
+    animation: venue-pin-bounce 1.2s ease-in-out infinite;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  &__name {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-ticket-title);
+    color: var(--color-on-surface);
+  }
+
+  &__address {
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  &__row-icon {
+    color: var(--color-primary);
+  }
+
+  &__row-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__row-label {
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface);
+  }
+
+  &__row-value {
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__directions {
+    width: 100%;
+    padding: var(--space-sm);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface);
+    background: transparent;
+    border: 0.1rem solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    cursor: not-allowed;
+    transition: border-color 0.2s ease;
+  }
+
+  &__directions:not(:disabled):hover {
+    border-color: var(--color-primary);
+  }
+}
+
+@keyframes venue-pin-bounce {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-50%, -65%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venue__pin {
+    animation: none;
+  }
+}

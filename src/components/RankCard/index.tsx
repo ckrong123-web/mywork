@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ShowDetail } from "../ListDetail/types";
 import "./RankCard.scss";
 
 export interface RankItem {
+  slug: string;
   rank: string;
   title: string;
   genre: string;
@@ -11,6 +13,7 @@ export interface RankItem {
   image: { src: string; alt: string };
   offset: "up" | "down";
   href: string;
+  detail?: ShowDetail;
 }
 
 type RankCardProps = RankItem;

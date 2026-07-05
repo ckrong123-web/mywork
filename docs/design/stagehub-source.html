@@ -1,182 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--
-  STAGEHUB 메인 페이지 원본 디자인 (Google Stitch export, Tailwind 기반)
+  LOOOGOO 메인 페이지 원본 디자인 (Google Stitch export, Tailwind 기반)
   이 파일은 구현의 "출처(source of truth)"입니다. 직접 사용하지 않고,
   React + SCSS(Tailwind 금지, 토큰은 src/styles/tokens.scss)로 변환하기 위한 레퍼런스입니다.
   이미지 원격 URL은 만료되므로 실제 구현은 public/images/ 의 로컬 이미지를 참조합니다.
 -->
 <html class="dark" lang="ko" style="">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>STAGEHUB | Premium Performance Booking</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LOOOGOO | Premium Performance Booking</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
-            "colors": {
-                    "on-surface-variant": "#c9c4d5",
-                    "inverse-primary": "#5d4cbf",
-                    "inverse-surface": "#e4e1f0",
-                    "on-error": "#690005",
-                    "on-primary-container": "#f0ebff",
-                    "on-secondary": "#2e1d7f",
-                    "primary-fixed-dim": "#c8bfff",
-                    "outline": "#928f9e",
-                    "primary": "#c8bfff",
-                    "background": "#0B0B15",
-                    "surface-bright": "#393844",
-                    "surface-container-lowest": "#0d0d17",
-                    "surface-container-highest": "#34343f",
-                    "tertiary-fixed-dim": "#c7c4d9",
-                    "surface-dim": "#12121d",
-                    "on-primary-fixed-variant": "#4532a6",
-                    "on-secondary-fixed-variant": "#453796",
-                    "primary-fixed": "#e5deff",
-                    "error-container": "#93000a",
-                    "inverse-on-surface": "#302f3b",
-                    "surface-tint": "#c8bfff",
-                    "on-secondary-fixed": "#190064",
-                    "on-surface": "#e4e1f0",
-                    "surface-container-high": "#292934",
-                    "primary-container": "#6a5acd",
-                    "on-primary": "#2d128f",
-                    "surface-container": "#1f1f29",
-                    "error": "#ffb4ab",
-                    "on-primary-fixed": "#190064",
-                    "on-tertiary-fixed-variant": "#464556",
-                    "on-background": "#e4e1f0",
-                    "surface-variant": "#34343f",
-                    "on-tertiary": "#2f2f3f",
-                    "on-tertiary-container": "#efecff",
-                    "outline-variant": "#474553",
-                    "surface-container-low": "#1b1b25",
-                    "on-tertiary-fixed": "#1a1a29",
-                    "on-secondary-container": "#b6abff",
-                    "secondary": "#c8bfff",
-                    "secondary-fixed-dim": "#c8bfff",
-                    "surface": "#0B0B15",
-                    "secondary-container": "#453796",
-                    "secondary-fixed": "#e5deff",
-                    "tertiary": "#c7c4d9",
-                    "tertiary-container": "#6b6a7c",
-                    "tertiary-fixed": "#e3e0f6",
-                    "on-error-container": "#ffdad6"
+            colors: {
+              "on-surface-variant": "#c9c4d5",
+              "inverse-primary": "#5d4cbf",
+              "inverse-surface": "#e4e1f0",
+              "on-error": "#690005",
+              "on-primary-container": "#f0ebff",
+              "on-secondary": "#2e1d7f",
+              "primary-fixed-dim": "#c8bfff",
+              outline: "#928f9e",
+              primary: "#c8bfff",
+              background: "#0B0B15",
+              "surface-bright": "#393844",
+              "surface-container-lowest": "#0d0d17",
+              "surface-container-highest": "#34343f",
+              "tertiary-fixed-dim": "#c7c4d9",
+              "surface-dim": "#12121d",
+              "on-primary-fixed-variant": "#4532a6",
+              "on-secondary-fixed-variant": "#453796",
+              "primary-fixed": "#e5deff",
+              "error-container": "#93000a",
+              "inverse-on-surface": "#302f3b",
+              "surface-tint": "#c8bfff",
+              "on-secondary-fixed": "#190064",
+              "on-surface": "#e4e1f0",
+              "surface-container-high": "#292934",
+              "primary-container": "#6a5acd",
+              "on-primary": "#2d128f",
+              "surface-container": "#1f1f29",
+              error: "#ffb4ab",
+              "on-primary-fixed": "#190064",
+              "on-tertiary-fixed-variant": "#464556",
+              "on-background": "#e4e1f0",
+              "surface-variant": "#34343f",
+              "on-tertiary": "#2f2f3f",
+              "on-tertiary-container": "#efecff",
+              "outline-variant": "#474553",
+              "surface-container-low": "#1b1b25",
+              "on-tertiary-fixed": "#1a1a29",
+              "on-secondary-container": "#b6abff",
+              secondary: "#c8bfff",
+              "secondary-fixed-dim": "#c8bfff",
+              surface: "#0B0B15",
+              "secondary-container": "#453796",
+              "secondary-fixed": "#e5deff",
+              tertiary: "#c7c4d9",
+              "tertiary-container": "#6b6a7c",
+              "tertiary-fixed": "#e3e0f6",
+              "on-error-container": "#ffdad6",
             },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "9999px"
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "9999px",
             },
-            "spacing": {
-                    "base": "8px",
-                    "lg": "48px",
-                    "sm": "12px",
-                    "md": "24px",
-                    "container-max": "1280px",
-                    "xs": "4px",
-                    "xl": "80px",
-                    "gutter": "24px"
+            spacing: {
+              base: "8px",
+              lg: "48px",
+              sm: "12px",
+              md: "24px",
+              "container-max": "1280px",
+              xs: "4px",
+              xl: "80px",
+              gutter: "24px",
             },
-            "fontFamily": {
-                    "label-md": ["Hanken Grotesk"],
-                    "label-sm": ["Hanken Grotesk"],
-                    "display-lg-mobile": ["Libre Caslon Text"],
-                    "headline-md": ["Libre Caslon Text"],
-                    "body-lg": ["Hanken Grotesk"],
-                    "body-md": ["Hanken Grotesk"],
-                    "headline-lg": ["Libre Caslon Text"],
-                    "display-lg": ["Libre Caslon Text"]
-            }
+            fontFamily: {
+              "label-md": ["Hanken Grotesk"],
+              "label-sm": ["Hanken Grotesk"],
+              "display-lg-mobile": ["Libre Caslon Text"],
+              "headline-md": ["Libre Caslon Text"],
+              "body-lg": ["Hanken Grotesk"],
+              "body-md": ["Hanken Grotesk"],
+              "headline-lg": ["Libre Caslon Text"],
+              "display-lg": ["Libre Caslon Text"],
+            },
           },
         },
-      }
+      };
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            background-color: #0B0B15;
-            color: #e4e1f0;
-            overflow-x: hidden;
-            position: relative;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-            opacity: 0.03;
-            z-index: 9999;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .text-glow {
-            text-shadow: 0 0 20px rgba(200, 191, 255, 0.3);
-        }
-        .hero-scrim {
-            background: linear-gradient(0deg, #0B0B15 0%, rgba(11, 11, 21, 0.4) 50%, rgba(11, 11, 21, 0.8) 100%);
-        }
-        .horizontal-scroll-mask {
-            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-        }
-        .ranking-number {
-            font-family: 'Libre Caslon Text', serif;
-            font-style: italic;
-            opacity: 0.08;
-            line-height: 0.8;
-            pointer-events: none;
-        }
-        .btn-glass {
-            background: rgba(106, 90, 205, 0.2);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(200, 191, 255, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .btn-glass:hover {
-            background: rgba(106, 90, 205, 0.35);
-            border-color: rgba(200, 191, 255, 0.5);
-            box-shadow: 0 0 20px rgba(106, 90, 205, 0.3);
-        }
-        .section-transition-blur {
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, #0B0B15);
-            margin-top: -150px;
-            position: relative;
-            z-index: 10;
-        }
-        .glow-accent {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(106, 90, 205, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            pointer-events: none;
-        }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #0B0B15; }
-        ::-webkit-scrollbar-thumb { background: #453796; border-radius: 10px; }
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        background-color: #0b0b15;
+        color: #e4e1f0;
+        overflow-x: hidden;
+        position: relative;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+        opacity: 0.03;
+        z-index: 9999;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(200, 191, 255, 0.3);
+      }
+      .hero-scrim {
+        background: linear-gradient(
+          0deg,
+          #0b0b15 0%,
+          rgba(11, 11, 21, 0.4) 50%,
+          rgba(11, 11, 21, 0.8) 100%
+        );
+      }
+      .horizontal-scroll-mask {
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 5%,
+          black 95%,
+          transparent
+        );
+      }
+      .ranking-number {
+        font-family: "Libre Caslon Text", serif;
+        font-style: italic;
+        opacity: 0.08;
+        line-height: 0.8;
+        pointer-events: none;
+      }
+      .btn-glass {
+        background: rgba(106, 90, 205, 0.2);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(200, 191, 255, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .btn-glass:hover {
+        background: rgba(106, 90, 205, 0.35);
+        border-color: rgba(200, 191, 255, 0.5);
+        box-shadow: 0 0 20px rgba(106, 90, 205, 0.3);
+      }
+      .section-transition-blur {
+        height: 150px;
+        background: linear-gradient(to bottom, transparent, #0b0b15);
+        margin-top: -150px;
+        position: relative;
+        z-index: 10;
+      }
+      .glow-accent {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(106, 90, 205, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        filter: blur(60px);
+        pointer-events: none;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0b0b15;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #453796;
+        border-radius: 10px;
+      }
 
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
     </style>
-</head>
-<body class="font-body-md selection:bg-primary-container selection:text-white">
-<!-- ============================================================
+  </head>
+  <body
+    class="font-body-md selection:bg-primary-container selection:text-white"
+  >
+    <!-- ============================================================
      이미지 URL → 로컬 파일 매핑 (public/images/)
      logo                     → /images/logo.png
      hero (Phantom)           → /images/hero-phantom.jpg
@@ -191,207 +231,407 @@
      genre Concert            → /images/genre-concert.jpg
      배경 텍스처(p6.png)는 장식이므로 SCSS에서 재현하거나 생략 가능
      ============================================================ -->
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-white/5">
-<div class="glass-panel absolute inset-0 -z-10 opacity-80"></div>
-<div class="flex justify-between items-center px-6 lg:px-20 py-5 w-full max-w-container-max mx-auto">
-<div class="font-display-lg-mobile text-[28px] font-bold tracking-tighter text-primary flex items-center gap-2"><img alt="STAGEHUB" class="h-10 w-auto" src="[LOGO]"/></div>
-<nav class="hidden md:flex gap-10">
-<a class="font-label-md text-primary tracking-widest relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-[1px] after:bg-primary" href="#">MUSICAL</a>
-<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors tracking-widest" href="#">PLAY</a>
-<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors tracking-widest" href="#">CONCERT</a>
-<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors tracking-widest" href="#">EXHIBIT</a>
-</nav>
-<div class="flex items-center gap-6">
-<button class="p-1 text-on-surface hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-[24px]">search</span>
-</button>
-<div class="h-4 w-[1px] bg-white/10"></div>
-<button class="hidden lg:block font-label-md text-on-surface-variant hover:text-primary transition-all duration-300">LOGIN</button>
-<button class="bg-primary-container text-on-primary-container font-label-md px-6 py-2 rounded-full active:scale-95 transition-all shadow-lg shadow-primary-container/20">MY TICKET</button>
-</div>
-</div>
-</header>
-<main class="w-full">
-<!-- Hero Section -->
-<section class="relative w-full flex items-center overflow-hidden h-[800px] max-h-[90vh]">
-<div class="absolute inset-0 z-0 h-[800px]">
-<div class="w-full h-full hero-scrim absolute z-10"></div>
-<img class="w-full h-full object-cover max-h-[800px]" data-alt="A cinematic stage scene" src="[HERO]"/>
-</div>
-<div class="relative z-20 max-w-container-max mx-auto w-full px-6 lg:px-20 pt-8 py-20">
-<div class="flex flex-col items-start gap-6 max-w-3xl">
-<div class="flex items-center gap-3">
-<div class="w-8 h-[1px] bg-primary"></div>
-<span class="text-primary font-label-md tracking-[0.3em] uppercase text-[12px]">Now Playing — Charlotte Theater</span>
-</div>
-<h1 class="font-display-lg text-[72px] leading-[0.95] text-white text-glow mb-2 font-bold italic lg:text-[72px]">
-                    THE PHANTOM<br/>
-<span class="pl-16">OF THE OPERA</span>
-</h1>
-<p class="font-body-lg text-on-surface-variant/90 max-w-lg leading-relaxed border-l-2 border-primary/30 pl-6 my-4">
-                    가면 속에 숨겨진 전설적인 사랑 이야기. 샤롯데씨어터에서 펼쳐지는 황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는 압도적인 무대 메커니즘을 만나보실 수 있습니다.
-                </p>
-<div class="flex gap-5 mt-4">
-<button class="bg-primary-container hover:bg-inverse-primary text-white font-label-md px-12 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-xl shadow-primary-container/30 border border-white/10">Book Now</button>
-<button class="btn-glass text-white font-label-md px-12 py-4 rounded-full transition-all duration-300 active:scale-95">Learn More</button>
-</div>
-</div>
-</div>
-<!-- Subtle Scroll Indicator -->
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4 opacity-50 pt-8">
-<span class="font-label-sm tracking-widest text-[10px]">SCROLL</span>
-<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
-</div>
-</section>
-<!-- Transition -->
-<div class="section-transition-blur"></div>
-<!-- Ranking Section -->
-<section class="relative py-24 bg-[#0B0B15]">
-<div class="glow-accent -top-40 -left-40"></div>
-<div class="max-w-container-max mx-auto px-6 lg:px-20 mb-20 relative">
-<div class="flex justify-between items-center">
-<div>
-<h2 class="font-headline-lg text-[48px] text-white mb-3 flex items-center gap-4">
-                        WEEKLY TOP 10
-                        <span class="w-12 h-[1px] bg-white/20"></span>
-</h2>
-<p class="text-on-surface-variant tracking-wider font-light">이번 주 가장 사랑받은 화제의 공연 랭킹</p>
-</div>
-<button class="group flex items-center gap-3 text-primary font-label-md tracking-widest">
-                    VIEW ALL
-                    <div class="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary transition-all">
-<span class="material-symbols-outlined text-[16px] group-hover:text-on-primary">arrow_forward</span>
-</div>
-</button>
-</div>
-</div>
-<div class="relative overflow-hidden pb-20">
-<div class="flex gap-12 px-6 lg:px-20 overflow-x-auto no-scrollbar py-12 items-center">
-<!-- Rank 1 (mt-16 hover:-translate-y-4) / Rank 2 (-mt-16 hover:translate-y-4) 지그재그 배치 -->
-<!-- Rank 1 Wicked [RANK01] MUSICAL | BLUE SQUARE 8.5% -->
-<!-- Rank 2 Hamilton [RANK02] MUSICAL | SEJONG CENTER 7.2% -->
-<!-- Rank 3 Les Miserables [RANK03] MUSICAL | HANNAM HALL 6.9% -->
-<!-- Rank 4 The Play [RANK04] PLAY | SEOUL ARTS CENTER 5.5% -->
-<div class="flex-shrink-0 w-[280px] group relative mt-16 transition-all duration-500 hover:-translate-y-4">
-<div class="ranking-number absolute -top-16 -left-8 text-[180px] text-primary">01</div>
-<div class="relative rounded-lg overflow-hidden shadow-2xl border border-white/5 bg-surface-container-low p-3">
-<div class="aspect-[2/3] overflow-hidden rounded">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wicked Poster" src="[RANK01]"/>
-</div>
-<div class="mt-4 px-2 pb-2">
-<h3 class="font-headline-md text-white group-hover:text-primary transition-colors text-[22px] mb-1">Wicked</h3>
-<div class="flex items-center justify-between">
-<p class="text-on-surface-variant font-label-sm text-[11px]">MUSICAL | BLUE SQUARE</p>
-<span class="text-primary font-label-sm text-[11px]">8.5%</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Rank 2~4 동일 구조, 지그재그 margin -->
-</div>
-</div>
-</section>
-<!-- Ticket Open Section -->
-<section class="relative bg-surface-container-lowest py-24 border-y border-white/5">
-<div class="glow-accent bottom-0 right-0 opacity-50"></div>
-<div class="max-w-container-max mx-auto px-6 lg:px-20 relative">
-<div class="mb-16 flex items-center gap-6">
-<h2 class="font-headline-lg text-[36px] text-white uppercase tracking-tighter">Ticket Open</h2>
-<div class="flex-grow h-[1px] bg-gradient-to-r from-primary/30 to-transparent"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-<!-- Open Item 1: Chicago [TICKET-CHICAGO] D-3 / 2024.11.20 14:00 / 열정적인 재즈... -->
-<!-- Open Item 2: Beethoven [TICKET-BEETHOVEN] D-7(tertiary) / 2024.11.24 10:00 / 연말을 장식하는... -->
-<div class="group flex gap-8 p-1 relative">
-<div class="flex-shrink-0 w-32 h-44 rounded overflow-hidden shadow-lg group-hover:scale-105 transition-all duration-500">
-<img class="w-full h-full object-cover" data-alt="Chicago Musical" src="[TICKET-CHICAGO]"/>
-</div>
-<div class="flex flex-col justify-center py-2">
-<div class="flex gap-3 mb-3">
-<span class="bg-primary/20 text-primary border border-primary/30 px-3 py-0.5 rounded-full font-label-sm text-[10px] tracking-widest">D-3</span>
-<span class="text-on-surface-variant font-label-sm text-[11px] flex items-center gap-1 opacity-60">
-<span class="material-symbols-outlined text-[14px]">calendar_today</span>
-                                2024.11.20 14:00
-                            </span>
-</div>
-<h4 class="font-headline-md text-white text-[24px] mb-2 group-hover:text-primary transition-colors">CHICAGO: The Musical</h4>
-<p class="text-on-surface-variant font-body-md text-[14px] leading-relaxed mb-4">열정적인 재즈와 매혹적인 퍼포먼스의 귀환. 브로드웨이 최장기 공연의 매력을 경험하세요.</p>
-<button class="w-fit text-[11px] font-label-md tracking-widest text-primary border-b border-primary/20 pb-0.5 hover:border-primary transition-all">SET REMINDER</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Genre Explore -->
-<section class="py-32 max-w-container-max mx-auto px-6 lg:px-20 overflow-hidden">
-<h2 class="font-headline-lg text-[40px] text-white mb-2 text-center italic tracking-tight">EXPERIENCE THE STAGE</h2>
-<p class="text-on-surface-variant text-center tracking-[0.4em] text-[11px] mb-20 opacity-60">CHOOSE YOUR GENRE</p>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-<!-- Genre Musical [GENRE-MUSICAL] 01 / 음악과 춤이 어우러진... -->
-<!-- Genre Play [GENRE-PLAY] 02 / 배우들의 숨소리까지... (md:mt-12 오프셋) -->
-<!-- Genre Concert [GENRE-CONCERT] 03 / 전율이 느껴지는... -->
-<div class="relative h-[600px] rounded group cursor-pointer overflow-hidden shadow-2xl">
-<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="Musical Genre" src="[GENRE-MUSICAL]"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 transition-opacity group-hover:opacity-100"></div>
-<div class="absolute inset-0 border-[1px] border-white/5 m-4"></div>
-<div class="absolute bottom-0 left-0 p-10 w-full">
-<span class="text-primary font-label-md tracking-widest text-[10px] mb-2 block opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">01</span>
-<h3 class="font-display-lg text-[48px] text-white mb-4 leading-none">Musical</h3>
-<div class="h-[1px] w-0 group-hover:w-full bg-primary transition-all duration-700 mb-4"></div>
-<p class="text-on-surface-variant text-[14px] leading-relaxed max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-700 opacity-0 group-hover:opacity-100">
-                        음악과 춤이 어우러진 화려한 감동의 무대를 확인하세요.
-                    </p>
-</div>
-</div>
-</div>
-</section>
-<!-- Notice & Promotion -->
-<section class="pb-32 max-w-container-max mx-auto px-6 lg:px-20">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-<!-- Membership Banner (lg:col-span-8) -->
-<div class="lg:col-span-8 relative h-[400px] rounded-xl overflow-hidden glass-panel border-primary/20 flex flex-col justify-center px-16 group cursor-pointer">
-<div class="absolute right-[-100px] bottom-[-100px] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-1000"></div>
-<div class="relative z-10">
-<div class="flex items-center gap-3 mb-6">
-<span class="w-10 h-[1px] bg-primary"></span>
-<span class="text-primary font-label-md tracking-[0.2em] text-[12px]">MEMBERSHIP ONLY</span>
-</div>
-<h3 class="font-headline-lg text-[42px] text-white mb-4 leading-tight">StageHub <br/><span class="italic">Gold Pass</span> Membership</h3>
-<p class="text-on-surface-variant font-body-lg text-[18px] max-w-md mb-8 leading-relaxed">
-                        선예매 권한과 멤버십 전용 20% 할인을 <br/>가장 먼저 만나보세요.
-                    </p>
-<button class="bg-white text-primary-container font-label-md px-10 py-4 rounded-full hover:shadow-2xl transition-all hover:scale-105 active:scale-95">JOIN NOW</button>
-</div>
-</div>
-<!-- Latest Notice (lg:col-span-4) 공지 3건: 2024.11.15 시스템 정기 점검 / 2024.11.12 겨울 시즌 뮤지컬 조기예매 / 2024.11.10 티켓 취소 및 환불 규정 변경 -->
-<div class="lg:col-span-4 glass-panel rounded-xl p-10 flex flex-col">
-<div class="flex justify-between items-center mb-10">
-<h3 class="font-label-md tracking-widest text-white text-[16px]">NOTICE</h3>
-<button class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-<span class="material-symbols-outlined text-[20px]">add</span>
-</button>
-</div>
-<div class="space-y-10 flex-grow">
-<div class="group cursor-pointer">
-<span class="text-primary font-label-sm text-[10px] tracking-widest mb-2 block opacity-60">2024.11.15</span>
-<p class="text-on-surface group-hover:text-primary transition-colors font-medium border-b border-white/5 pb-4">시스템 정기 점검 안내 (11/25)</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer: 로고 + 소개문 / SERVICES(Musical,Theater,Concert) / SUPPORT(FAQ,Notice,Q&A) / NEWSLETTER(이메일 입력) / © 2024 STAGEHUB / Privacy Policy · Terms of Service -->
-<footer class="bg-[#08080E] border-t border-white/5 w-full py-20 relative overflow-hidden">
-<div class="max-w-container-max mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-12 gap-16 relative z-10">
-<div class="md:col-span-4 flex flex-col gap-6">
-<div class="font-display-lg-mobile text-[32px] font-bold tracking-tighter text-primary"><img alt="STAGEHUB" class="h-12 w-auto" src="[LOGO]"/></div>
-<p class="max-w-xs font-body-md text-[14px] text-on-surface-variant leading-relaxed opacity-70">
-                프리미엄 공연 예매 플랫폼 스테이지허브. <br/>공연의 감동을 가장 특별하게 전달합니다.
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-white/5"
+    >
+      <div class="glass-panel absolute inset-0 -z-10 opacity-80"></div>
+      <div
+        class="flex justify-between items-center px-6 lg:px-20 py-5 w-full max-w-container-max mx-auto"
+      >
+        <div
+          class="font-display-lg-mobile text-[28px] font-bold tracking-tighter text-primary flex items-center gap-2"
+        >
+          <img alt="LOOOGOO" class="h-10 w-auto" src="[LOGO]" />
+        </div>
+        <nav class="hidden md:flex gap-10">
+          <a
+            class="font-label-md text-primary tracking-widest relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-[1px] after:bg-primary"
+            href="#"
+            >MUSICAL</a
+          >
+          <a
+            class="font-label-md text-on-surface-variant hover:text-primary transition-colors tracking-widest"
+            href="#"
+            >PLAY</a
+          >
+          <a
+            class="font-label-md text-on-surface-variant hover:text-primary transition-colors tracking-widest"
+            href="#"
+            >CONCERT</a
+          >
+          <a
+            class="font-label-md text-on-surface-variant hover:text-primary transition-colors tracking-widest"
+            href="#"
+            >EXHIBIT</a
+          >
+        </nav>
+        <div class="flex items-center gap-6">
+          <button
+            class="p-1 text-on-surface hover:text-primary transition-colors"
+          >
+            <span class="material-symbols-outlined text-[24px]">search</span>
+          </button>
+          <div class="h-4 w-[1px] bg-white/10"></div>
+          <button
+            class="hidden lg:block font-label-md text-on-surface-variant hover:text-primary transition-all duration-300"
+          >
+            LOGIN
+          </button>
+          <button
+            class="bg-primary-container text-on-primary-container font-label-md px-6 py-2 rounded-full active:scale-95 transition-all shadow-lg shadow-primary-container/20"
+          >
+            MY TICKET
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="w-full">
+      <!-- Hero Section -->
+      <section
+        class="relative w-full flex items-center overflow-hidden h-[800px] max-h-[90vh]"
+      >
+        <div class="absolute inset-0 z-0 h-[800px]">
+          <div class="w-full h-full hero-scrim absolute z-10"></div>
+          <img
+            class="w-full h-full object-cover max-h-[800px]"
+            data-alt="A cinematic stage scene"
+            src="[HERO]"
+          />
+        </div>
+        <div
+          class="relative z-20 max-w-container-max mx-auto w-full px-6 lg:px-20 pt-8 py-20"
+        >
+          <div class="flex flex-col items-start gap-6 max-w-3xl">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-[1px] bg-primary"></div>
+              <span
+                class="text-primary font-label-md tracking-[0.3em] uppercase text-[12px]"
+                >Now Playing</span
+              >
+            </div>
+            <h1
+              class="font-display-lg text-[72px] leading-[0.95] text-white text-glow mb-2 font-bold italic lg:text-[72px]"
+            >
+              THE PHANTOM<br />
+              <span class="pl-16">OF THE OPERA</span>
+            </h1>
+            <p
+              class="font-body-lg text-on-surface-variant/90 max-w-lg leading-relaxed border-l-2 border-primary/30 pl-6 my-4"
+            >
+              가면 속에 숨겨진 전설적인 사랑 이야기. 샤롯데씨어터에서 펼쳐지는
+              황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는
+              압도적인 무대 메커니즘을 만나보실 수 있습니다.
             </p>
-</div>
-</div>
-</footer>
-</body>
+            <div class="flex gap-5 mt-4">
+              <button
+                class="bg-primary-container hover:bg-inverse-primary text-white font-label-md px-12 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-xl shadow-primary-container/30 border border-white/10"
+              >
+                Book Now
+              </button>
+              <button
+                class="btn-glass text-white font-label-md px-12 py-4 rounded-full transition-all duration-300 active:scale-95"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Subtle Scroll Indicator -->
+        <div
+          class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4 opacity-50 pt-8"
+        >
+          <span class="font-label-sm tracking-widest text-[10px]">SCROLL</span>
+          <div
+            class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"
+          ></div>
+        </div>
+      </section>
+      <!-- Transition -->
+      <div class="section-transition-blur"></div>
+      <!-- Ranking Section -->
+      <section class="relative py-24 bg-[#0B0B15]">
+        <div class="glow-accent -top-40 -left-40"></div>
+        <div class="max-w-container-max mx-auto px-6 lg:px-20 mb-20 relative">
+          <div class="flex justify-between items-center">
+            <div>
+              <h2
+                class="font-headline-lg text-[48px] text-white mb-3 flex items-center gap-4"
+              >
+                WEEKLY TOP 10
+                <span class="w-12 h-[1px] bg-white/20"></span>
+              </h2>
+              <p class="text-on-surface-variant tracking-wider font-light">
+                이번 주 가장 사랑받은 화제의 공연 랭킹
+              </p>
+            </div>
+            <button
+              class="group flex items-center gap-3 text-primary font-label-md tracking-widest"
+            >
+              VIEW ALL
+              <div
+                class="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary transition-all"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] group-hover:text-on-primary"
+                  >arrow_forward</span
+                >
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="relative overflow-hidden pb-20">
+          <div
+            class="flex gap-12 px-6 lg:px-20 overflow-x-auto no-scrollbar py-12 items-center"
+          >
+            <!-- Rank 1 (mt-16 hover:-translate-y-4) / Rank 2 (-mt-16 hover:translate-y-4) 지그재그 배치 -->
+            <!-- Rank 1 Wicked [RANK01] MUSICAL | BLUE SQUARE 8.5% -->
+            <!-- Rank 2 Hamilton [RANK02] MUSICAL | SEJONG CENTER 7.2% -->
+            <!-- Rank 3 Les Miserables [RANK03] MUSICAL | HANNAM HALL 6.9% -->
+            <!-- Rank 4 The Play [RANK04] PLAY | SEOUL ARTS CENTER 5.5% -->
+            <div
+              class="flex-shrink-0 w-[280px] group relative mt-16 transition-all duration-500 hover:-translate-y-4"
+            >
+              <div
+                class="ranking-number absolute -top-16 -left-8 text-[180px] text-primary"
+              >
+                01
+              </div>
+              <div
+                class="relative rounded-lg overflow-hidden shadow-2xl border border-white/5 bg-surface-container-low p-3"
+              >
+                <div class="aspect-[2/3] overflow-hidden rounded">
+                  <img
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    data-alt="Wicked Poster"
+                    src="[RANK01]"
+                  />
+                </div>
+                <div class="mt-4 px-2 pb-2">
+                  <h3
+                    class="font-headline-md text-white group-hover:text-primary transition-colors text-[22px] mb-1"
+                  >
+                    Wicked
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <p
+                      class="text-on-surface-variant font-label-sm text-[11px]"
+                    >
+                      MUSICAL | BLUE SQUARE
+                    </p>
+                    <span class="text-primary font-label-sm text-[11px]"
+                      >8.5%</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Rank 2~4 동일 구조, 지그재그 margin -->
+          </div>
+        </div>
+      </section>
+      <!-- Ticket Open Section -->
+      <section
+        class="relative bg-surface-container-lowest py-24 border-y border-white/5"
+      >
+        <div class="glow-accent bottom-0 right-0 opacity-50"></div>
+        <div class="max-w-container-max mx-auto px-6 lg:px-20 relative">
+          <div class="mb-16 flex items-center gap-6">
+            <h2
+              class="font-headline-lg text-[36px] text-white uppercase tracking-tighter"
+            >
+              Ticket Open
+            </h2>
+            <div
+              class="flex-grow h-[1px] bg-gradient-to-r from-primary/30 to-transparent"
+            ></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Open Item 1: Chicago [TICKET-CHICAGO] D-3 / 2026.11.20 14:00 / 열정적인 재즈... -->
+            <!-- Open Item 2: Beethoven [TICKET-BEETHOVEN] D-7(tertiary) / 2026.11.24 10:00 / 연말을 장식하는... -->
+            <div class="group flex gap-8 p-1 relative">
+              <div
+                class="flex-shrink-0 w-32 h-44 rounded overflow-hidden shadow-lg group-hover:scale-105 transition-all duration-500"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="Chicago Musical"
+                  src="[TICKET-CHICAGO]"
+                />
+              </div>
+              <div class="flex flex-col justify-center py-2">
+                <div class="flex gap-3 mb-3">
+                  <span
+                    class="bg-primary/20 text-primary border border-primary/30 px-3 py-0.5 rounded-full font-label-sm text-[10px] tracking-widest"
+                    >D-3</span
+                  >
+                  <span
+                    class="text-on-surface-variant font-label-sm text-[11px] flex items-center gap-1 opacity-60"
+                  >
+                    <span class="material-symbols-outlined text-[14px]"
+                      >calendar_today</span
+                    >
+                    2026.11.20 14:00
+                  </span>
+                </div>
+                <h4
+                  class="font-headline-md text-white text-[24px] mb-2 group-hover:text-primary transition-colors"
+                >
+                  CHICAGO: The Musical
+                </h4>
+                <p
+                  class="text-on-surface-variant font-body-md text-[14px] leading-relaxed mb-4"
+                >
+                  열정적인 재즈와 매혹적인 퍼포먼스의 귀환. 브로드웨이 최장기
+                  공연의 매력을 경험하세요.
+                </p>
+                <button
+                  class="w-fit text-[11px] font-label-md tracking-widest text-primary border-b border-primary/20 pb-0.5 hover:border-primary transition-all"
+                >
+                  SET REMINDER
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Genre Explore -->
+      <section
+        class="py-32 max-w-container-max mx-auto px-6 lg:px-20 overflow-hidden"
+      >
+        <h2
+          class="font-headline-lg text-[40px] text-white mb-2 text-center italic tracking-tight"
+        >
+          EXPERIENCE THE STAGE
+        </h2>
+        <p
+          class="text-on-surface-variant text-center tracking-[0.4em] text-[11px] mb-20 opacity-60"
+        >
+          CHOOSE YOUR GENRE
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <!-- Genre Musical [GENRE-MUSICAL] 01 / 음악과 춤이 어우러진... -->
+          <!-- Genre Play [GENRE-PLAY] 02 / 배우들의 숨소리까지... (md:mt-12 오프셋) -->
+          <!-- Genre Concert [GENRE-CONCERT] 03 / 전율이 느껴지는... -->
+          <div
+            class="relative h-[600px] rounded group cursor-pointer overflow-hidden shadow-2xl"
+          >
+            <img
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Musical Genre"
+              src="[GENRE-MUSICAL]"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 transition-opacity group-hover:opacity-100"
+            ></div>
+            <div class="absolute inset-0 border-[1px] border-white/5 m-4"></div>
+            <div class="absolute bottom-0 left-0 p-10 w-full">
+              <span
+                class="text-primary font-label-md tracking-widest text-[10px] mb-2 block opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0"
+                >01</span
+              >
+              <h3
+                class="font-display-lg text-[48px] text-white mb-4 leading-none"
+              >
+                Musical
+              </h3>
+              <div
+                class="h-[1px] w-0 group-hover:w-full bg-primary transition-all duration-700 mb-4"
+              ></div>
+              <p
+                class="text-on-surface-variant text-[14px] leading-relaxed max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-700 opacity-0 group-hover:opacity-100"
+              >
+                음악과 춤이 어우러진 화려한 감동의 무대를 확인하세요.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Notice & Promotion -->
+      <section class="pb-32 max-w-container-max mx-auto px-6 lg:px-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <!-- Membership Banner (lg:col-span-8) -->
+          <div
+            class="lg:col-span-8 relative h-[400px] rounded-xl overflow-hidden glass-panel border-primary/20 flex flex-col justify-center px-16 group cursor-pointer"
+          >
+            <div
+              class="absolute right-[-100px] bottom-[-100px] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-1000"
+            ></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="w-10 h-[1px] bg-primary"></span>
+                <span
+                  class="text-primary font-label-md tracking-[0.2em] text-[12px]"
+                  >MEMBERSHIP ONLY</span
+                >
+              </div>
+              <h3
+                class="font-headline-lg text-[42px] text-white mb-4 leading-tight"
+              >
+                LOOOGOO <br /><span class="italic">Gold Pass</span> Membership
+              </h3>
+              <p
+                class="text-on-surface-variant font-body-lg text-[18px] max-w-md mb-8 leading-relaxed"
+              >
+                선예매 권한과 멤버십 전용 20% 할인을 <br />가장 먼저 만나보세요.
+              </p>
+              <button
+                class="bg-white text-primary-container font-label-md px-10 py-4 rounded-full hover:shadow-2xl transition-all hover:scale-105 active:scale-95"
+              >
+                JOIN NOW
+              </button>
+            </div>
+          </div>
+          <!-- Latest Notice (lg:col-span-4) 공지 3건: 2026.11.15 시스템 정기 점검 / 2026.11.12 겨울 시즌 뮤지컬 조기예매 / 2026.11.10 티켓 취소 및 환불 규정 변경 -->
+          <div class="lg:col-span-4 glass-panel rounded-xl p-10 flex flex-col">
+            <div class="flex justify-between items-center mb-10">
+              <h3 class="font-label-md tracking-widest text-white text-[16px]">
+                NOTICE
+              </h3>
+              <button
+                class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
+              >
+                <span class="material-symbols-outlined text-[20px]">add</span>
+              </button>
+            </div>
+            <div class="space-y-10 flex-grow">
+              <div class="group cursor-pointer">
+                <span
+                  class="text-primary font-label-sm text-[10px] tracking-widest mb-2 block opacity-60"
+                  >2026.11.15</span
+                >
+                <p
+                  class="text-on-surface group-hover:text-primary transition-colors font-medium border-b border-white/5 pb-4"
+                >
+                  시스템 정기 점검 안내 (11/25)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer: 로고 + 소개문 / SERVICES(Musical,Theater,Concert) / SUPPORT(FAQ,Notice,Q&A) / NEWSLETTER(이메일 입력) / © 2026 LOOOGOO / Privacy Policy · Terms of Service -->
+    <footer
+      class="bg-[#08080E] border-t border-white/5 w-full py-20 relative overflow-hidden"
+    >
+      <div
+        class="max-w-container-max mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-12 gap-16 relative z-10"
+      >
+        <div class="md:col-span-4 flex flex-col gap-6">
+          <div
+            class="font-display-lg-mobile text-[32px] font-bold tracking-tighter text-primary"
+          >
+            <img alt="LOOOGOO" class="h-12 w-auto" src="[LOGO]" />
+          </div>
+          <p
+            class="max-w-xs font-body-md text-[14px] text-on-surface-variant leading-relaxed opacity-70"
+          >
+            프리미엄 공연 예매 플랫폼 LOOOGOO. <br />공연의 감동을 가장 특별하게
+            전달합니다.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

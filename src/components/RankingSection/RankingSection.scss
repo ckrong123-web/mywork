@@ -4,15 +4,15 @@
 .hero-transition {
   position: relative;
   z-index: 10;
-  height: 150px;
-  margin-top: -150px;
+  height: 15rem;
+  margin-top: -15rem;
   background: var(--section-transition);
   pointer-events: none;
 }
 
 .ranking {
   position: relative;
-  padding-block: 96px;
+  padding-block: 9.6rem;
   background: var(--color-background);
   overflow: hidden;
 
@@ -20,40 +20,43 @@
   &::before {
     content: "";
     position: absolute;
-    top: -160px;
-    left: -160px;
-    width: 400px;
-    height: 400px;
+    top: -16rem;
+    left: -16rem;
+    width: 40rem;
+    height: 40rem;
     border-radius: 50%;
     background: var(--glow-accent);
-    filter: blur(60px);
+    filter: blur(6rem);
     pointer-events: none;
   }
 
   &__header {
+    @include scroll-reveal;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 80px;
+    margin-bottom: 8rem;
   }
 
   &__title {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 12px;
+    gap: 1.6rem;
+    margin-bottom: 1.2rem;
     font-family: var(--font-display);
     font-size: var(--font-size-section);
     color: var(--color-white);
   }
 
   &__title-line {
-    width: 48px;
-    height: 1px;
+    width: 4.8rem;
+    height: 0.1rem;
     background: var(--color-hairline-20);
   }
 
   &__subtitle {
+    font-size: 1.6rem;
     font-weight: var(--font-weight-light);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-on-surface-variant);
@@ -61,17 +64,19 @@
 
   // VIEW ALL(공통 Button variant="text") — primary 텍스트 + 아이콘 간격 보정
   &__view-all.btn {
-    gap: 12px;
+    gap: 1.2rem;
     flex-shrink: 0;
     color: var(--color-primary);
   }
 
   &__view-all-icon {
-    @include icon-circle(32px);
+    @include icon-circle(3.2rem);
 
     border-color: var(--btn-glass-border);
-    font-size: 16px;
-    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 1.6rem;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease;
   }
 
   &__view-all:hover &__view-all-icon {
@@ -82,14 +87,14 @@
   &__scroller-wrap {
     position: relative;
     overflow: hidden;
-    padding-bottom: 20px;
+    padding-bottom: 2rem;
   }
 
   &__scroller {
     display: flex;
     align-items: center;
-    gap: 48px;
-    padding-block: 48px;
+    gap: 4.8rem;
+    padding-block: 4.8rem;
     padding-inline: var(--space-md);
     overflow-x: auto;
     list-style: none;

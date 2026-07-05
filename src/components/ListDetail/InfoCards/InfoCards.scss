@@ -1,0 +1,39 @@
+@use "../../../styles/mixins" as *;
+
+.info-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+
+  @include respond-md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__card {
+    padding: var(--space-md);
+    background: var(--glass-panel-bg);
+    border: 0.1rem solid var(--color-hairline-strong);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(var(--glass-panel-blur));
+  }
+
+  &__icon {
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  &__label {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-on-surface-variant);
+  }
+
+  &__value {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-on-surface);
+  }
+}

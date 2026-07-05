@@ -2,15 +2,15 @@
 
 .ticket-card {
   display: flex;
-  gap: 32px;
-  padding: 4px;
+  gap: 3.2rem;
+  padding: 0.4rem;
 
   &__poster {
     @include media-frame(var(--radius-default));
 
     flex-shrink: 0;
-    width: 128px;
-    height: 176px;
+    width: 12.8rem;
+    height: 17.6rem;
     box-shadow: var(--shadow-card);
   }
 
@@ -22,22 +22,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-block: 8px;
+    padding-block: 0.8rem;
   }
 
   &__meta {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
   }
 
   &__badge {
-    padding: 2px 12px;
+    padding: 0.2rem 1.2rem;
     font-size: var(--font-size-label-xs);
     letter-spacing: var(--letter-spacing-wide);
     border-radius: var(--radius-full);
-    border: 1px solid transparent;
+    border: 0.1rem solid transparent;
   }
 
   &__badge--primary {
@@ -55,18 +55,18 @@
   &__date {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 0.4rem;
     font-size: var(--font-size-label-xs);
     color: var(--color-on-surface-variant);
     opacity: 0.6;
   }
 
   &__date-icon {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
   &__title {
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
     font-family: var(--font-display);
     font-size: var(--font-size-ticket-title);
     color: var(--color-white);
@@ -74,7 +74,7 @@
   }
 
   &__desc {
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     line-height: 1.7;

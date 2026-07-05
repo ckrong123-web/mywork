@@ -2,17 +2,17 @@
 
 .footer {
   position: relative;
-  padding-block: 80px;
+  padding-block: 8rem;
   background: var(--color-footer-bg);
-  border-top: 1px solid var(--color-hairline);
+  border-top: 0.1rem solid var(--color-hairline);
   overflow: hidden;
 
   &__sr-only {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    width: 0.1rem;
+    height: 0.1rem;
     padding: 0;
-    margin: -1px;
+    margin: -0.1rem;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -25,7 +25,7 @@
 
     display: grid;
     grid-template-columns: 1fr;
-    gap: 64px;
+    gap: 6.4rem;
 
     @include respond-md {
       grid-template-columns: repeat(12, 1fr);
@@ -35,20 +35,22 @@
   &__brand {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 2.4rem;
 
     @include respond-md {
       grid-column: span 4;
     }
   }
 
-  &__logo img {
-    height: 48px;
-    width: auto;
+  &__logo {
+    font-family: var(--font-display);
+    font-size: var(--font-size-card-title);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-primary);
   }
 
   &__intro {
-    max-width: 20rem;
+    max-width: 32rem;
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     line-height: 1.7;
@@ -58,7 +60,7 @@
 
   &__social {
     display: flex;
-    gap: 16px;
+    gap: 1.6rem;
   }
 
   // 소셜 버튼(공통 Button variant="ghost") — 고유 hover만 보정
@@ -76,7 +78,7 @@
   }
 
   &__col-title {
-    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
     font-family: var(--font-body);
     font-size: var(--font-size-label);
     letter-spacing: var(--letter-spacing-wide);
@@ -86,7 +88,7 @@
   &__links {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.6rem;
     list-style: none;
   }
 
@@ -107,7 +109,7 @@
   }
 
   &__newsletter-desc {
-    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
     font-size: var(--font-size-body);
     line-height: 1.7;
     color: var(--color-on-surface-variant);
@@ -117,13 +119,13 @@
   &__form {
     display: flex;
     align-items: center;
-    max-width: 20rem;
-    border-bottom: 1px solid var(--color-hairline-strong);
+    max-width: 32rem;
+    border-bottom: 0.1rem solid var(--color-hairline-strong);
   }
 
   &__input {
     flex-grow: 1;
-    padding: 8px 0;
+    padding: 0.8rem 0;
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     color: var(--color-on-surface);
@@ -139,12 +141,12 @@
 
   // 뉴스레터 제출(공통 Button variant="icon") — primary 색 + 이동 hover 보정
   &__submit.btn {
-    padding: 8px;
+    padding: 0.8rem;
     color: var(--color-primary);
 
     &:hover {
       color: var(--color-primary);
-      transform: translateX(4px);
+      transform: translateX(0.4rem);
     }
   }
 
@@ -154,10 +156,10 @@
 
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--color-hairline);
+    gap: 1.6rem;
+    margin-top: 6.4rem;
+    padding-top: 3.2rem;
+    border-top: 0.1rem solid var(--color-hairline);
 
     @include respond-md {
       flex-direction: row;
@@ -175,7 +177,7 @@
   &__legal {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1.2rem;
   }
 
   &__legal-link {
