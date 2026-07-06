@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "predeploy": "cross-env GITHUB_PAGES=true npm run build",
-    "deploy": "gh-pages -d out",
+    "deploy": "gh-pages -d out --dotfiles",
     "postinstall": "patch-package"
   },
   "dependencies": {
