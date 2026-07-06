@@ -2,8 +2,8 @@
 
 .rank-card {
   position: relative;
-  flex-shrink: 0;
-  width: 28rem;
+  display: block;
+  width: 100%;
   transition: transform 0.5s ease;
 
   // 배경 랭킹 숫자(장식) — content: attr(data-rank)
@@ -11,7 +11,7 @@
     content: attr(data-rank);
     position: absolute;
     top: -6.4rem;
-    left: -3.2rem;
+    left: -1.2rem;
     z-index: 0;
     font-family: var(--font-display);
     font-style: italic;
@@ -20,22 +20,19 @@
     color: var(--color-primary);
     opacity: 0.08;
     pointer-events: none;
-  }
-
-  // 지그재그 오프셋
-  &--down {
-    margin-top: 6.4rem;
-
-    &:hover {
-      transform: translateY(-1.6rem);
+    @include respond-md {
+      top: -10.4rem;
+      left: -3.2rem;
     }
   }
 
-  &--up {
-    margin-top: -6.4rem;
-
+  @include respond-hover {
     &:hover {
-      transform: translateY(1.6rem);
+      transform: translateY(-1.6rem);
+
+      .rank-card__poster::after {
+        opacity: 0.5;
+      }
     }
   }
 
@@ -52,7 +49,21 @@
   &__poster {
     @include media-frame(var(--radius-default));
 
-    aspect-ratio: 2 / 3;
+    position: relative;
+    aspect-ratio: 3 / 4;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: calc(100% - 2.4rem);
+      height: calc(100% - 2.4rem);
+      top: 1.2rem;
+      left: 1.2rem;
+      border: 1px solid #fff;
+      opacity: 0.2;
+      transition: 0.3s ease;
+    }
   }
 
   &__image {
@@ -62,12 +73,16 @@
   &__body {
     margin-top: 1.6rem;
     padding: 0 0.8rem 0.8rem;
+    @include respond-md {
+      min-height: 10rem;
+    }
   }
 
   &__title {
     margin-bottom: 0.4rem;
     font-family: var(--font-display);
     font-size: var(--font-size-card-title);
+    line-height: 1.2;
     color: var(--color-white);
     transition: color 0.3s ease;
   }
@@ -75,7 +90,6 @@
   &__meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
   }
 
   &__genre {
@@ -83,17 +97,14 @@
     color: var(--color-on-surface-variant);
   }
 
-  &__percent {
-    font-size: var(--font-size-label-xs);
-    color: var(--color-primary);
-  }
-
   // group-hover 효과 (카드 hover 시 내부 요소 변화)
-  &:hover &__image {
-    transform: scale(1.1);
-  }
+  @include respond-hover {
+    &:hover &__image {
+      transform: scale(1.1);
+    }
 
-  &:hover &__title {
-    color: var(--color-primary);
+    &:hover &__title {
+      color: var(--color-primary);
+    }
   }
 }

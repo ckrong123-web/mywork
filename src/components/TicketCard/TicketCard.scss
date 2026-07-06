@@ -2,16 +2,28 @@
 
 .ticket-card {
   display: flex;
-  gap: 3.2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
   padding: 0.4rem;
+
+  @include respond-md {
+    flex-direction: row;
+    gap: 3.2rem;
+  }
 
   &__poster {
     @include media-frame(var(--radius-default));
-
-    flex-shrink: 0;
-    width: 12.8rem;
-    height: 17.6rem;
     box-shadow: var(--shadow-card);
+    flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 176 / 128;
+
+    @include respond-md {
+      width: 25%;
+      min-width: 12.8rem;
+      aspect-ratio: 128 / 176;
+    }
   }
 
   &__image {
@@ -23,6 +35,11 @@
     flex-direction: column;
     justify-content: center;
     padding-block: 0.8rem;
+
+    .btn {
+      min-width: auto;
+      margin-left: auto;
+    }
   }
 
   &__meta {
@@ -82,11 +99,13 @@
   }
 
   // group-hover
-  &:hover &__image {
-    transform: scale(1.05);
-  }
+  @include respond-hover {
+    &:hover &__image {
+      transform: scale(1.05);
+    }
 
-  &:hover &__title {
-    color: var(--color-primary);
+    &:hover &__title {
+      color: var(--color-primary);
+    }
   }
 }

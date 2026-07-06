@@ -11,20 +11,25 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: hidden;
+    overflow: clip;
     background: var(--glass-card-bg);
     border: 0.1rem solid var(--glass-border);
     border-radius: var(--radius-xl);
     backdrop-filter: blur(var(--glass-blur));
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &__media {
     position: relative;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    overflow: clip;
+    @include respond-md {
+      aspect-ratio: 3 / 4;
+      padding-block: 9.6rem;
+    }
   }
 
   &__image {
@@ -73,12 +78,10 @@
 
   &__title {
     margin-bottom: var(--space-xs);
-    overflow: hidden;
+    overflow: clip;
     font-family: var(--font-display);
     font-size: var(--font-size-ticket-title);
     color: var(--color-white);
-    text-overflow: ellipsis;
-    white-space: nowrap;
     transition: color 0.3s ease;
   }
 
@@ -108,7 +111,7 @@
 
   &__desc {
     display: -webkit-box;
-    overflow: hidden;
+    overflow: clip;
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     line-height: 1.6;
@@ -117,17 +120,19 @@
     -webkit-line-clamp: 2;
   }
 
-  &:hover &__frame {
-    border-color: var(--color-primary);
-    box-shadow: var(--glass-card-glow);
-    transform: translateY(-0.4rem);
-  }
+  @include respond-hover {
+    &:hover &__frame {
+      border-color: var(--color-primary);
+      box-shadow: var(--glass-card-glow);
+      transform: translateY(-0.4rem);
+    }
 
-  &:hover &__image {
-    transform: scale(1.1);
-  }
+    &:hover &__image {
+      transform: scale(1.1);
+    }
 
-  &:hover &__title {
-    color: var(--color-primary);
+    &:hover &__title {
+      color: var(--color-primary);
+    }
   }
 }

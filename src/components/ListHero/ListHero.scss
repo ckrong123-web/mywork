@@ -6,7 +6,7 @@
   align-items: flex-end;
   justify-content: center;
   height: clamp(42rem, 60vh, 61.4rem);
-  overflow: hidden;
+  overflow: clip;
 
   &__media {
     position: absolute;
@@ -39,9 +39,12 @@
 
   &__content {
     position: relative;
-    z-index: 10;
-    padding-bottom: var(--space-xl);
     text-align: center;
+    padding-bottom: var(--space-lg);
+
+    @include respond-md {
+      padding-bottom: var(--space-xl);
+    }
   }
 
   &__title {

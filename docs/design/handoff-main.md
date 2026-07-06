@@ -104,7 +104,7 @@ interface HeaderProps {
      - 2줄: `OF THE OPERA` — 좌측 들여쓰기 `padding-left:64px`(원본 pl-16).
      - 줄바꿈은 `<br>` 대신 2개의 `<span>` 블록 권장(반응형/의미 유지). 스크린리더용으로는 자연스러운 한 문장으로 읽히게.
   3. **설명문** `<p>`: `--font-body`, `color: var(--color-on-surface-variant)`(약 90% opacity), `max-width: 32rem`, `line-height` 여유, **좌측 보더** `border-left: 2px solid` (primary 30% → `rgba(200,191,255,0.3)`; 토큰 `--btn-glass-border` 재사용 가능), `padding-left:24px`, 세로 margin 16px.
-     - 문구: "가면 속에 숨겨진 전설적인 사랑 이야기. 샤롯데씨어터에서 펼쳐지는 황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는 압도적인 무대 메커니즘을 만나보실 수 있습니다."
+     - 문구: "가면 속에 숨겨진 전설적인 사랑 이야기. 샤샤샤씨어터에서 펼쳐지는 황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는 압도적인 무대 메커니즘을 만나보실 수 있습니다."
   4. **버튼 2개** flex gap 20px, 패딩 16px 48px, `border-radius: var(--radius-full)`:
      - `Book Now`(primary): 배경 `--color-primary-container`, 텍스트 white, `box-shadow: var(--shadow-primary)`, hover 배경 `--color-inverse-primary`, `:active scale(.95)`.
      - `Learn More`(glass): `background: var(--btn-glass-bg)`, `backdrop-filter: blur(var(--btn-glass-blur))`, `border:1px solid var(--btn-glass-border)`, `box-shadow: var(--btn-glass-shadow)`. hover: bg `--btn-glass-bg-hover`, border `--btn-glass-border-hover`, shadow `--btn-glass-shadow-hover`.

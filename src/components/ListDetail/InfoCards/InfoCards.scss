@@ -3,18 +3,22 @@
 .info-cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
+  gap: 1.6rem;
 
   @include respond-md {
+    gap: var(--space-md);
     grid-template-columns: repeat(3, 1fr);
   }
 
   &__card {
-    padding: var(--space-md);
+    padding: 2rem var(--space-md);
     background: var(--glass-panel-bg);
     border: 0.1rem solid var(--color-hairline-strong);
     border-radius: var(--radius-xl);
     backdrop-filter: blur(var(--glass-panel-blur));
+    @include respond-md {
+      padding: var(--space-md);
+    }
   }
 
   &__icon {

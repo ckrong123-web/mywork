@@ -4,12 +4,17 @@
   position: static;
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  padding: var(--space-lg);
+  gap: var(--space-md);
+  padding: var(--space-md);
   background: var(--glass-panel-bg);
   border: 0.1rem solid var(--color-hairline-strong);
   border-radius: var(--radius-xl);
   backdrop-filter: blur(var(--glass-panel-blur));
+
+  @include respond-md {
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+  }
 
   @include respond-lg {
     position: sticky;
@@ -20,9 +25,12 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
     border-bottom: 0.1rem solid
       color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
+    @include respond-md {
+      padding-bottom: var(--space-md);
+    }
   }
 
   &__title {
@@ -86,7 +94,9 @@
     border: none;
     border-radius: var(--radius-full);
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
   }
 
   &__day:disabled {
@@ -95,12 +105,14 @@
     cursor: default;
   }
 
-  &__day--open:not(:disabled):hover {
-    background: color-mix(
-      in srgb,
-      var(--color-primary-container) 30%,
-      transparent
-    );
+  @include respond-hover {
+    &__day--open:not(:disabled):hover {
+      background: color-mix(
+        in srgb,
+        var(--color-primary-container) 30%,
+        transparent
+      );
+    }
   }
 
   &__day--today {
@@ -127,11 +139,15 @@
     border: 0.1rem solid var(--color-outline-variant);
     border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
   }
 
-  &__session:hover {
-    border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  @include respond-hover {
+    &__session:hover {
+      border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+    }
   }
 
   &__session--selected {
@@ -197,11 +213,15 @@
 .btn.booking-widget__book {
   gap: var(--space-base);
   width: 100%;
-  padding: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
   font-size: var(--font-size-ticket-title);
   border-radius: var(--radius-xl);
-
-  &:hover {
-    box-shadow: var(--btn-glass-shadow-hover);
+  @include respond-md {
+    padding: var(--space-md);
+  }
+  @include respond-hover {
+    &:hover {
+      box-shadow: var(--btn-glass-shadow-hover);
+    }
   }
 }

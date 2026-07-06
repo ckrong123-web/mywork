@@ -23,7 +23,7 @@ export default function Home() {
         <main>
           <Hero slides={HERO_SLIDES} />
           <div className="hero-transition" aria-hidden="true" />
-          <RankingSection items={RANK_ITEMS} viewAllHref="#" />
+          <RankingSection items={RANK_ITEMS} viewAllHref="/list/weeklytop" />
           <TicketOpen items={TICKET_ITEMS} />
           <GenreExplore items={GENRE_ITEMS} />
           <NoticePromotion membership={MEMBERSHIP} notices={NOTICES} />

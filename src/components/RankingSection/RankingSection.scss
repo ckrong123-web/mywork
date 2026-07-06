@@ -12,9 +12,13 @@
 
 .ranking {
   position: relative;
-  padding-block: 9.6rem;
+  padding-block: 4rem;
   background: var(--color-background);
-  overflow: hidden;
+  overflow: clip;
+
+  @include respond-md {
+    padding-block: 9.6rem;
+  }
 
   // glow accent(장식) — 좌상단 방사형 발광
   &::before {
@@ -34,39 +38,60 @@
     @include scroll-reveal;
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8rem;
+    flex-direction: column;
+    margin-bottom: 3.2rem;
+    @include respond-md {
+      margin-bottom: 8rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__title {
     display: flex;
     align-items: center;
     gap: 1.6rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
     font-family: var(--font-display);
     font-size: var(--font-size-section);
     color: var(--color-white);
+    @include respond-md {
+      margin-bottom: 1.2rem;
+    }
   }
 
   &__title-line {
+    flex-grow: 1;
     width: 4.8rem;
     height: 0.1rem;
     background: var(--color-hairline-20);
+    @include respond-md {
+      flex-grow: 0;
+    }
   }
 
   &__subtitle {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: var(--font-weight-light);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-on-surface-variant);
+    @include respond-md {
+      font-size: 1.6rem;
+    }
   }
 
   // VIEW ALL(공통 Button variant="text") — primary 텍스트 + 아이콘 간격 보정
   &__view-all.btn {
+    justify-content: flex-end;
     gap: 1.2rem;
     flex-shrink: 0;
     color: var(--color-primary);
+    margin-top: 1.2rem;
+    @include respond-md {
+      margin-top: 0;
+      justify-content: center;
+    }
   }
 
   &__view-all-icon {
@@ -79,32 +104,110 @@
       color 0.3s ease;
   }
 
-  &__view-all:hover &__view-all-icon {
-    background: var(--color-primary);
-    color: var(--color-on-primary);
+  @include respond-hover {
+    &__view-all:hover &__view-all-icon {
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+    }
   }
 
   &__scroller-wrap {
     position: relative;
-    overflow: hidden;
-    padding-bottom: 2rem;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5rem;
+      height: 100%;
+      left: -1px;
+      bottom: 0;
+      z-index: 3;
+      background-image: linear-gradient(
+        -90deg,
+        rgba(11, 11, 21, 0),
+        rgba(11, 11, 21, 1)
+      );
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5rem;
+      height: 100%;
+      right: -1px;
+      bottom: 0;
+      z-index: 2;
+      background-image: linear-gradient(
+        90deg,
+        rgba(11, 11, 21, 0),
+        rgba(11, 11, 21, 1)
+      );
+    }
   }
 
-  &__scroller {
-    display: flex;
-    align-items: center;
-    gap: 4.8rem;
-    padding-block: 4.8rem;
+  &__swiper {
+    padding-block: 8rem 4.8rem;
     padding-inline: var(--space-md);
-    overflow-x: auto;
-    list-style: none;
 
     @include respond-lg {
+      padding-block: 11rem 4.8rem;
       padding-inline: var(--space-xl);
     }
   }
 
   &__item {
-    flex-shrink: 0;
+    height: auto;
+
+    &--even {
+      margin-top: 6.4rem;
+    }
+
+    // 진입 시 1~4번째 슬라이드만 순서대로 페이드인 + 슬라이드업(1rem)
+    // Swiper loop 모드는 카드 DOM을 복제/재생성하므로 각 카드에 data-scroll을
+    // 직접 걸면(locomotive-scroll이 추적을 못 함) 복제본이 영영 숨어버린다.
+    // 대신 안정적인 상위 래퍼(&__scroller-wrap)의 is-inview를 트리거로 삼아
+    // CSS 애니메이션으로 처리하면 복제된 카드도 마운트 시점에 함께 재생된다.
+    &--reveal {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+
+    &--reveal-1 {
+      animation-delay: 0s;
+    }
+
+    &--reveal-2 {
+      animation-delay: 0.12s;
+    }
+
+    &--reveal-3 {
+      animation-delay: 0.24s;
+    }
+
+    &--reveal-4 {
+      animation-delay: 0.36s;
+    }
   }
+}
+
+@keyframes ranking-item-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ranking__scroller-wrap.is-inview .ranking__item--reveal {
+  animation-name: ranking-item-reveal;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
 }

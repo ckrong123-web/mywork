@@ -1,0 +1,13 @@
+diff --git a/node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js b/node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js
+index e8653c6..a5b87af 100644
+--- a/node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js
++++ b/node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js
+@@ -1893,7 +1893,7 @@ function getTranslate(el) {
+   var translate = {};
+   if (!window.getComputedStyle) return;
+   var style = getComputedStyle(el);
+-  var transform = style.transform || style.webkitTransform || style.mozTransform;
++  var transform = style.transform || style.webkitTransform || style.mozTransform || 'none';
+   var mat = transform.match(/^matrix3d\((.+)\)$/);
+ 
+   if (mat) {

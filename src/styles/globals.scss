@@ -16,6 +16,7 @@
 html {
   height: 100%;
   color-scheme: dark;
+  // overflow: hidden;
 }
 
 html,
@@ -90,5 +91,9 @@ button {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }

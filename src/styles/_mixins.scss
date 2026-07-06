@@ -16,6 +16,14 @@
   }
 }
 
+// hover 전용 브레이크포인트(PC) — 1080px 미만(모바일/태블릿)에서는
+// 터치 환경에서 hover 상태가 그대로 눌러붙는 문제를 막기 위해 hover 효과를 끈다.
+@mixin respond-hover {
+  @media (min-width: 1080px) {
+    @content;
+  }
+}
+
 // 컨테이너(max-width 1280 + 가운데 정렬 + 좌우 패딩 24/80)를
 // 섹션 자체에 직접 부여할 때 사용.
 @mixin container {
@@ -50,7 +58,7 @@
 // -----------------------------------------------------------------------------
 @mixin media-frame($radius: var(--radius-default)) {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   border-radius: $radius;
 }
 
@@ -67,7 +75,9 @@
 @mixin scroll-reveal($distance: 3.2rem, $duration: 1.04s) {
   opacity: 0;
   transform: translateY($distance);
-  transition: opacity $duration ease, transform $duration ease;
+  transition:
+    opacity $duration ease,
+    transform $duration ease;
 
   &.is-inview {
     opacity: 1;

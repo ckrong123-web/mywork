@@ -2,10 +2,10 @@
 
 .footer {
   position: relative;
-  padding-block: 8rem;
+  padding-block: 4rem;
   background: var(--color-footer-bg);
   border-top: 0.1rem solid var(--color-hairline);
-  overflow: hidden;
+  overflow: clip;
 
   &__sr-only {
     position: absolute;
@@ -13,10 +13,13 @@
     height: 0.1rem;
     padding: 0;
     margin: -0.1rem;
-    overflow: hidden;
+    overflow: clip;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+  @include respond-md {
+    padding-block: 8rem;
   }
 
   // ---- 상단 그리드 (12컬럼: 4 / 2 / 2 / 4) ----
@@ -25,9 +28,10 @@
 
     display: grid;
     grid-template-columns: 1fr;
-    gap: 6.4rem;
+    gap: 3.2rem;
 
     @include respond-md {
+      gap: 6.4rem;
       grid-template-columns: repeat(12, 1fr);
     }
   }
@@ -35,9 +39,10 @@
   &__brand {
     display: flex;
     flex-direction: column;
-    gap: 2.4rem;
+    gap: 1.2rem;
 
     @include respond-md {
+      gap: 2.4rem;
       grid-column: span 4;
     }
   }
@@ -65,9 +70,11 @@
 
   // 소셜 버튼(공통 Button variant="ghost") — 고유 hover만 보정
   &__social-btn.btn {
-    &:hover {
-      color: var(--color-primary);
-      border-color: var(--color-primary);
+    @include respond-hover {
+      &:hover {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
     }
   }
 
@@ -78,18 +85,24 @@
   }
 
   &__col-title {
-    margin-bottom: 2.4rem;
+    margin-bottom: 1rem;
     font-family: var(--font-body);
     font-size: var(--font-size-label);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-on-surface-variant);
+    @include respond-md {
+      margin-bottom: 2.4rem;
+    }
   }
 
   &__links {
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 0.6rem;
     list-style: none;
+    @include respond-md {
+      gap: 1.6rem;
+    }
   }
 
   &__link {
@@ -97,8 +110,10 @@
     color: var(--color-on-surface-variant);
     transition: color 0.3s ease;
 
-    &:hover {
-      color: var(--color-primary);
+    @include respond-hover {
+      &:hover {
+        color: var(--color-primary);
+      }
     }
   }
 
@@ -109,18 +124,23 @@
   }
 
   &__newsletter-desc {
-    margin-bottom: 2.4rem;
+    margin-bottom: 0.7rem;
     font-size: var(--font-size-body);
     line-height: 1.7;
     color: var(--color-on-surface-variant);
     opacity: 0.7;
+    @include respond-md {
+      margin-bottom: 2.4rem;
+    }
   }
 
   &__form {
     display: flex;
     align-items: center;
-    max-width: 32rem;
     border-bottom: 0.1rem solid var(--color-hairline-strong);
+    @include respond-md {
+      max-width: 32rem;
+    }
   }
 
   &__input {
@@ -141,12 +161,15 @@
 
   // 뉴스레터 제출(공통 Button variant="icon") — primary 색 + 이동 hover 보정
   &__submit.btn {
+    min-width: fit-content;
     padding: 0.8rem;
     color: var(--color-primary);
 
-    &:hover {
-      color: var(--color-primary);
-      transform: translateX(0.4rem);
+    @include respond-hover {
+      &:hover {
+        color: var(--color-primary);
+        transform: translateX(0.4rem);
+      }
     }
   }
 
@@ -156,12 +179,14 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
-    margin-top: 6.4rem;
-    padding-top: 3.2rem;
+    gap: 0.8rem;
+    margin-top: 3rem;
+    padding-top: 2.4rem;
     border-top: 0.1rem solid var(--color-hairline);
 
     @include respond-md {
+      gap: 1.6rem;
+      margin-top: 6.4rem;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -185,8 +210,10 @@
     color: var(--color-on-surface-variant);
     transition: color 0.3s ease;
 
-    &:hover {
-      color: var(--color-primary);
+    @include respond-hover {
+      &:hover {
+        color: var(--color-primary);
+      }
     }
   }
 

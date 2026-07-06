@@ -3,7 +3,11 @@
 .notice-promo {
   @include container;
 
-  padding-bottom: 12.8rem;
+  padding-bottom: 6rem;
+
+  @include respond-md {
+    padding-bottom: 12.8rem;
+  }
 
   &__sr-title {
     position: absolute;
@@ -11,7 +15,7 @@
     height: 0.1rem;
     padding: 0;
     margin: -0.1rem;
-    overflow: hidden;
+    overflow: clip;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
@@ -23,10 +27,14 @@
     display: grid;
     align-items: stretch;
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 2rem;
 
     @include respond-lg {
       grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include respond-md {
+      gap: 4rem;
     }
   }
 }
@@ -37,13 +45,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-inline: 6.4rem;
-  overflow: hidden;
+  padding: 2rem 2.4rem;
+  overflow: clip;
   border-radius: var(--radius-xl);
   background: var(--glass-bg);
   border: 0.1rem solid var(--btn-glass-border);
   backdrop-filter: blur(var(--glass-blur));
   cursor: pointer;
+
+  @include respond-md {
+    padding-inline: 6.4rem;
+  }
 
   @include respond-lg {
     grid-column: span 8;
@@ -64,8 +76,10 @@
     pointer-events: none;
   }
 
-  &:hover::after {
-    background: rgba(106, 90, 205, 0.2);
+  @include respond-hover {
+    &:hover::after {
+      background: rgba(106, 90, 205, 0.2);
+    }
   }
 
   &__content {
@@ -77,10 +91,13 @@
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.2rem;
     font-size: var(--font-size-label);
     letter-spacing: var(--letter-spacing-label);
     color: var(--color-primary);
+    @include respond-md {
+      margin-bottom: 2.4rem;
+    }
   }
 
   &__label-line {
@@ -102,11 +119,14 @@
   }
 
   &__desc {
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.6rem;
     font-family: var(--font-body);
     font-size: var(--font-size-body-lg);
-    line-height: 1.7;
+    line-height: 1.4;
     color: var(--color-on-surface-variant);
+    @include respond-md {
+      margin-bottom: 3.2rem;
+    }
   }
 }
 
@@ -114,11 +134,14 @@
 .notice {
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 2rem 2.4rem;
   border-radius: var(--radius-xl);
   background: var(--glass-bg);
   border: 0.1rem solid var(--glass-border);
   backdrop-filter: blur(var(--glass-blur));
+  @include respond-md {
+    padding: 4rem;
+  }
 
   @include respond-lg {
     grid-column: span 4;
@@ -128,7 +151,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    margin-bottom: 2.4rem;
+    @include respond-md {
+      margin-bottom: 4rem;
+    }
   }
 
   &__heading {
@@ -142,18 +168,23 @@
   &__more.btn {
     color: var(--color-on-surface);
 
-    &:hover {
-      background: var(--color-white);
-      color: var(--color-footer-bg);
+    @include respond-hover {
+      &:hover {
+        background: var(--color-white);
+        color: var(--color-footer-bg);
+      }
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 1.6rem;
     flex-grow: 1;
     list-style: none;
+    @include respond-md {
+      gap: 4rem;
+    }
   }
 
   &__date {
@@ -175,7 +206,9 @@
     transition: color 0.3s ease;
   }
 
-  &__link:hover &__title {
-    color: var(--color-primary);
+  @include respond-hover {
+    &__link:hover &__title {
+      color: var(--color-primary);
+    }
   }
 }

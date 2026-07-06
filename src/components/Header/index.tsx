@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Container from "../Container";
@@ -24,12 +24,25 @@ const DEFAULT_NAV: NavItem[] = [
   { label: "EXHIBIT", href: "/list?category=exhibit" },
 ];
 
+function stripTrailingSlash(path: string): string {
+  return path.length > 1 ? path.replace(/\/$/, "") : path;
+}
+
 function useActiveHref(): (href: string) => boolean {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const query = searchParams.toString();
-  const currentUrl = query ? `${pathname}?${query}` : pathname;
-  return (href: string) => href === currentUrl;
+  const currentUrl = query
+    ? `${stripTrailingSlash(pathname)}?${query}`
+    : stripTrailingSlash(pathname);
+
+  return (href: string) => {
+    const [hrefPath, hrefQuery] = href.split("?");
+    const normalizedHref = hrefQuery
+      ? `${stripTrailingSlash(hrefPath)}?${hrefQuery}`
+      : stripTrailingSlash(hrefPath);
+    return normalizedHref === currentUrl;
+  };
 }
 
 function DesktopNav({ navItems }: { navItems: NavItem[] }) {
@@ -81,6 +94,16 @@ function MobileNav({
           {item.label}
         </Link>
       ))}
+      <div className="header__mobile-actions">
+        <Button
+          type="button"
+          variant="primary"
+          size="sm"
+          className="header__mobile-ticket"
+        >
+          MY TICKET
+        </Button>
+      </div>
       <Button type="button" variant="text" className="header__mobile-login">
         LOGIN
       </Button>
@@ -111,8 +134,24 @@ function StaticNav({
 export default function Header({ navItems = DEFAULT_NAV }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const html = document.documentElement;
+    const { body } = document;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+    };
+  }, [menuOpen]);
+
   return (
-    <header className="header">
+    <header className={menuOpen ? "header header--menu-open" : "header"}>
       <Container className="header__inner">
         <Link href="/" className="header__logo" aria-label="LOOOGOO 홈">
           LOOOGOO
@@ -131,7 +170,12 @@ export default function Header({ navItems = DEFAULT_NAV }: HeaderProps) {
         </Suspense>
 
         <div className="header__actions">
-          <Button type="button" variant="icon" aria-label="검색">
+          <Button
+            type="button"
+            variant="icon"
+            className="header__search"
+            aria-label="검색"
+          >
             <Icon name="search" />
           </Button>
           <span className="header__divider" aria-hidden="true" />

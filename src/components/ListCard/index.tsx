@@ -24,7 +24,7 @@ export default function ListCard({ item }: ListCardProps) {
         <div className="list-card__meta">
           <span className="list-card__meta-row">
             <Icon name="location_on" className="list-card__meta-icon" />
-            {item.venue}
+            {item.detail?.location.name}
           </span>
           <span className="list-card__meta-row">
             <Icon name="trending_up" className="list-card__meta-icon" />

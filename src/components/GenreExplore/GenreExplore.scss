@@ -3,37 +3,49 @@
 .genre-explore {
   @include container;
 
-  padding-block: 12.8rem;
-  overflow: hidden;
+  padding-block: 6rem;
+  overflow: clip;
+  @include respond-md {
+    padding-block: 12.8rem;
+  }
 
   &__header {
     @include scroll-reveal;
   }
 
   &__title {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     font-family: var(--font-display);
-    // 원본 확정 사양: 40px 고정
-    font-size: 4rem;
+    // 원본 확정 사양: 40px 고정(모바일은 반응형 축소)
+    font-size: 2.4rem;
     font-style: italic;
     text-align: center;
     letter-spacing: var(--letter-spacing-tight);
     color: var(--color-white);
+
+    @include respond-md {
+      margin-bottom: 0.8rem;
+      font-size: 4rem;
+    }
   }
 
   &__subtitle {
-    margin-bottom: 8rem;
     font-size: var(--font-size-label-xs);
     text-align: center;
     letter-spacing: var(--letter-spacing-genre-sub);
     color: var(--color-on-surface-variant);
     opacity: 0.6;
+    margin-bottom: 3rem;
+
+    @include respond-md {
+      margin-bottom: 8rem;
+    }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4.8rem;
+    gap: 2rem 4.8rem;
 
     @include respond-md {
       grid-template-columns: repeat(3, 1fr);

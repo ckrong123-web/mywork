@@ -19,11 +19,23 @@
 }
 
 .btn--md {
-  padding: 1.6rem 4rem;
+  min-width: 100%;
+  padding: 0.8rem 0.5rem;
+
+  @include respond-md {
+    min-width: auto;
+    padding: 1.6rem 4rem;
+  }
 }
 
 .btn--lg {
-  padding: 1.6rem 4.8rem;
+  min-width: 100%;
+  padding: 0.8rem 0.5rem;
+
+  @include respond-md {
+    min-width: 17rem;
+    padding: 1.6rem 1.2rem;
+  }
 }
 
 // ---- primary (기본 채움: MY TICKET 기준) ----
@@ -47,10 +59,12 @@
   box-shadow: var(--btn-glass-shadow);
   backdrop-filter: blur(var(--btn-glass-blur));
 
-  &:hover {
-    background: var(--btn-glass-bg-hover);
-    border-color: var(--btn-glass-border-hover);
-    box-shadow: var(--btn-glass-shadow-hover);
+  @include respond-hover {
+    &:hover {
+      background: var(--btn-glass-bg-hover);
+      border-color: var(--btn-glass-border-hover);
+      box-shadow: var(--btn-glass-shadow-hover);
+    }
   }
 
   &:active {
@@ -64,9 +78,11 @@
   background: var(--color-white);
   border-radius: var(--radius-full);
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-card);
+  @include respond-hover {
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-card);
+    }
   }
 
   &:active {
@@ -82,8 +98,10 @@
   color: var(--color-primary);
   border-bottom: 0.1rem solid rgba(200, 191, 255, 0.2);
 
-  &:hover {
-    border-bottom-color: var(--color-primary);
+  @include respond-hover {
+    &:hover {
+      border-bottom-color: var(--color-primary);
+    }
   }
 }
 
@@ -92,8 +110,10 @@
   padding: 0;
   color: var(--color-on-surface-variant);
 
-  &:hover {
-    color: var(--color-primary);
+  @include respond-hover {
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }
 
@@ -101,9 +121,12 @@
 .btn--icon {
   padding: 0.4rem;
   color: var(--color-on-surface);
+  min-width: fit-content !important;
 
-  &:hover {
-    color: var(--color-primary);
+  @include respond-hover {
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }
 

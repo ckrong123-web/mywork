@@ -2,15 +2,20 @@
 
 .list-detail {
   &__body {
-    padding-block: var(--space-xl);
+    padding-block: var(--space-lg);
+
+    @include respond-md {
+      padding-block: var(--space-xl);
+    }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
 
     @include respond-lg {
+      gap: var(--space-xl);
       grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
       align-items: start;
     }
@@ -19,8 +24,11 @@
   &__main {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
     min-width: 0;
+    @include respond-md {
+      gap: var(--space-xl);
+    }
   }
 
   &__aside {

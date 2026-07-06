@@ -17,6 +17,8 @@ type GenreItemU = Extract<ListItem, { kind: "genre" }>;
 
 interface ListExplorerProps {
   items: ListItem[];
+  hideControls?: boolean;
+  defaultSort?: SortKey;
 }
 
 const TABS: { key: TabKey; label: string }[] = [
@@ -73,12 +75,16 @@ function sortVisible(items: ListItem[], sortKey: SortKey): ListItem[] {
   }
 }
 
-export default function ListExplorer({ items }: ListExplorerProps) {
+export default function ListExplorer({
+  items,
+  hideControls = false,
+  defaultSort = "latest",
+}: ListExplorerProps) {
   const searchParams = useSearchParams();
   const category = searchParams.get("category")?.toLowerCase() ?? null;
 
   const [activeTab, setActiveTab] = useState<TabKey>("all");
-  const [sortKey, setSortKey] = useState<SortKey>("latest");
+  const [sortKey, setSortKey] = useState<SortKey>(defaultSort);
 
   const visible = useMemo(() => {
     const byCategory = category
@@ -96,46 +102,48 @@ export default function ListExplorer({ items }: ListExplorerProps) {
 
   return (
     <section className="list-explorer">
-      <div className="list-explorer__bar">
-        <Container className="list-explorer__bar-inner">
-          <div
-            className="list-explorer__tabs"
-            role="tablist"
-            aria-label="공연 상태 필터"
-          >
-            {TABS.map((tab) => (
-              <button
-                key={tab.key}
-                type="button"
-                role="tab"
-                aria-selected={activeTab === tab.key}
-                className={
-                  activeTab === tab.key
-                    ? "list-explorer__tab list-explorer__tab--active"
-                    : "list-explorer__tab"
-                }
-                onClick={() => setActiveTab(tab.key)}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="list-explorer__sort">
-            <Icon name="sort" className="list-explorer__sort-icon" />
-            <select
-              aria-label="정렬 기준"
-              className="list-explorer__select"
-              value={sortKey}
-              onChange={(event) => setSortKey(event.target.value as SortKey)}
+      {!hideControls && (
+        <div className="list-explorer__bar">
+          <Container className="list-explorer__bar-inner">
+            <div
+              className="list-explorer__tabs"
+              role="tablist"
+              aria-label="공연 상태 필터"
             >
-              <option value="latest">Latest Release</option>
-              <option value="popular">Most Popular</option>
-              <option value="closing">Closing Soon</option>
-            </select>
-          </div>
-        </Container>
-      </div>
+              {TABS.map((tab) => (
+                <button
+                  key={tab.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === tab.key}
+                  className={
+                    activeTab === tab.key
+                      ? "list-explorer__tab list-explorer__tab--active"
+                      : "list-explorer__tab"
+                  }
+                  onClick={() => setActiveTab(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="list-explorer__sort">
+              <Icon name="sort" className="list-explorer__sort-icon" />
+              <select
+                aria-label="정렬 기준"
+                className="list-explorer__select"
+                value={sortKey}
+                onChange={(event) => setSortKey(event.target.value as SortKey)}
+              >
+                <option value="latest">Latest Release</option>
+                <option value="popular">Most Popular</option>
+                <option value="closing">Closing Soon</option>
+              </select>
+            </div>
+          </Container>
+        </div>
+      )}
 
       <Container className="list-explorer__results">
         {visible.length > 0 ? (

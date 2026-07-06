@@ -20,6 +20,14 @@
     backdrop-filter: blur(var(--glass-blur));
   }
 
+  // 모바일 메뉴가 열렸을 때: header__mobile 과 동일한 불투명 배경으로 전환(뒷배경 비침 방지)
+  &--menu-open::before {
+    opacity: 1;
+    background: var(--color-surface-container);
+    border-color: transparent;
+    backdrop-filter: none;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
@@ -52,8 +60,10 @@
     color: var(--color-on-surface-variant);
     transition: color 0.3s ease;
 
-    &:hover {
-      color: var(--color-primary);
+    @include respond-hover {
+      &:hover {
+        color: var(--color-primary);
+      }
     }
   }
 
@@ -82,15 +92,25 @@
     }
   }
 
-  // MY TICKET — 좁은 모바일에서 라벨 줄바꿈 방지
+  // MY TICKET — 좁은 모바일에서 라벨 줄바꿈 방지 + md 미만에서는 header__mobile 내부로 이동
   &__ticket.btn {
+    display: none;
     white-space: nowrap;
+
+    @include respond-md {
+      display: inline-flex;
+    }
   }
 
   &__divider {
+    display: none;
     width: 0.1rem;
     height: 1.6rem;
     background: var(--color-hairline-strong);
+
+    @include respond-md {
+      display: block;
+    }
   }
 
   // LOGIN(공통 Button variant="text") — 표시 규칙만 보정(lg 미만 숨김)
@@ -112,7 +132,7 @@
   // ---- 모바일 드롭다운 메뉴 ----
   &__mobile {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     background: var(--color-surface-container);
     border-bottom: 0.1rem solid var(--color-hairline);
 
@@ -121,11 +141,35 @@
     }
   }
 
+  // 열렸을 때: 헤더 아래 남은 화면을 가득 채우고 내부 스크롤만 허용(배경 스크롤은 JS 에서 차단)
+  &__mobile--open {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+  }
+
   &__mobile-nav {
     display: flex;
     flex-direction: column;
+    height: 100%;
     gap: 0.8rem;
     padding: 1.6rem var(--space-md) 2.4rem;
+  }
+
+  &__mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    margin-top: auto;
+    padding: 1.2rem 0.4rem;
+    border-bottom: 0.1rem solid var(--color-hairline);
+  }
+
+  &__mobile-ticket.btn {
+    flex: 1;
   }
 
   &__mobile-link {
@@ -143,8 +187,9 @@
 
   // 모바일 LOGIN(공통 Button variant="text") — 레이아웃만 보정
   &__mobile-login.btn {
-    justify-content: flex-start;
+    justify-content: flex-end;
     margin-top: 0.8rem;
     padding: 1.2rem 0.4rem;
+    text-align: right;
   }
 }

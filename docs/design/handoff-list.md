@@ -60,7 +60,7 @@
 
 목업의 `<header>` 히어로. 배경 이미지 + scrim + 중앙 하단 타이틀.
 
-- 태그: `<section>`(페이지 인트로) relative, `height: clamp(420px, 60vh, 614px)`(목업 614px), `overflow: hidden`, flex `align-items: flex-end; justify-content: center`.
+- 태그: `<section>`(페이지 인트로) relative, `height: clamp(420px, 60vh, 614px)`(목업 614px), `overflow: clip`, flex `align-items: flex-end; justify-content: center`.
 - **배경 레이어**(절대 `inset:0`, `z-index:0`):
   - 배경 이미지: `<Image fill sizes="100vw" priority className="list-hero__image" style={{objectFit:'cover'}}>`. 애셋 필요 → `/images/list-hero.jpg`(웅장한 극장 인테리어). `alt`는 장식 배경이므로 `alt=""`(제목이 텍스트로 존재) 또는 의미부여 시 "공연장 내부 전경". (목업 data-alt: "A grand, cinematic interior of an opulent Broadway theater before a performance.")
   - **blur 오버레이**(꾸밈): `::before` 절대 `inset:0`, `background: var(--color-background)` 40% + `backdrop-filter: blur(2px)`. (목업 `bg-background/40 backdrop-blur-[2px]`)

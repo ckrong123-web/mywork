@@ -8,10 +8,8 @@ export interface RankItem {
   rank: string;
   title: string;
   genre: string;
-  venue: string;
   percent: string;
   image: { src: string; alt: string };
-  offset: "up" | "down";
   href: string;
   detail?: ShowDetail;
 }
@@ -22,25 +20,21 @@ export default function RankCard({
   rank,
   title,
   genre,
-  venue,
-  percent,
   image,
-  offset,
   href,
+  detail,
 }: RankCardProps) {
+  const venue = detail?.location.name ?? "";
+
   return (
-    <Link
-      href={href}
-      className={`rank-card rank-card--${offset}`}
-      data-rank={rank}
-    >
+    <Link href={href} className="rank-card" data-rank={rank}>
       <div className="rank-card__frame">
         <div className="rank-card__poster">
           <Image
             src={image.src}
             alt={image.alt}
             fill
-            sizes="280px"
+            sizes="(min-width: 1024px) 30vw, (min-width: 768px) 40vw, 70vw"
             className="rank-card__image"
           />
         </div>
@@ -50,7 +44,6 @@ export default function RankCard({
             <span className="rank-card__genre">
               {genre} | {venue}
             </span>
-            <span className="rank-card__percent">{percent}</span>
           </div>
         </div>
       </div>

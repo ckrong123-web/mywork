@@ -173,8 +173,8 @@
   --space-md: 2.4rem; // 컨테이너 좌우 gutter(모바일)
   --space-lg: 4.8rem;
   --space-xl: 8rem; // 컨테이너 좌우 패딩(데스크톱 lg)
-  --container-max: 128rem;
-  --header-height: 8rem; // fixed Header 실측 높이(패딩 20*2 + 로고 40). List 페이지 sticky 필터바 offset 기준.
+  --container-max: 140rem;
+  --header-height: 7.2em;
 
   // ---------------------------------------------------------------------------
   // Radius — 원본 borderRadius (DEFAULT 2px 계열)
@@ -244,4 +244,28 @@
 
   // 노이즈 텍스처 오버레이(장식) — body::before
   --noise-opacity: 0.03;
+}
+
+// ---------------------------------------------------------------------------
+// 폰트 사이즈 — 모바일(<768px) 축소 오버라이드
+//   데스크톱 값은 원본(Google Stitch export) 고정 사양이라 그대로 두고,
+//   같은 커스텀 프로퍼티를 모바일 브레이크포인트에서만 재정의해 전반적으로 줄인다.
+//   (컴포넌트 SCSS는 그대로 var(--font-size-*)를 참조하므로 이 파일만 수정하면 전체 반영됨)
+// ---------------------------------------------------------------------------
+@media (max-width: 767px) {
+  :root {
+    --font-size-scroll: 1.2rem;
+    --font-size-label-xs: 1.2rem;
+    --font-size-label: 1.3rem;
+    --font-size-body: 1.3rem;
+    --font-size-notice: 1.4rem;
+    --font-size-body-lg: 1.4rem;
+    --font-size-card-title: 1.8rem;
+    --font-size-ticket-title: 1.5rem;
+    --font-size-section-sm: 2.4rem;
+    --font-size-membership: 2.8rem;
+    --font-size-section: 2.8rem;
+    --font-size-hero: 4rem;
+    --font-size-rank-number: 8rem;
+  }
 }

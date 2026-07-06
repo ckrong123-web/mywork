@@ -1,12 +1,14 @@
 @use "../../../styles/mixins" as *;
 
 .venue {
-  margin-top: var(--space-xl);
-  padding-block: var(--space-xl);
+  padding-block: var(--space-lg);
   background: var(--color-surface-container-lowest);
+  @include respond-md {
+    padding-block: var(--space-xl);
+  }
 
   &__heading {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     padding-left: var(--space-md);
     font-family: var(--font-display);
     font-style: italic;
@@ -14,15 +16,19 @@
     line-height: 1.1;
     color: var(--color-on-surface);
     border-left: 0.4rem solid var(--color-primary-container);
+    @include respond-md {
+      margin-bottom: var(--space-lg);
+    }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: var(--space-md);
     align-items: center;
 
     @include respond-md {
+      gap: var(--space-xl);
       grid-template-columns: 2fr 1fr;
     }
   }
@@ -30,7 +36,7 @@
   &__map {
     position: relative;
     height: 40rem;
-    overflow: hidden;
+    overflow: clip;
     background: var(--glass-panel-bg);
     border: 0.1rem solid var(--color-hairline-strong);
     border-radius: var(--radius-xl);
@@ -61,7 +67,11 @@
   &__info {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+
+    @include respond-md {
+      gap: var(--space-md);
+    }
   }
 
   &__name {
@@ -115,8 +125,10 @@
     transition: border-color 0.2s ease;
   }
 
-  &__directions:not(:disabled):hover {
-    border-color: var(--color-primary);
+  @include respond-hover {
+    &__directions:not(:disabled):hover {
+      border-color: var(--color-primary);
+    }
   }
 }
 

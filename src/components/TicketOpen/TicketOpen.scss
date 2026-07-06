@@ -2,11 +2,15 @@
 
 .ticket-open {
   position: relative;
-  padding-block: 9.6rem;
+  padding-block: 6rem;
   background: var(--color-surface-container-lowest);
   border-top: 0.1rem solid var(--color-hairline);
   border-bottom: 0.1rem solid var(--color-hairline);
-  overflow: hidden;
+  overflow: clip;
+
+  @include respond-md {
+    padding-block: 9.6rem;
+  }
 
   // glow accent(장식) — 우하단
   &::before {
@@ -32,7 +36,10 @@
     display: flex;
     align-items: center;
     gap: 2.4rem;
-    margin-bottom: 6.4rem;
+    margin-bottom: 3.2rem;
+    @include respond-md {
+      margin-bottom: 6.4rem;
+    }
   }
 
   &__title {

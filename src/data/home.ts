@@ -11,13 +11,11 @@ export const RANK_ITEMS: RankItem[] = [
     rank: "01",
     title: "Wicked",
     genre: "MUSICAL",
-    venue: "BLUE SQUARE",
     percent: "8.5%",
     image: {
       src: withBasePath("/images/rank-01-wicked.jpg"),
       alt: "Wicked 공연 포스터",
     },
-    offset: "down",
     href: "/list/wicked",
     detail: {
       tagline: "Blockbuster Musical",
@@ -57,13 +55,11 @@ export const RANK_ITEMS: RankItem[] = [
     rank: "02",
     title: "Hamilton",
     genre: "MUSICAL",
-    venue: "SEJONG CENTER",
     percent: "7.2%",
     image: {
       src: withBasePath("/images/rank-02-hamilton.jpg"),
       alt: "Hamilton 공연 포스터",
     },
-    offset: "up",
     href: "/list/hamilton",
     detail: {
       tagline: "Award-Winning Musical",
@@ -103,13 +99,11 @@ export const RANK_ITEMS: RankItem[] = [
     rank: "03",
     title: "Les Misérables",
     genre: "MUSICAL",
-    venue: "HANNAM HALL",
     percent: "6.9%",
     image: {
       src: withBasePath("/images/rank-03-lesmiserables.jpg"),
       alt: "Les Misérables 공연 포스터",
     },
-    offset: "down",
     href: "/list/les-miserables",
     detail: {
       tagline: "Epic Musical",
@@ -145,63 +139,15 @@ export const RANK_ITEMS: RankItem[] = [
     },
   },
   {
-    slug: "phantom-of-the-opera",
-    rank: "05",
-    title: "The Phantom of the Opera",
-    genre: "MUSICAL",
-    venue: "CHARLOTTE THEATER",
-    percent: "9.1%",
-    image: {
-      src: withBasePath("/images/hero-phantom.jpg"),
-      alt: "The Phantom of the Opera 공연 포스터",
-    },
-    offset: "down",
-    href: "/list/phantom-of-the-opera",
-    detail: {
-      tagline: "Gothic Romance Musical",
-      heroDescription:
-        "가면 속에 숨겨진 전설적인 사랑 이야기. 샤롯데씨어터에서 펼쳐지는 황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는 압도적인 무대 메커니즘을 만나보실 수 있습니다.",
-      schedule: "2026.11.01 — 2025.02.28",
-      runtime: "150분 (인터미션 20분 포함)",
-      ageRating: "12세 이상 관람 가능",
-      priceRange: "VIP 180,000 ~ B석 70,000",
-      synopsis: [
-        "파리 오페라 극장 지하에 숨어 사는 얼굴 없는 천재 '팬텀'은 신인 소프라노 크리스틴에게 음악의 영감을 불어넣으며 은밀히 사랑에 빠집니다. 가면 뒤에 감춘 상처와 고독은 그를 점점 더 깊은 어둠으로 이끕니다.",
-        "크리스틴을 향한 집착과 사랑 사이에서 흔들리는 팬텀, 그리고 그녀를 지키려는 연인 라울. 웅장한 오르간 선율과 화려한 샹들리에 연출이 만들어내는 고딕 로맨스의 정수가 무대 위에 펼쳐집니다.",
-      ],
-      cast: [
-        { name: "안소희", role: "The Phantom" },
-        { name: "송하나", role: "Christine Daaé" },
-        { name: "이라울", role: "Raoul" },
-        {
-          name: "브아무개",
-          role: "Music Director",
-          bio: "오르간과 오케스트라의 웅장한 사운드를 총괄하는 음악감독. 오리지널 스코어의 감동을 그대로 재현합니다.",
-        },
-      ],
-      sessions: ["14:00", "19:30"],
-      bookingStatus: "Booking Open",
-      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
-      location: {
-        name: "샤롯데씨어터",
-        address: "서울 송파구 올림픽로 240 (예시 주소)",
-        subway: "2·8호선 잠실역 2번 출구 도보 5분 (예시)",
-        phone: "1588-0000 (예시)",
-      },
-    },
-  },
-  {
     slug: "the-play",
     rank: "04",
     title: "The Play",
     genre: "PLAY",
-    venue: "SEOUL ARTS CENTER",
     percent: "5.5%",
     image: {
       src: withBasePath("/images/rank-04-theplay.jpg"),
       alt: "The Play 공연 포스터",
     },
-    offset: "up",
     href: "/list/the-play",
     detail: {
       tagline: "Critically Acclaimed Play",
@@ -235,6 +181,110 @@ export const RANK_ITEMS: RankItem[] = [
         phone: "1588-0000 (예시)",
       },
     },
+  },
+  {
+    slug: "phantom-of-the-opera",
+    rank: "05",
+    title: "The Phantom of the Opera",
+    genre: "MUSICAL",
+    percent: "9.1%",
+    image: {
+      src: withBasePath("/images/hero-phantom.jpg"),
+      alt: "The Phantom of the Opera 공연 포스터",
+    },
+    href: "/list/phantom-of-the-opera",
+    detail: {
+      tagline: "Gothic Romance Musical",
+      heroDescription:
+        "가면 속에 숨겨진 전설적인 사랑 이야기. 샤샤샤씨어터에서 펼쳐지는 황홀한 고딕 로맨스의 정수를 경험하세요. 세계적인 제작진이 선보이는 압도적인 무대 메커니즘을 만나보실 수 있습니다.",
+      schedule: "2026.11.01 — 2025.02.28",
+      runtime: "150분 (인터미션 20분 포함)",
+      ageRating: "12세 이상 관람 가능",
+      priceRange: "VIP 180,000 ~ B석 70,000",
+      synopsis: [
+        "파리 오페라 극장 지하에 숨어 사는 얼굴 없는 천재 '팬텀'은 신인 소프라노 크리스틴에게 음악의 영감을 불어넣으며 은밀히 사랑에 빠집니다. 가면 뒤에 감춘 상처와 고독은 그를 점점 더 깊은 어둠으로 이끕니다.",
+        "크리스틴을 향한 집착과 사랑 사이에서 흔들리는 팬텀, 그리고 그녀를 지키려는 연인 라울. 웅장한 오르간 선율과 화려한 샹들리에 연출이 만들어내는 고딕 로맨스의 정수가 무대 위에 펼쳐집니다.",
+      ],
+      cast: [
+        { name: "안소희", role: "The Phantom" },
+        { name: "송하나", role: "Christine Daaé" },
+        { name: "이라울", role: "Raoul" },
+        {
+          name: "브아무개",
+          role: "Music Director",
+          bio: "오르간과 오케스트라의 웅장한 사운드를 총괄하는 음악감독. 오리지널 스코어의 감동을 그대로 재현합니다.",
+        },
+      ],
+      sessions: ["14:00", "19:30"],
+      bookingStatus: "Booking Open",
+      bookingFee: "※ 예매 수수료는 장당 1,000원입니다.",
+      location: {
+        name: "샤샤샤씨어터",
+        address: "서울 송파구 올림픽로 240 (예시 주소)",
+        subway: "2·8호선 잠실역 2번 출구 도보 5분 (예시)",
+        phone: "1588-0000 (예시)",
+      },
+    },
+  },
+  {
+    slug: "cats",
+    rank: "06",
+    title: "CATS",
+    genre: "MUSICAL",
+    percent: "4.8%",
+    image: {
+      src: withBasePath("/images/genre-musical.jpg"),
+      alt: "CATS 공연 포스터",
+    },
+    href: "/list/cats",
+  },
+  {
+    slug: "chopin-nocturne-recital",
+    rank: "07",
+    title: "Chopin: Nocturne Recital",
+    genre: "CONCERT",
+    percent: "4.2%",
+    image: {
+      src: withBasePath("/images/genre-concert.jpg"),
+      alt: "Chopin: Nocturne Recital 공연 포스터",
+    },
+    href: "/list/chopin-nocturne-recital",
+  },
+  {
+    slug: "mamma-mia",
+    rank: "08",
+    title: "Mamma Mia!",
+    genre: "MUSICAL",
+    percent: "3.9%",
+    image: {
+      src: withBasePath("/images/ticket-chicago.jpg"),
+      alt: "Mamma Mia! 공연 포스터",
+    },
+    href: "/list/mamma-mia",
+  },
+  {
+    slug: "vienna-philharmonic-gala",
+    rank: "09",
+    title: "Vienna Philharmonic Gala",
+    genre: "CONCERT",
+    percent: "3.5%",
+    image: {
+      src: withBasePath("/images/ticket-beethoven.jpg"),
+      alt: "Vienna Philharmonic Gala 공연 포스터",
+    },
+    href: "/list/vienna-philharmonic-gala",
+  },
+  {
+    slug: "a-streetcar-named-desire",
+    rank: "10",
+    title: "A Streetcar Named Desire",
+    genre: "PLAY",
+    percent: "3.1%",
+    image: {
+      src: withBasePath("/images/genre-play.jpg"),
+      alt: "A Streetcar Named Desire 공연 포스터",
+    },
+    href: "/list/a-streetcar-named-desire",
   },
 ];
 
@@ -380,7 +430,7 @@ export const GENRE_ITEMS: GenreItem[] = [
       alt: "Musical 장르 이미지",
     },
     offset: false,
-    href: "/list/musical",
+    href: "/list?category=musical",
   },
   {
     slug: "play",
@@ -392,7 +442,7 @@ export const GENRE_ITEMS: GenreItem[] = [
       alt: "Play 장르 이미지",
     },
     offset: true,
-    href: "/list/play",
+    href: "/list?category=play",
   },
   {
     slug: "concert",
@@ -404,7 +454,7 @@ export const GENRE_ITEMS: GenreItem[] = [
       alt: "Concert 장르 이미지",
     },
     offset: false,
-    href: "/list/concert",
+    href: "/list?category=concert",
   },
 ];
 
