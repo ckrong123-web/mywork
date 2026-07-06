@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "predeploy": "cross-env GITHUB_PAGES=true npm run build",
+    "deploy": "gh-pages -d out",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -24,8 +26,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "^15.5.20",
+    "gh-pages": "^6.3.0",
     "patch-package": "^8.0.1",
     "sass": "^1.101.0",
     "typescript": "^5"
