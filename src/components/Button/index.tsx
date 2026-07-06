@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
@@ -60,8 +61,22 @@ export default function Button({
   const cls = buildClass(variant, size, className);
 
   if ("href" in rest && rest.href !== undefined) {
+    const anchorProps = rest as AnchorHTMLAttributes<HTMLAnchorElement> & {
+      href: string;
+    };
+
+    // 내부 경로(절대 경로)는 next/link 를 거쳐야 GitHub Pages basePath가 붙는다.
+    // "#", "https://..." 같은 외부/자리표시 링크는 그대로 <a> 로 둔다.
+    if (anchorProps.href.startsWith("/")) {
+      return (
+        <Link className={cls} {...anchorProps}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
-      <a className={cls} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <a className={cls} {...anchorProps}>
         {children}
       </a>
     );
