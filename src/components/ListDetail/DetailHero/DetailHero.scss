@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  height: clamp(56rem, 90svh, 92.1rem);
+  height: clamp(56rem, calc(var(--vh) * 90), 92.1rem);
   overflow: clip;
 
   &__media {

@@ -5,7 +5,7 @@
     position: relative;
     display: flex;
     align-items: flex-end;
-    height: clamp(48rem, 80svh, 72rem);
+    height: clamp(48rem, calc(var(--vh) * 80), 72rem);
     overflow: clip;
   }
 

@@ -35,6 +35,14 @@ export default function RootLayout({
       className={`${libreCaslon.variable} ${hankenGrotesk.variable}`}
     >
       <head>
+        {/* 카카오톡 등 인앱 브라우저의 vh/svh/dvh 재계산으로 인한 레이아웃 흔들림 방지.
+            window.innerHeight를 1회 고정해 --vh로 노출하고, 실제 회전(orientationchange)
+            에만 재계산한다(주소창 표시/숨김으로 발생하는 resize는 의도적으로 무시). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){function s(){document.documentElement.style.setProperty('--vh',window.innerHeight*0.01+'px')}s();window.addEventListener('orientationchange',s)})();`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
